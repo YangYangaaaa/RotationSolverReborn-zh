@@ -29,20 +29,25 @@ jobs:
           Invoke-WebRequest -Uri https://goatcorp.github.io/dalamud-distrib/latest.zip -OutFile latest.zip
           Expand-Archive -Force latest.zip -DestinationPath "$env:AppData\XIVLauncher\addon\Hooks\dev"
 
+      - name: Read version
+        id: version
+        shell: pwsh
+        run: |
+          $now = Get-Date
+          $tag = "$($now.Year).$($now.Month).$($now.Day).$($now.ToString('HHmm'))"
+          Write-Output "tag=$tag" >> $env:GITHUB_OUTPUT
+          Write-Host "Tag: $tag"
+
       - name: Restore NuGet Packages
         run: dotnet restore RotationSolver/RotationSolver.csproj
 
       - name: Build Plugin
         shell: pwsh
-        run: dotnet build --no-restore -c Release RotationSolver/RotationSolver.csproj --output .\build
-
-      - name: Read version
-        id: version
-        shell: pwsh
         run: |
-          $tag = (Get-Date -Format "yyyyMMdd-HHmmss")
-          Write-Output "tag=$tag" >> $env:GITHUB_OUTPUT
-          Write-Host "Tag: $tag"
+          $tag = "${{ steps.version.outputs.tag }}"
+          dotnet build --no-restore -c Release RotationSolver/RotationSolver.csproj `
+            -p:AssemblyVersion=$tag -p:FileVersion=$tag -p:InformationalVersion=$tag `
+            --output .\build
 
       - name: Prepare release zip and pluginmaster
         shell: pwsh
