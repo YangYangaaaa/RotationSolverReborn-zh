@@ -53,25 +53,36 @@ jobs:
           New-Item -ItemType Directory -Path $outDir -Force | Out-Null
           $zipName = "RotationSolverReborn-zh-$tag.zip"
           Compress-Archive -Path "$buildDir\*" -DestinationPath "$outDir\$zipName" -Force
-          $manifest = Get-Content "RotationSolver/RotationSolver.json" -Raw | ConvertFrom-Json
-          $pluginMaster = @{
-            "$tag" = @{
-              "AssemblyVersion" = $tag
-              "TestingAssemblyVersion" = $tag
-              "DalamudApiLevel" = $manifest.DalamudApiLevel
-              "TestingDalamudApiLevel" = $manifest.TestingDalamudApiLevel
-              "IsHide" = $false
-              "IsTestingExclusive" = $manifest.IsTestingExclusive -eq $true
-              "DownloadLinkInstall" = "https://github.com/YangYangaaaa/RotationSolverReborn-zh/releases/download/$tag/$zipName"
-              "DownloadLinkUpdate" = "https://github.com/YangYangaaaa/RotationSolverReborn-zh/releases/download/$tag/$zipName"
-              "DownloadLinkTesting" = "https://github.com/YangYangaaaa/RotationSolverReborn-zh/releases/download/$tag/$zipName"
-              "Changelog" = "中文汉化版"
-            }
+          $m = Get-Content "RotationSolver/RotationSolver.json" -Raw | ConvertFrom-Json
+          $downloadUrl = "https://github.com/YangYangaaaa/RotationSolverReborn-zh/releases/download/$tag/$zipName"
+          $entry = @{
+            Author = $m.Author
+            Name = $m.Name
+            InternalName = $m.InternalName
+            AssemblyVersion = $tag
+            TestingAssemblyVersion = $tag
+            DalamudApiLevel = $m.DalamudApiLevel
+            TestingDalamudApiLevel = $m.TestingDalamudApiLevel
+            IsHide = $false
+            IsTestingExclusive = $false
+            DownloadLinkInstall = $downloadUrl
+            DownloadLinkUpdate = $downloadUrl
+            DownloadLinkTesting = $downloadUrl
+            Changelog = "中文汉化版"
+            Tags = $m.Tags
+            ApplicableVersion = "any"
+            LoadRequiredState = 0
+            LoadSync = $false
+            CanUnloadAsync = $false
+            LoadPriority = 0
+            IconUrl = $m.IconUrl
+            AcceptsFeedback = $true
+            RepoUrl = "https://github.com/YangYangaaaa/RotationSolverReborn-zh"
           }
-          $pluginMasterJsonPath = "pluginmaster.json"
-          $pluginMaster | ConvertTo-Json -Depth 10 | Out-File -FilePath $pluginMasterJsonPath -Encoding utf8
+          $pluginMaster = @($entry)
+          $pluginMaster | ConvertTo-Json -Depth 10 | Out-File -FilePath "pluginmaster.json" -Encoding utf8
           Write-Host "=== pluginmaster.json ==="
-          Get-Content $pluginMasterJsonPath
+          Get-Content pluginmaster.json
 
       - name: Create Release
         uses: softprops/action-gh-release@v3
