@@ -79,8 +79,7 @@ jobs:
             AcceptsFeedback = $true
             RepoUrl = "https://github.com/YangYangaaaa/RotationSolverReborn-zh"
           }
-          $pluginMaster = @($entry)
-          $pluginMaster | ConvertTo-Json -Depth 10 | Out-File -FilePath "pluginmaster.json" -Encoding utf8
+          $entry | ConvertTo-Json -Depth 10 -AsArray | Out-File -FilePath "pluginmaster.json" -Encoding utf8
           Write-Host "=== pluginmaster.json ==="
           Get-Content pluginmaster.json
 
