@@ -20,37 +20,35 @@ internal class OtherConfiguration
 		return c;
 	}
 	/// <markdown file="List" name="AoE" section="Actions">
-	/// **`It is recommended to click on the reset button after every patch.`**
-	/// 
-	/// RSR will use group mitigation if any enemy in the enmity list is casting
-	/// one of the listed actions. Usually those actions are raid-wides.
+	/// **`建议每个补丁后点击重置按钮。`**
+	///
+	/// 若仇恨列表中任意敌人正在施放列表中的技能,RSR 将使用群体减伤。
+	/// 这些技能通常是范围攻击。
 	/// </markdown>
 	public static HashSet<uint> HostileCastingArea = [];
 
 	/// <markdown file="List" name="Tank Buster" section="Actions">
-	/// **`It is recommended to click on the reset button after every patch.`**
-	/// 
-	/// RSR will use mitigation on target (heal) or self (tank) if the target is currently
-	/// being targeted by one of the listed actions.
+	/// **`建议每个补丁后点击重置按钮。`**
+	///
+	/// 若目标正在被列表中的技能锁定,RSR 将对目标(治疗)或自身(坦克)使用减伤。
 	/// </markdown>
 	public static HashSet<uint> HostileCastingTank = [];
 
 	/// <markdown file="List" name="Knockback" section="Actions">
-	/// **`It is recommended to click on the reset button after every patch.`**
+	/// **`建议每个补丁后点击重置按钮。`**
 	///
-	/// **Click on "Record knockback actions" at your own peril. Some duties expect you take the
-	/// knockback in order to reach a proper safe-spot, like in Sil'dihn Subterrane (Savage).**
-	/// 
-	/// RSR will use anti-knockback actions when you would be hit by one of the listed actions.
+	/// **点击"记录击退技能"需自行承担风险。某些副本需要你利用击退到达正确安全点,
+	/// 例如西尔狄赫水道(零式)。**
+	///
+	/// 当你将被列表中的技能击退时,RSR 会使用防击退技能。
 	/// </markdown>
 	public static HashSet<uint> HostileCastingKnockback = [];
 
 	/// <markdown file="List" name="Gaze/Stop" section="Actions">
-	/// **`It is recommended to click on the reset button after every patch.`**
-	/// 
-	/// If the target is casting one of the listed actions, RSR will stop casting
-	/// in the seconds before the action is resolved
-	/// <see cref="RotationSolver.Basic.Configuration.Configs._castingStop">here</see>.
+	/// **`建议每个补丁后点击重置按钮。`**
+	///
+	/// 若目标正在施放列表中的技能,RSR 将在技能判定前数秒停止读条
+	/// <see cref="RotationSolver.Basic.Configuration.Configs._castingStop">此处</see>。
 	/// </markdown>
 	public static HashSet<uint> HostileCastingStop = [];
 
@@ -58,39 +56,37 @@ internal class OtherConfiguration
 	public static Dictionary<uint, string[]> NoProvokeNames = [];
 
 	/// <markdown file="List" name="Beneficial Positions" section="Map-Specific Settings">
-	/// Adds a preferred location used for ground **healing** AoE abilities (example: Earthly Star).
+	/// 添加一个偏好位置,用于地面**治疗** AoE 技能(例如:地星)。
 	///
-	/// You can add multiple locations, in case a boss fight moves you to another platform, like M4S - Wicked Thunder.
+	/// 你可以添加多个位置,以防 Boss 战将你转移到另一个平台,例如 M4S - 邪恶之雷。
 	/// </markdown>
 	public static Dictionary<uint, Vector3[]> BeneficialPositions = [];
 
 	/// <markdown file="List" name="Dispellable Debuffs" section="Statuses">
-	/// **`It is recommended to click on the reset button after every patch.`**
-	/// 
-	/// Listed statuses will be dispelled (Esuna) first before any
-	/// other dispellable statuses.
+	/// **`建议每个补丁后点击重置按钮。`**
+	///
+	/// 列表中的状态将优先于其他可驱散状态被驱散(康复)。
 	/// </markdown>
 	public static HashSet<uint> DangerousStatus = [];
 
 	/// <markdown file="List" name="Priority" section="Statuses">
-	/// **`It is recommended to click on the reset button after every patch.`**
-	/// 
-	/// If running in auto mode, if any enemy in your enmity list has this status,
-	/// it will target them as priority.
+	/// **`建议每个补丁后点击重置按钮。`**
+	///
+	/// 在自动模式下,若仇恨列表中任意敌人带有此状态,将优先将其作为目标。
 	/// </markdown>
 	public static HashSet<uint> PriorityStatus = [];
 
 	/// <markdown file="List" name="Invulnerability" section="Statuses">
-	/// **`It is recommended to click on the reset button after every patch.`**
-	/// 
-	/// Ignores target if they have one of the statuses listed.
+	/// **`建议每个补丁后点击重置按钮。`**
+	///
+	/// 若目标带有列表中的状态,将被视为无敌并忽略。
 	/// </markdown>
 	public static HashSet<uint> InvincibleStatus = [];
 
 	/// <markdown file="List" name="No-Casting Debuffs" section="Statuses">
-	/// **`It is recommended to click on the reset button after every patch.`**
-	/// 
-	/// If you have any of the statuses listed, RSR will stop taking any actions.
+	/// **`建议每个补丁后点击重置按钮。`**
+	///
+	/// 若你带有列表中的任意状态,RSR 将停止所有行动。
 	/// </markdown>
 	public static HashSet<uint> NoCastingStatus = [];
 	public static List<Job> DancePartnerPriority = [];
