@@ -1,31 +1,33 @@
-{
-  "DownloadLinkUpdate": "https://github.com/YangYangaaaa/RotationSolverReborn-zh/releases/download/20260703-184408/RotationSolverReborn-zh-20260703-184408.zip",
-  "Tags": [
-    "combat",
-    "rotation",
-    "auto",
-    "solver",
-    "pve",
-    "pvp"
-  ],
-  "TestingDalamudApiLevel": 15,
-  "CanUnloadAsync": false,
-  "LoadPriority": 0,
-  "Author": "The Combat Reborn Team",
-  "DownloadLinkInstall": "https://github.com/YangYangaaaa/RotationSolverReborn-zh/releases/download/20260703-184408/RotationSolverReborn-zh-20260703-184408.zip",
-  "ApplicableVersion": "any",
-  "IconUrl": "https://raw.githubusercontent.com/FFXIV-CombatReborn/RebornAssets/main/IconAssets/RSR_Icon.png",
-  "DownloadLinkTesting": "https://github.com/YangYangaaaa/RotationSolverReborn-zh/releases/download/20260703-184408/RotationSolverReborn-zh-20260703-184408.zip",
-  "LoadSync": false,
-  "TestingAssemblyVersion": "20260703-184408",
-  "Name": "Rotation Solver Reborn",
-  "IsHide": false,
-  "IsTestingExclusive": false,
-  "Changelog": "中文汉化版",
-  "RepoUrl": "https://github.com/YangYangaaaa/RotationSolverReborn-zh",
-  "LoadRequiredState": 0,
-  "DalamudApiLevel": 15,
-  "AcceptsFeedback": true,
-  "AssemblyVersion": "20260703-184408",
-  "InternalName": "RotationSolver"
-}
+[
+  {
+    "IsHide": false,
+    "LoadPriority": 0,
+    "TestingAssemblyVersion": "20260703-184910",
+    "DalamudApiLevel": 15,
+    "Author": "The Combat Reborn Team",
+    "ApplicableVersion": "any",
+    "TestingDalamudApiLevel": 15,
+    "CanUnloadAsync": false,
+    "RepoUrl": "https://github.com/YangYangaaaa/RotationSolverReborn-zh",
+    "DownloadLinkUpdate": "https://github.com/YangYangaaaa/RotationSolverReborn-zh/releases/download/20260703-184910/RotationSolverReborn-zh-20260703-184910.zip",
+    "DownloadLinkTesting": "https://github.com/YangYangaaaa/RotationSolverReborn-zh/releases/download/20260703-184910/RotationSolverReborn-zh-20260703-184910.zip",
+    "LoadRequiredState": 0,
+    "AcceptsFeedback": true,
+    "AssemblyVersion": "20260703-184910",
+    "Changelog": "中文汉化版",
+    "Name": "Rotation Solver Reborn",
+    "IsTestingExclusive": false,
+    "IconUrl": "https://raw.githubusercontent.com/FFXIV-CombatReborn/RebornAssets/main/IconAssets/RSR_Icon.png",
+    "InternalName": "RotationSolver",
+    "Tags": [
+      "combat",
+      "rotation",
+      "auto",
+      "solver",
+      "pve",
+      "pvp"
+    ],
+    "LoadSync": false,
+    "DownloadLinkInstall": "https://github.com/YangYangaaaa/RotationSolverReborn-zh/releases/download/20260703-184910/RotationSolverReborn-zh-20260703-184910.zip"
+  }
+]
