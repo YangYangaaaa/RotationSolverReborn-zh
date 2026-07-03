@@ -315,7 +315,7 @@ namespace RotationSolver.Commands
 					ActionUpdater.NextAction = ActionUpdater.NextGCDAction = null;
 					DataCenter.TargetingTypeOverride = null;
 					if (Service.Config.ShowToggledSettingInChat)
-					{ Svc.Chat.Print($"Targeting : Off"); }
+					{ Svc.Chat.Print($"目标选择: 关闭"); }
 					break;
 
 				case StateCommandType.Auto:
@@ -328,7 +328,7 @@ namespace RotationSolver.Commands
 					ActionUpdater.AutoCancelTime = DateTime.MinValue;
 					DataCenter.TargetingTypeOverride = null;
 					if (Service.Config.ShowToggledSettingInChat)
-					{ Svc.Chat.Print($"Auto Targeting : {DataCenter.TargetingType}"); }
+					{ Svc.Chat.Print($"自动目标选择: {DataCenter.TargetingType}"); }
 					break;
 
 				case StateCommandType.TargetOnly:
@@ -341,7 +341,7 @@ namespace RotationSolver.Commands
 					ActionUpdater.AutoCancelTime = DateTime.MinValue;
 					DataCenter.TargetingTypeOverride = null;
 					if (Service.Config.ShowToggledSettingInChat)
-					{ Svc.Chat.Print($"Auto Targeting Only : {DataCenter.TargetingType}"); }
+					{ Svc.Chat.Print($"仅自动目标选择: {DataCenter.TargetingType}"); }
 					break;
 
 				case StateCommandType.Manual:
@@ -354,7 +354,7 @@ namespace RotationSolver.Commands
 					ActionUpdater.AutoCancelTime = DateTime.MinValue;
 					DataCenter.TargetingTypeOverride = null;
 					if (Service.Config.ShowToggledSettingInChat)
-					{ Svc.Chat.Print($"Targeting : Manual"); }
+					{ Svc.Chat.Print($"目标选择: 手动"); }
 					break;
 
 				case StateCommandType.AutoDuty:
@@ -367,7 +367,7 @@ namespace RotationSolver.Commands
 					ActionUpdater.AutoCancelTime = DateTime.MinValue;
 					DataCenter.TargetingTypeOverride = null;
 					if (Service.Config.ShowToggledSettingInChat)
-					{ Svc.Chat.Print($"Targeting : AutoDuty"); }
+					{ Svc.Chat.Print($"目标选择: AutoDuty"); }
 					break;
 
 				case StateCommandType.Henched:
@@ -380,7 +380,7 @@ namespace RotationSolver.Commands
 					ActionUpdater.AutoCancelTime = DateTime.MinValue;
 					DataCenter.TargetingTypeOverride = null;
 					if (Service.Config.ShowToggledSettingInChat)
-					{ Svc.Chat.Print($"Targeting : Henched"); }
+					{ Svc.Chat.Print($"目标选择: 雇佣"); }
 					break;
 
 				case StateCommandType.PvP:
@@ -393,7 +393,7 @@ namespace RotationSolver.Commands
 					ActionUpdater.AutoCancelTime = DateTime.MinValue;
 					DataCenter.TargetingTypeOverride = TargetingType.LowHP;
 					if (Service.Config.ShowToggledSettingInChat)
-					{ Svc.Chat.Print($"Targeting : PvP"); }
+					{ Svc.Chat.Print($"目标选择: PvP"); }
 					break;
 			}
 
@@ -417,7 +417,7 @@ namespace RotationSolver.Commands
 					ActionUpdater.NextAction = ActionUpdater.NextGCDAction = null;
 					DataCenter.TargetingTypeOverride = null;
 					if (Service.Config.ShowToggledSettingInChat)
-					{ Svc.Chat.Print($"Targeting : Off"); }
+					{ Svc.Chat.Print($"目标选择: 关闭"); }
 					break;
 
 				case StateCommandType.Auto:
@@ -430,7 +430,7 @@ namespace RotationSolver.Commands
 					ActionUpdater.AutoCancelTime = DateTime.MinValue;
 					DataCenter.TargetingTypeOverride = null;
 					if (Service.Config.ShowToggledSettingInChat)
-					{ Svc.Chat.Print($"Auto Targeting : {DataCenter.TargetingType}"); }
+					{ Svc.Chat.Print($"自动目标选择: {DataCenter.TargetingType}"); }
 					break;
 
 				case StateCommandType.TargetOnly:
@@ -443,7 +443,7 @@ namespace RotationSolver.Commands
 					ActionUpdater.AutoCancelTime = DateTime.MinValue;
 					DataCenter.TargetingTypeOverride = targetingType;
 					if (Service.Config.ShowToggledSettingInChat)
-					{ Svc.Chat.Print($"Auto Targeting Only : {DataCenter.TargetingType}"); }
+					{ Svc.Chat.Print($"仅自动目标选择: {DataCenter.TargetingType}"); }
 					break;
 
 				case StateCommandType.Manual:
@@ -456,7 +456,7 @@ namespace RotationSolver.Commands
 					ActionUpdater.AutoCancelTime = DateTime.MinValue;
 					DataCenter.TargetingTypeOverride = null;
 					if (Service.Config.ShowToggledSettingInChat)
-					{ Svc.Chat.Print($"Targeting : Manual"); }
+					{ Svc.Chat.Print($"目标选择: 手动"); }
 					break;
 
 				case StateCommandType.AutoDuty:
@@ -469,7 +469,7 @@ namespace RotationSolver.Commands
 					ActionUpdater.AutoCancelTime = DateTime.MinValue;
 					DataCenter.TargetingTypeOverride = targetingType;
 					if (Service.Config.ShowToggledSettingInChat)
-					{ Svc.Chat.Print($"Targeting : AutoDuty"); }
+					{ Svc.Chat.Print($"目标选择: AutoDuty"); }
 					break;
 
 				case StateCommandType.Henched:
@@ -482,7 +482,7 @@ namespace RotationSolver.Commands
 					ActionUpdater.AutoCancelTime = DateTime.MinValue;
 					DataCenter.TargetingTypeOverride = null;
 					if (Service.Config.ShowToggledSettingInChat)
-					{ Svc.Chat.Print($"Targeting : Henched"); }
+					{ Svc.Chat.Print($"目标选择: 雇佣"); }
 					break;
 
 				case StateCommandType.PvP:
@@ -495,7 +495,7 @@ namespace RotationSolver.Commands
 					ActionUpdater.AutoCancelTime = DateTime.MinValue;
 					DataCenter.TargetingTypeOverride = TargetingType.LowHP;
 					if (Service.Config.ShowToggledSettingInChat)
-					{ Svc.Chat.Print($"Targeting : PvP"); }
+					{ Svc.Chat.Print($"目标选择: PvP"); }
 					break;
 			}
 

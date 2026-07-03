@@ -85,13 +85,13 @@ namespace RotationSolver.Commands
 							Service.Config.TargetingIndex = idx;
 							if (Service.Config.ShowToggledSettingInChat)
 							{
-								Svc.Chat.Print($"Set current TargetingType to {targetingTypeSet}.");
+								Svc.Chat.Print($"已将当前目标选择类型设为 {targetingTypeSet}。");
 							}
 							index = idx;
 						}
 						else
 						{
-							Svc.Chat.PrintError($"{targetingTypeSet} is not in TargetingTypes list.");
+							Svc.Chat.PrintError($"{targetingTypeSet} 不在目标选择类型列表中。");
 							return;
 						}
 					}
