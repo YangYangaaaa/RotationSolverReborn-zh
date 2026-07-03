@@ -6,16 +6,16 @@ namespace RotationSolver.RebornRotations.Ranged;
 public sealed class DNC_Reborn : DancerRotation
 {
 	#region Config Options
-	[RotationConfig(CombatType.PvE, Name = "Holds Tech Step if no targets in range (Warning, will drift)")]
+	[RotationConfig(CombatType.PvE, Name = "范围内无目标时保留技巧舞步（警告，会产生漂移）")]
 	public bool HoldTechForTargets { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Holds Standard Step if no targets in range (Warning, will drift & Buff may fall off)")]
+	[RotationConfig(CombatType.PvE, Name = "范围内无目标时保留标准舞步（警告，会产生漂移且增益可能掉落）")]
 	public bool HoldStepForTargets { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Dance Partner Name (If empty or not found uses default dance partner priority)")]
+	[RotationConfig(CombatType.PvE, Name = "舞伴名称（为空或未找到时使用默认舞伴优先级）")]
 	public string DancePartnerName { get; set; } = "";
 
-	[RotationConfig(CombatType.PvE, Name = "Prevent the use of defense abilties during burst")]
+	[RotationConfig(CombatType.PvE, Name = "爆发期间阻止使用防御技能")]
 	private bool BurstDefense { get; set; } = true;
 	#endregion
 	private bool shouldUseLastDance = true;

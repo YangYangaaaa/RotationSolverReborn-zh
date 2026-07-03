@@ -6,45 +6,45 @@ namespace RotationSolver.RebornRotations.Tank;
 public sealed class WAR_Reborn : WarriorRotation
 {
 	#region Config Options
-	[RotationConfig(CombatType.PvE, Name = "Only use Nascent Flash if Tank Stance is off")]
+	[RotationConfig(CombatType.PvE, Name = "仅在坦克姿态关闭时使用原初嗜血")]
 	public bool NeverscentFlash { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Bloodwhetting/Raw intuition on single enemies")]
+	[RotationConfig(CombatType.PvE, Name = "对单体敌人使用血誓/原始直觉")]
 	public bool SoloIntuition { get; set; } = false;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Bloodwhetting/Raw intuition heal threshold")]
+	[RotationConfig(CombatType.PvE, Name = "血誓/原始直觉治疗阈值")]
 	public float HealIntuition { get; set; } = 0.7f;
 
-	[RotationConfig(CombatType.PvE, Name = "Use both stacks of Onslaught during burst while standing still")]
+	[RotationConfig(CombatType.PvE, Name = "静止时在爆发期间使用两层猛攻")]
 	public bool YEETBurst { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use a stack of Onslaught when its about to overcap while standing still")]
+	[RotationConfig(CombatType.PvE, Name = "静止时在猛攻即将溢出时使用一层")]
 	public bool YEETCooldown { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Inner Release while moving")]
+	[RotationConfig(CombatType.PvE, Name = "移动时使用原初释放")]
 	public bool InnerReleaseMoving { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Primal Rend while moving (Dangerous)")]
+	[RotationConfig(CombatType.PvE, Name = "移动时使用原始撕裂（危险）")]
 	public bool YEET { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Primal Rend while standing still outside of configured melee range (Dangerous)")]
+	[RotationConfig(CombatType.PvE, Name = "静止时在配置的近战范围外使用原始撕裂（危险）")]
 	public bool YEETStill { get; set; } = false;
 
 	[Range(1, 20, ConfigUnitType.Yalms)]
-	[RotationConfig(CombatType.PvE, Name = "Max distance you can be from the boss for Primal Rend use (Danger, setting too high will get you killed)")]
+	[RotationConfig(CombatType.PvE, Name = "原始撕裂使用时与Boss的最大距离（危险，设置过高会导致死亡）")]
 	public float PrimalRendDistance2 { get; set; } = 3.5f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Nascent Flash Heal Threshold")]
+	[RotationConfig(CombatType.PvE, Name = "原初嗜血治疗阈值")]
 	public float FlashHeal { get; set; } = 0.6f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Thrill Of Battle Heal Threshold")]
+	[RotationConfig(CombatType.PvE, Name = "战斗振奋治疗阈值")]
 	public float ThrillOfBattleHeal { get; set; } = 0.6f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Equilibrium Heal Threshold")]
+	[RotationConfig(CombatType.PvE, Name = "平衡治疗阈值")]
 	public float EquilibriumHeal { get; set; } = 0.6f;
 
 	#endregion

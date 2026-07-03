@@ -6,29 +6,29 @@
 public sealed class PCT_Reborn : PictomancerRotation
 {
 	#region Config Options
-	[RotationConfig(CombatType.PvE, Name = "Use HolyInWhite or CometInBlack while moving")]
+	[RotationConfig(CombatType.PvE, Name = "移动时使用圣白或黑彗星")]
 	public bool HolyCometMoving { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Paint overcap protection.")]
+	[RotationConfig(CombatType.PvE, Name = "颜料溢出保护。")]
 	public bool UseCapCometHoly { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use the paint overcap protection (will still use comet while moving if the setup is on)")]
+	[RotationConfig(CombatType.PvE, Name = "使用颜料溢出保护（若开启设置，移动时仍会使用黑彗星）")]
 	public bool UseCapCometOnly { get; set; } = false;
 
 	[Range(1, 5, ConfigUnitType.None, 1)]
-	[RotationConfig(CombatType.PvE, Name = "Paint overcap protection limit. How many paint you need to be at for it to use Holy out of burst (Setting is ignored when you have Hyperphantasia)")]
+	[RotationConfig(CombatType.PvE, Name = "颜料溢出保护上限。爆发外使用圣白所需的颜料数量（拥有极致幻象时忽略此项）")]
 	public int HolyCometMax { get; set; } = 5;
 
-	[RotationConfig(CombatType.PvE, Name = "Use swiftcast on Rainbow Drip (Priority over below settings)")]
+	[RotationConfig(CombatType.PvE, Name = "对彩虹滴使用迅速魔（优先级高于以下设置）")]
 	public bool RainbowDripSwift { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use swiftcast on Motif")]
+	[RotationConfig(CombatType.PvE, Name = "对图案使用迅速魔")]
 	public bool MotifSwiftCastSwift { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Which Motif to use swiftcast on")]
+	[RotationConfig(CombatType.PvE, Name = "对哪个图案使用迅速魔")]
 	public CanvasFlags MotifSwiftCast { get; set; } = CanvasFlags.Weapon;
 
-	[RotationConfig(CombatType.PvE, Name = "Prevent the use of defense abilties during burst")]
+	[RotationConfig(CombatType.PvE, Name = "爆发期间禁止使用减伤技能")]
 	private bool BurstDefense { get; set; } = true;
 
 	#endregion

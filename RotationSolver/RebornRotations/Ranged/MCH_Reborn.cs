@@ -6,25 +6,25 @@
 public sealed class MCH_Reborn : MachinistRotation
 {
 	#region Config Options
-	[RotationConfig(CombatType.PvE, Name = "Use burst medicine in countdown (requires auto burst option on)")]
+	[RotationConfig(CombatType.PvE, Name = "倒计时期间使用爆发药（需开启自动爆发选项）")]
 	private bool OpenerBurstMeds { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Bioblaster while moving")]
+	[RotationConfig(CombatType.PvE, Name = "移动时使用生物爆破炮")]
 	private bool BioMove { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Only use Wildfire on Boss targets")]
+	[RotationConfig(CombatType.PvE, Name = "仅在Boss目标上使用野火")]
 	private bool WildfireBoss { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Restrict mitigations to not overlap")]
+	[RotationConfig(CombatType.PvE, Name = "限制减伤不重叠")]
 	private bool MitOverlap { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Use AirAnchor at 1 second remaining on countdown")]
+	[RotationConfig(CombatType.PvE, Name = "倒计时剩1秒时使用空气锚")]
 	private bool AirAnchorCountdown { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Restrict Tactician to only be allowed to be used when there are multiple hostile targets")]
+	[RotationConfig(CombatType.PvE, Name = "限制战术家仅在存在多个敌对目标时使用")]
 	private bool MultiTact { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "BMR: Dump Heat before downtime (Experimental)")]
+	[RotationConfig(CombatType.PvE, Name = "BMR：在停战前排空过热（实验性）")]
 	public bool BmrDumpBeforeDowntime { get; set; } = true;
 	#endregion
 

@@ -20,47 +20,47 @@ public sealed class SMN_Reborn : SummonerRotation
 		[Description("Ruby-Emerald-Topaz")] RubyEmeraldTopaz,
 	}
 
-	[RotationConfig(CombatType.PvE, Name = "Use GCDs to heal. (Ignored if there are no healers alive in party)")]
+	[RotationConfig(CombatType.PvE, Name = "使用 GCD 治疗。（队伍中没有存活的治疗时忽略）")]
 	public bool GCDHeal { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Crimson Cyclone at any range, regardless of saftey use with caution (Enabling this ignores the below distance setting).")]
+	[RotationConfig(CombatType.PvE, Name = "在任何距离使用红莲螺旋，无视安全性，谨慎使用（启用此项将忽略下方的距离设置）。")]
 	public bool AddCrimsonCyclone { get; set; } = true;
 
 	[Range(1, 20, ConfigUnitType.Yalms)]
-	[RotationConfig(CombatType.PvE, Name = "Max distance you can be from the target for Crimson Cyclone use")]
+	[RotationConfig(CombatType.PvE, Name = "使用红莲螺旋时与目标的最大距离")]
 	public float CrimsonCycloneDistance { get; set; } = 3.0f;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Crimson Cyclone when moving")]
+	[RotationConfig(CombatType.PvE, Name = "移动时使用红莲螺旋")]
 	public bool AddCrimsonCycloneMoving { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Swiftcast on ressurection")]
+	[RotationConfig(CombatType.PvE, Name = "复活时使用迅速魔")]
 	public bool AddSwiftcastOnRaise { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Raise while in solar bahamut")]
+	[RotationConfig(CombatType.PvE, Name = "在至高巴哈姆特状态下复活")]
 	public bool SBRaise { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Swiftcast on Ruby Ruin when not enough level for Ruby Rite")]
+	[RotationConfig(CombatType.PvE, Name = "等级不足以使用红宝石辉时对红宝石毁使用迅速魔")]
 	public bool AddSwiftcastOnLowST { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Swiftcast on Ruby Outburst when not enough level for Ruby Rite")]
+	[RotationConfig(CombatType.PvE, Name = "等级不足以使用红宝石辉时对红宝石灾使用迅速魔")]
 	public bool AddSwiftcastOnLowAOE { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Swiftcast on Garuda")]
+	[RotationConfig(CombatType.PvE, Name = "对迦楼罗使用迅速魔")]
 	public bool AddSwiftcastOnGaruda { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Swiftcast on Ruby Rite if you are not high enough level for Garuda")]
+	[RotationConfig(CombatType.PvE, Name = "等级不足以使用迦楼罗时对红宝石辉使用迅速魔")]
 	public bool AddSwiftcastOnRuby { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Order")]
+	[RotationConfig(CombatType.PvE, Name = "顺序")]
 	public SummonOrderType SummonOrder { get; set; } = SummonOrderType.TopazEmeraldRuby;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Radiant Aegis on cooldown while in combat")]
+	[RotationConfig(CombatType.PvE, Name = "战斗中冷却时使用辉煌盾")]
 	public bool RadiantOnCooldownSpam { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Use this if there's no other raid buff in your party")]
+	[RotationConfig(CombatType.PvE, Name = "若队伍中没有其他团辅则使用此项")]
 	public bool SecondTypeOpenerLogic { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Physick above level 30")]
+	[RotationConfig(CombatType.PvE, Name = "30 级以上使用医术")]
 	public bool Healbot { get; set; } = false;
 
 	#endregion

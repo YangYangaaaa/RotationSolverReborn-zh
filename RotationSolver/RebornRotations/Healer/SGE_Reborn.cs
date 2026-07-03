@@ -8,82 +8,82 @@ namespace RotationSolver.RebornRotations.Healer;
 public sealed class SGE_Reborn : SageRotation
 {
 	#region Config Options
-	[RotationConfig(CombatType.PvE, Name = "Use Eukrasia Action to heal")]
+	[RotationConfig(CombatType.PvE, Name = "使用优生学技能进行治疗")]
 	public bool EukrasiaActionHeal { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Attempt to prevent bricking by allowing E.Prog at the end of GCD logic (experimental)")]
+	[RotationConfig(CombatType.PvE, Name = "通过在 GCD 逻辑末尾允许优生预后（实验性）来防止卡死")]
 	public bool AntiBrick { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Eukrasia when out of combat")]
+	[RotationConfig(CombatType.PvE, Name = "非战斗状态下使用优生学")]
 	public bool OOCEukrasia { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Rhizomata when out of combat")]
+	[RotationConfig(CombatType.PvE, Name = "非战斗状态下使用 Rhizomata")]
 	public bool OOCRhizomata { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Limit Panhaima to multihit party stacks")]
+	[RotationConfig(CombatType.PvE, Name = "限制 Panhaima 仅在多段伤害集合时使用")]
 	public bool MultiHitRestrict { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Use GCDs to heal. (Ignored if you are the only healer in party)")]
+	[RotationConfig(CombatType.PvE, Name = "使用 GCD 进行治疗。（若你是小队中唯一治疗则忽略）")]
 	public bool GCDHeal { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Enable Swiftcast Restriction Logic to attempt to prevent actions other than Raise when you have swiftcast")]
+	[RotationConfig(CombatType.PvE, Name = "启用瞬发限制逻辑：拥有神速咏唱时尝试阻止除复活外的其他行为")]
 	public bool SwiftLogic { get; set; } = true;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Health threshold party member needs to be to use Taurochole")]
+	[RotationConfig(CombatType.PvE, Name = "使用活性法所需的队友生命值阈值")]
 	public float TaurocholeHeal { get; set; } = 0.8f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Health threshold party member needs to be to use Soteria")]
+	[RotationConfig(CombatType.PvE, Name = "使用 Soteria 所需的队友生命值阈值")]
 	public float SoteriaHeal { get; set; } = 0.85f;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Kerachole as a heal when applicable")]
+	[RotationConfig(CombatType.PvE, Name = "适用时使用 Kerachole 进行治疗")]
 	public bool KeracholePvEHealOption { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Holos as a heal when applicable")]
+	[RotationConfig(CombatType.PvE, Name = "适用时使用 Holos 进行治疗")]
 	public bool HolosHealOption { get; set; } = true;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Average health threshold party members need to be to use Holos", Parent = nameof(HolosHealOption))]
+	[RotationConfig(CombatType.PvE, Name = "使用 Holos 所需的队友平均生命值阈值", Parent = nameof(HolosHealOption))]
 	public float HolosHeal { get; set; } = 0.5f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Health threshold tank party member needs to use Zoe")]
+	[RotationConfig(CombatType.PvE, Name = "使用 Zoe 所需的坦克队友生命值阈值")]
 	public float ZoeHeal { get; set; } = 0.6f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Health threshold party member needs to be to use an OGCD Heal while not holding addersgal stacks")]
+	[RotationConfig(CombatType.PvE, Name = "在不持有蛇胆时使用 oGCD 治疗所需的队友生命值阈值")]
 	public float OGCDHeal { get; set; } = 0.20f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Health threshold tank party member needs to use an OGCD Heal on Tanks while not holding addersgal stacks")]
+	[RotationConfig(CombatType.PvE, Name = "在不持有蛇胆时对坦克使用 oGCD 治疗所需的坦克队友生命值阈值")]
 	public float OGCDTankHeal { get; set; } = 0.65f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Health threshold party member needs to be to use Krasis")]
+	[RotationConfig(CombatType.PvE, Name = "使用 Krasis 所需的队友生命值阈值")]
 	public float KrasisHeal { get; set; } = 0.3f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Health threshold tank party member needs to use Krasis")]
+	[RotationConfig(CombatType.PvE, Name = "使用 Krasis 所需的坦克队友生命值阈值")]
 	public float KrasisTankHeal { get; set; } = 0.7f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Health threshold party member needs to be to use Pneuma as a ST heal")]
+	[RotationConfig(CombatType.PvE, Name = "使用 Pneuma 作为单体治疗所需的队友生命值阈值")]
 	public float PneumaSTPartyHeal { get; set; } = 0.2f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Health threshold tank party member needs to use Pneuma as a ST heal")]
+	[RotationConfig(CombatType.PvE, Name = "使用 Pneuma 作为单体治疗所需的坦克队友生命值阈值")]
 	public float PneumaSTTankHeal { get; set; } = 0.6f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Average health threshold party members need to be to use Pneuma as an AOE heal")]
+	[RotationConfig(CombatType.PvE, Name = "使用 Pneuma 作为 AoE 治疗所需的队友平均生命值阈值")]
 	public float PneumaAOEPartyHeal { get; set; } = 0.65f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Health threshold tank party member needs to use Pneuma as an AOE heal")]
+	[RotationConfig(CombatType.PvE, Name = "使用 Pneuma 作为 AoE 治疗所需的坦克队友生命值阈值")]
 	public float PneumaAOETankHeal { get; set; } = 0.6f;
 
-	[RotationConfig(CombatType.PvE, Name = "Which opener to use")]
+	[RotationConfig(CombatType.PvE, Name = "使用哪种起手")]
 	public OpenerStrategy OpenerSelection { get; set; } = OpenerStrategy.PneumaOpener;
 
 	public enum OpenerStrategy : byte

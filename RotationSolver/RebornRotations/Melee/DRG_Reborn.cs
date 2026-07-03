@@ -6,21 +6,21 @@ namespace RotationSolver.RebornRotations.Melee;
 public sealed class DRG_Reborn : DragoonRotation
 {
 	#region Config Options
-	[RotationConfig(CombatType.PvE, Name = "Use Doom Spike for damage uptime if out of melee range even if it breaks combo")]
+	[RotationConfig(CombatType.PvE, Name = "脱离近战范围时使用死狱刺保持输出，即使断连击")]
 	public bool DoomSpikeWhenever { get; set; } = true;
 
 	[Range(1, 20, ConfigUnitType.Yalms)]
-	[RotationConfig(CombatType.PvE, Name = "Max distance you need to be from the target for Stardiver useage")]
+	[RotationConfig(CombatType.PvE, Name = "使用命运之环所需的与目标最大距离")]
 	public float StardiverDistance { get; set; } = 20;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Stardiver while moving")]
+	[RotationConfig(CombatType.PvE, Name = "移动时使用命运之环")]
 	public bool StardiverMoving { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Dragonfire Dive while moving")]
+	[RotationConfig(CombatType.PvE, Name = "移动时使用龙剑冲")]
 	public bool DragonfireDiveMoving { get; set; } = true;
 
 	[Range(1, 20, ConfigUnitType.Yalms)]
-	[RotationConfig(CombatType.PvE, Name = "Max distance you need to be from the target for Dragonfire Dive useage")]
+	[RotationConfig(CombatType.PvE, Name = "使用龙剑冲所需的与目标最大距离")]
 	public float DragonfireDiveDistance { get; set; } = 20;
 	#endregion
 

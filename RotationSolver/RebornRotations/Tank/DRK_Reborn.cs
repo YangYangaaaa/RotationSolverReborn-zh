@@ -8,27 +8,27 @@ namespace RotationSolver.RebornRotations.Tank;
 public sealed class DRK_Reborn : DarkKnightRotation
 {
 	#region Config Options
-	[RotationConfig(CombatType.PvE, Name = "Use provoke in opening if tank stance is on")]
+	[RotationConfig(CombatType.PvE, Name = "坦克姿态开启时在开局使用挑衅")]
 	public bool UseProvokeInOpening { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Keep at least 3000 MP")]
+	[RotationConfig(CombatType.PvE, Name = "保留至少3000 MP")]
 	public bool TheBlackestNight { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use The Blackest Night on lowest HP party member during AOE scenarios")]
+	[RotationConfig(CombatType.PvE, Name = "AoE情况下对最低HP队友使用至黑之夜")]
 	public bool BlackLantern { get; set; } = false;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Target health threshold needed to use Blackest Night with above option", Parent = nameof(BlackLantern))]
+	[RotationConfig(CombatType.PvE, Name = "使用上述选项的至黑之夜所需的目标生命值阈值", Parent = nameof(BlackLantern))]
 	private float BlackLanternRatio { get; set; } = 0.5f;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Oblation on lowest HP party member during AOE scenarios")]
+	[RotationConfig(CombatType.PvE, Name = "AoE情况下对最低HP队友使用献奉")]
 	public bool OblationLantern { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Oblation last stack of Oblation for party members", Parent = nameof(OblationLantern))]
+	[RotationConfig(CombatType.PvE, Name = "为队友使用最后一层献奉", Parent = nameof(OblationLantern))]
 	public bool OblationLanternStack { get; set; } = false;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Target health threshold needed to use Oblation with above option", Parent = nameof(OblationLantern))]
+	[RotationConfig(CombatType.PvE, Name = "使用上述选项的献奉所需的目标生命值阈值", Parent = nameof(OblationLantern))]
 	private float OblationLanternRatio { get; set; } = 0.5f;
 	#endregion
 

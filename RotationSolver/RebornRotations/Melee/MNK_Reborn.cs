@@ -23,22 +23,22 @@ public sealed class MNK_Reborn : MonkRotation
 		[Description("With ROF burst logic")] RiddleOfFireUse,
 	}
 
-	[RotationConfig(CombatType.PvE, Name = "Use Form Shift")]
+	[RotationConfig(CombatType.PvE, Name = "使用演武")]
 	public bool AutoFormShift { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Auto Use Perfect Balance (single target full auto mode, turn me off if you want total control of PB)")]
+	[RotationConfig(CombatType.PvE, Name = "自动使用震脚（单体全自动模式，若想完全控制震脚请关闭）")]
 	public bool AutoPB_Boss { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Auto Use Perfect Balance (aoe aggressive PB dump, turn me off if you don't want to waste PB in boss fight)")]
+	[RotationConfig(CombatType.PvE, Name = "自动使用震脚（AoE 激进震脚倾泻，若不想在 Boss 战中浪费震脚请关闭）")]
 	public bool AutoPB_AOE { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Howling Fist/Enlightenment as a ranged attack verses single target enemies")]
+	[RotationConfig(CombatType.PvE, Name = "对单体敌人使用怒啸拳/斗气旋风脚作为远程攻击")]
 	public bool HowlingSingle2 { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Masterful Blitz abilites as soon as they are available.")]
+	[RotationConfig(CombatType.PvE, Name = "技能可用时立即使用六道轮回之舞。")]
 	public MasterfulBlitzUse MBAbilities { get; set; } = MasterfulBlitzUse.RiddleOfFireUse;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Riddle of Fire after this ability")]
+	[RotationConfig(CombatType.PvE, Name = "在此技能后使用红莲极意")]
 	public RiddleOfFireFirst ROFFirst { get; set; } = RiddleOfFireFirst.Brotherhood;
 	#endregion
 

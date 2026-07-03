@@ -8,10 +8,10 @@ namespace RotationSolver.RebornRotations.Tank;
 public sealed class GNB_Reborn : GunbreakerRotation
 {
 	#region Config Options
-	[RotationConfig(CombatType.PvE, Name = "How to use Aurora")]
+	[RotationConfig(CombatType.PvE, Name = "如何使用极光")]
 	public AuroraUsageStrategy AuroraUsage { get; set; } = AuroraUsageStrategy.TankbusterTarget;
 
-	[RotationConfig(CombatType.PvE, Name = "How to use Heart Of Stone/Heart Of Corundum")]
+	[RotationConfig(CombatType.PvE, Name = "如何使用石之心/刚玉之心")]
 	public HeartOfStoneStrategy HeartOfStoneUsage { get; set; } = HeartOfStoneStrategy.TankbusterTarget;
 
 	public enum HeartOfStoneStrategy : byte

@@ -8,63 +8,63 @@ namespace RotationSolver.RebornRotations.Healer;
 public sealed class AST_Reborn : AstrologianRotation
 {
 	#region Config Options
-	[RotationConfig(CombatType.PvE, Name = "Limit Macrocosmos to multihit party stacks")]
+	[RotationConfig(CombatType.PvE, Name = "限制宏观宇宙仅在多段伤害集合时使用")]
 	public bool MultiHitRestrict { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Enable Swiftcast Restriction Logic to attempt to prevent actions other than Raise when you have swiftcast")]
+	[RotationConfig(CombatType.PvE, Name = "启用瞬发限制逻辑：拥有神速咏唱时尝试阻止除复活外的其他行为")]
 	public bool SwiftLogic { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use both stacks of Lightspeed while moving")]
+	[RotationConfig(CombatType.PvE, Name = "移动时使用两层光速")]
 	public bool LightspeedMove { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use GCDs to heal. (Ignored if you are the only healer in party)")]
+	[RotationConfig(CombatType.PvE, Name = "使用 GCD 进行治疗。（若你是小队中唯一治疗则忽略）")]
 	public bool GCDHeal { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Prioritize Microcosmos over all other healing when available")]
+	[RotationConfig(CombatType.PvE, Name = "可用时优先使用微观宇宙而非所有其他治疗")]
 	public bool MicroPrio { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Simple Lord of Crowns logic (use under divinaiton)")]
+	[RotationConfig(CombatType.PvE, Name = "简化王冠之君逻辑（在占卜下使用）")]
 	public bool SimpleLord { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Detonate Earlthy Star when you have Giant Dominance")]
+	[RotationConfig(CombatType.PvE, Name = "拥有巨星支配时引爆地星")]
 	public bool StellarNow { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Earthly Star as an attack while moving")]
+	[RotationConfig(CombatType.PvE, Name = "移动时使用地星作为攻击")]
 	public bool StarMove { get; set; } = true;
 
 	[Range(4, 20, ConfigUnitType.Seconds)]
-	[RotationConfig(CombatType.PvE, Name = "Use Earthly Star during countdown timer.")]
+	[RotationConfig(CombatType.PvE, Name = "在倒计时期间使用地星。")]
 	public float UseEarthlyStarTime { get; set; } = 4;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum HP threshold party member needs to be to use Aspected Benefic")]
+	[RotationConfig(CombatType.PvE, Name = "使用方位Benefic所需的队友最低 HP 阈值")]
 	public float AspectedBeneficHeal { get; set; } = 0.4f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum HP threshold party member needs to be to use Synastry")]
+	[RotationConfig(CombatType.PvE, Name = "使用星脉所需的队友最低 HP 阈值")]
 	public float SynastryHeal { get; set; } = 0.5f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum HP threshold among party member needed to use Horoscope")]
+	[RotationConfig(CombatType.PvE, Name = "使用天宫图所需的队友最低 HP 阈值")]
 	public float HoroscopeHeal { get; set; } = 0.5f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum average HP threshold among party members needed to use Lady Of Crowns")]
+	[RotationConfig(CombatType.PvE, Name = "使用王女之卡所需的队友平均最低 HP 阈值")]
 	public float LadyOfHeals { get; set; } = 0.8f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum HP threshold party member needs to be to use Essential Dignity 3rd charge")]
+	[RotationConfig(CombatType.PvE, Name = "使用本质尊严第3层充能所需的队友最低 HP 阈值")]
 	public float EssentialDignityThird { get; set; } = 0.8f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum HP threshold party member needs to be to use Essential Dignity 2nd charge")]
+	[RotationConfig(CombatType.PvE, Name = "使用本质尊严第2层充能所需的队友最低 HP 阈值")]
 	public float EssentialDignitySecond { get; set; } = 0.7f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum HP threshold party member needs to be to use Essential Dignity last charge")]
+	[RotationConfig(CombatType.PvE, Name = "使用本质尊严最后一层充能所需的队友最低 HP 阈值")]
 	public float EssentialDignityLast { get; set; } = 0.6f;
 
-	[RotationConfig(CombatType.PvE, Name = "Prioritize Essential Dignity over single target GCD heals when available")]
+	[RotationConfig(CombatType.PvE, Name = "可用时优先使用本质尊严而非单体 GCD 治疗")]
 	public EssentialPrioStrategy EssentialPrio2 { get; set; } = EssentialPrioStrategy.UseGCDs;
 
 	public enum EssentialPrioStrategy : byte
