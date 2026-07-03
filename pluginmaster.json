@@ -1,0 +1,14 @@
+{
+  "20260703-182911": {
+    "DownloadLinkUpdate": "https://github.com/YangYangaaaa/RotationSolverReborn-zh/releases/download/20260703-182911/RotationSolverReborn-zh-20260703-182911.zip",
+    "DalamudApiLevel": 15,
+    "IsTestingExclusive": false,
+    "TestingAssemblyVersion": "20260703-182911",
+    "DownloadLinkTesting": "https://github.com/YangYangaaaa/RotationSolverReborn-zh/releases/download/20260703-182911/RotationSolverReborn-zh-20260703-182911.zip",
+    "AssemblyVersion": "20260703-182911",
+    "IsHide": false,
+    "DownloadLinkInstall": "https://github.com/YangYangaaaa/RotationSolverReborn-zh/releases/download/20260703-182911/RotationSolverReborn-zh-20260703-182911.zip",
+    "Changelog": "中文汉化版",
+    "TestingDalamudApiLevel": 15
+  }
+}
