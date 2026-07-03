@@ -11,7 +11,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Checkout
+      - name: Checkout Repository
         uses: actions/checkout@v6
         with:
           ref: zh-cn
@@ -27,7 +27,7 @@ jobs:
         shell: pwsh
         run: |
           Invoke-WebRequest -Uri https://goatcorp.github.io/dalamud-distrib/latest.zip -OutFile latest.zip
-          Expand-Archive -Force latest.zip -DestinationPath "$env:AppData\XIVLauncher\addon\Hooks\dev"
+          Expand-Archive -Force latest.zip "$env:AppData\XIVLauncher\addon\Hooks\dev"
 
       - name: Read version
         id: version
@@ -45,21 +45,40 @@ jobs:
         shell: pwsh
         run: |
           $tag = "${{ steps.version.outputs.tag }}"
-          dotnet build --no-restore -c Release RotationSolver/RotationSolver.csproj `
-            -p:AssemblyVersion=$tag -p:FileVersion=$tag -p:InformationalVersion=$tag `
-            --output .\build
+          dotnet build --no-restore -c Release RotationSolver/RotationSolver.csproj -p:AssemblyVersion=$tag -p:FileVersion=$tag -p:PackageVersion=$tag -p:InformationalVersion=$tag --output .\build
 
-      - name: Prepare release zip and pluginmaster
+      - name: Verify build output
+        shell: pwsh
+        run: |
+          Write-Host "=== Files in .\build ==="
+          Get-ChildItem .\build -Recurse | Select-Object FullName
+          if (-not (Test-Path ".\build\RotationSolver.dll")) {
+            Write-Error "RotationSolver.dll not found in .\build"
+            exit 1
+          }
+          Write-Host "=== RotationSolver.dll found ==="
+
+      - name: Cleanup Build Output
+        shell: pwsh
+        run: |
+          Get-ChildItem .\build\* -Exclude RotationSolver.*,*.json,*.dll | Remove-Item -Force -Recurse
+          Write-Host "=== After cleanup ==="
+          Get-ChildItem .\build | Select-Object Name
+
+      - name: Zip Plugin
         shell: pwsh
         run: |
           $tag = "${{ steps.version.outputs.tag }}"
-          $buildDir = ".\build\RotationSolver"
-          $outDir = ".\ReleaseOutput"
-          New-Item -ItemType Directory -Path $outDir -Force | Out-Null
-          $zipName = "RotationSolverReborn-zh-$tag.zip"
-          Compress-Archive -Path "$buildDir\*" -DestinationPath "$outDir\$zipName" -Force
+          Compress-Archive -Path .\build\* -DestinationPath .\build\latest.zip
+          Write-Host "=== Zip content ==="
+          (Get-Item .\build\latest.zip).Length
+
+      - name: Generate pluginmaster.json
+        shell: pwsh
+        run: |
+          $tag = "${{ steps.version.outputs.tag }}"
           $m = Get-Content "RotationSolver/RotationSolver.json" -Raw | ConvertFrom-Json
-          $downloadUrl = "https://github.com/YangYangaaaa/RotationSolverReborn-zh/releases/download/$tag/$zipName"
+          $downloadUrl = "https://github.com/YangYangaaaa/RotationSolverReborn-zh/releases/download/$tag/latest.zip"
           $entry = @{
             Author = $m.Author
             Name = $m.Name
@@ -73,16 +92,19 @@ jobs:
             DownloadLinkInstall = $downloadUrl
             DownloadLinkUpdate = $downloadUrl
             DownloadLinkTesting = $downloadUrl
-            Changelog = "中文汉化版"
+            Changelog = "zh-CN localization"
             Tags = $m.Tags
+            CategoryTags = $m.CategoryTags
             ApplicableVersion = "any"
             LoadRequiredState = 0
             LoadSync = $false
             CanUnloadAsync = $false
             LoadPriority = 0
             IconUrl = $m.IconUrl
-            AcceptsFeedback = $true
+            Punchline = $m.Punchline
+            Description = $m.Description
             RepoUrl = "https://github.com/YangYangaaaa/RotationSolverReborn-zh"
+            AcceptsFeedback = $true
           }
           $entry | ConvertTo-Json -Depth 10 -AsArray | Out-File -FilePath "pluginmaster.json" -Encoding utf8
           Write-Host "=== pluginmaster.json ==="
@@ -94,16 +116,14 @@ jobs:
           tag_name: ${{ steps.version.outputs.tag }}
           name: RotationSolverReborn-zh ${{ steps.version.outputs.tag }}
           body: |
-            # RotationSolverReborn 中文汉化版 ${{ steps.version.outputs.tag }}
+            # RotationSolverReborn zh-CN ${{ steps.version.outputs.tag }}
 
-            基于 FFXIV-CombatReborn/RotationSolverReborn 上游构建，仅汉化 UI 文案:
-            - RotationSolver/Data/UiString.cs (222 条 Description 翻译)
-            - RotationSolver/UI/RotationConfigWindowTab.cs (侧边栏 Tab 中文)
-
-            翻译基于 RSR 官方 wiki + FF14 国服通行术语。
+            Based on FFXIV-CombatReborn/RotationSolverReborn upstream, UI text only:
+            - RotationSolver/Data/UiString.cs (222 Description translations)
+            - RotationSolver/UI/RotationConfigWindowTab.cs (sidebar tabs)
           files: |
             pluginmaster.json
-            ReleaseOutput/*.zip
+            ./build/latest.zip
           prerelease: false
           make_latest: true
 
