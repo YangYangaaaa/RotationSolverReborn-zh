@@ -7,11 +7,11 @@ public class BLM_DefaultPVP : BlackMageRotation
 {
 	#region Configurations
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvP, Name = "Upper HP threshold you need to be to use Xenoglossy as a damage oGCD")]
+	[RotationConfig(CombatType.PvP, Name = "将异言作为伤害 oGCD 使用所需 HP 上限阈值")]
 	public float XenoglossyHighHP { get; set; } = 0.8f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvP, Name = "Lower HP threshold you need to be to use Xenoglossy as a heal oGCD")]
+	[RotationConfig(CombatType.PvP, Name = "将异言作为治疗 oGCD 使用所需 HP 下限阈值")]
 	public float XenoglossyLowHP { get; set; } = 0.5f;
 	#endregion
 

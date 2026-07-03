@@ -7,21 +7,21 @@ public sealed class MNK_DefaultPvP : MonkRotation
 {
 	#region Configurations
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvP, Name = "Player health threshold needed for Bloodbath use")]
+	[RotationConfig(CombatType.PvP, Name = "使用鲜血浴所需玩家 HP 阈值")]
 	public float BloodBathPvPPercent { get; set; } = 0.75f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvP, Name = "Enemy health threshold needed for Smite use")]
+	[RotationConfig(CombatType.PvP, Name = "使用惩击所需敌方 HP 阈值")]
 	public float SmitePvPPercent { get; set; } = 0.25f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvP, Name = "Personal health threshold needed for Earth's Reply use without hostiles nearby")]
+	[RotationConfig(CombatType.PvP, Name = "无附近敌人时使用大地回应所需自身 HP 阈值")]
 	public float EarthsReplyPercent { get; set; } = 0.5f;
 
-	[RotationConfig(CombatType.PvP, Name = "Use Earth's Reply if a hositle is within range")]
+	[RotationConfig(CombatType.PvP, Name = "若范围内有敌人则使用大地回应")]
 	public bool EarthsReplyAttack { get; set; } = true;
 
-	[RotationConfig(CombatType.PvP, Name = "Use Earth's Reply if the status will end within the next GCD")]
+	[RotationConfig(CombatType.PvP, Name = "若状态将于下个 GCD 内结束则使用大地回应")]
 	public bool EarthsReplyStatusEnd { get; set; } = true;
 	#endregion
 

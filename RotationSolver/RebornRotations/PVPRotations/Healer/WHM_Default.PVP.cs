@@ -7,7 +7,7 @@ public class WHM_DefaultPVP : WhiteMageRotation
 {
 	#region Configurations
 
-	[RotationConfig(CombatType.PvP, Name = "Use Aquaveil on other players")]
+	[RotationConfig(CombatType.PvP, Name = "对其他玩家使用水流帷幕")]
 	public bool AquaveilEsuna { get; set; } = false;
 	#endregion
 
