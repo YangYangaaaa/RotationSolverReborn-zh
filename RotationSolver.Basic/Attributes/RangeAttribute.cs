@@ -50,24 +50,24 @@ public enum ConfigUnitType : byte
 	/// <summary>
 	/// 
 	/// </summary>
-	[Description("Angle Unit, in degrees.")]
+	[Description("角度单位，度。")]
 	Degree,
 
 	/// <summary>
 	/// 
 	/// </summary>
-	[Description("Distance Unit, in yalms.")]
+	[Description("距离单位，星里。")]
 	Yalms,
 
 	/// <summary>
 	/// 
 	/// </summary>
-	[Description("Ratio Unit, as percentage.")]
+	[Description("比例单位，百分比。")]
 	Percent,
 
 	/// <summary>
 	/// 
 	/// </summary>
-	[Description("Display Unit, in pixels.")]
+	[Description("显示单位，像素。")]
 	Pixels,
 }

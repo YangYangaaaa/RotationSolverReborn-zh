@@ -8,30 +8,30 @@ public enum HardCastRaiseType : byte
 	/// <summary>
 	///
 	/// </summary>
-	[Description("Do not hard cast Raise ")]
+	[Description("不进行硬读条复活")]
 	NoHardCast,
 
 	/// <summary>
 	///
 	/// </summary>
-	[Description("Raise while Swiftcast is on cooldown")]
+	[Description("Swiftcast 冷却时进行硬读条复活")]
 	HardCastNormal,
 
 	/// <summary>
 	///
 	/// </summary>
-	[Description("Raise while Swiftcast is on cooldown and other healers are dead")]
+	[Description("Swiftcast 冷却且其他治疗已死亡时硬读条复活")]
 	HardCastOnlyHealer,
 
 	/// <summary>
 	///
 	/// </summary>
-	[Description("Raise while Swiftcast is on cooldown and cooldown is higher than raise cast time")]
+	[Description("Swiftcast 冷却且剩余冷却大于复活读条时间时硬读条复活")]
 	HardCastSwiftCooldown,
 
 	/// <summary>
 	/// 
 	/// </summary>
-	[Description("Raise while Swiftcast is on cooldown and cooldown is higher than raise cast time and other healers are dead")]
+	[Description("Swiftcast 冷却且剩余冷却大于复活读条时间且其他治疗已死亡时硬读条复活")]
 	HardCastOnlyHealerSwiftCooldown,
 }

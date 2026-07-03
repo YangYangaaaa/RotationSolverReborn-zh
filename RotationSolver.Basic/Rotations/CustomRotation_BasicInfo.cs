@@ -171,7 +171,7 @@ public partial class CustomRotation : ICustomRotation
 	/// <summary>
 	/// Gets a value indicating whether to show the status to the users.
 	/// </summary>
-	[Description("Show the status")]
+	[Description("显示状态")]
 	public virtual bool ShowStatus => false;
 
 	/// <inheritdoc/>
@@ -198,7 +198,7 @@ public partial class CustomRotation : ICustomRotation
 	/// </summary>
 	public virtual void DisplayRotationStatus()
 	{
-		ImGui.TextWrapped($"If you want to display some extra information on this panel, please override the {nameof(DisplayRotationStatus)} method!");
+		ImGui.TextWrapped($"若想在此面板显示额外信息，请重写 {nameof(DisplayRotationStatus)} 方法！");
 	}
 
 	/// <summary>
@@ -206,7 +206,7 @@ public partial class CustomRotation : ICustomRotation
 	/// </summary>
 	public virtual void DisplayBaseStatus()
 	{
-		ImGui.TextWrapped($"If you want to display some extra information on this panel, please override the {nameof(DisplayBaseStatus)} method!");
+		ImGui.TextWrapped($"若想在此面板显示额外信息，请重写 {nameof(DisplayBaseStatus)} 方法！");
 	}
 
 	/// <summary>

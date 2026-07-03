@@ -485,7 +485,7 @@ public readonly struct ActionBasicInfo
 		if (!IsQuestUnlocked())
 		{
 			//PluginLog.Warning($"Do your class quests, action not unlocked: {Name}");
-			BasicWarningHelper.AddSystemWarning($"Do your class quests, action not unlocked: {Name}");
+			BasicWarningHelper.AddSystemWarning($"请完成职业任务，技能未解锁：{Name}");
 			return false;
 		}
 

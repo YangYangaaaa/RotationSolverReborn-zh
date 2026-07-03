@@ -14,48 +14,48 @@ public enum CanUseOption : byte
 	/// <summary>
 	/// Skip status provide check.
 	/// </summary>
-	[Description("Skip status provide check")]
+	[Description("跳过提供状态检查")]
 	SkipStatusProvideCheck = 1 << 0,
 
 	/// <summary>
 	/// Skip combo check.
 	/// </summary>
-	[Description("Skip combo check")]
+	[Description("跳过连击检查")]
 	SkipComboCheck = 1 << 1,
 
 	/// <summary>
 	/// Skip casting and moving check.
 	/// </summary>
-	[Description("Skip casting and moving check")]
+	[Description("跳过读条与移动检查")]
 	SkipCastingCheck = 1 << 2,
 
 	/// <summary>
 	/// Indicates that all stacks should be used up.
 	/// </summary>
-	[Description("Use up all stacks")]
+	[Description("消耗全部充能")]
 	UsedUp = 1 << 3,
 
 	/// <summary>
 	/// Indicates that the action is the last ability.
 	/// </summary>
-	[Description("On the last ability")]
+	[Description("在最后一个 oGCD 上")]
 	OnLastAbility = 1 << 4,
 
 	/// <summary>
 	/// Skip clipping check.
 	/// </summary>
-	[Description("Skip clipping check")]
+	[Description("跳过卡 GCD 检查")]
 	SkipClippingCheck = 1 << 5,
 
 	/// <summary>
 	/// Skip AoE check.
 	/// </summary>
-	[Description("Skip AoE check")]
+	[Description("跳过 AoE 检查")]
 	SkipAoeCheck = 1 << 6,
 
 	/// <summary>
 	/// Overriding targettype.
 	/// </summary>
-	[Description("Overriding targettype")]
+	[Description("覆盖目标类型")]
 	targetOverride = 1 << 7,
 }

@@ -13,78 +13,78 @@ public enum DescType : byte
 	/// <summary>
 	/// Burst actions.
 	/// </summary>
-	[Description("Burst Actions")]
+	[Description("爆发技能")]
 	BurstActions,
 
 	/// <summary>
 	/// Area heal GCDs.
 	/// </summary>
-	[Description("Heal Area GCD")]
+	[Description("群体治疗 GCD")]
 	HealAreaGCD,
 
 	/// <summary>
 	/// Area heal oGCDs.
 	/// </summary>
-	[Description("Heal Area Ability")]
+	[Description("群体治疗 oGCD")]
 	HealAreaAbility,
 
 	/// <summary>
 	/// Single target heal GCDs.
 	/// </summary>
-	[Description("Heal Single GCD")]
+	[Description("单体治疗 GCD")]
 	HealSingleGCD,
 
 	/// <summary>
 	/// Single target heal oGCDs.
 	/// </summary>
-	[Description("Heal Single Ability")]
+	[Description("单体治疗 oGCD")]
 	HealSingleAbility,
 
 	/// <summary>
 	/// Area defensive GCDs (shields, mitigation, etc).
 	/// </summary>
-	[Description("Defense Area GCD")]
+	[Description("群体减伤 GCD")]
 	DefenseAreaGCD,
 
 	/// <summary>
 	/// Area defensive oGCDs (shields, mitigation, etc).
 	/// </summary>
-	[Description("Defense Area Ability")]
+	[Description("群体减伤 oGCD")]
 	DefenseAreaAbility,
 
 	/// <summary>
 	/// Single target defensive GCDs (shields, mitigation, etc).
 	/// </summary>
-	[Description("Defense Single GCD")]
+	[Description("单体减伤 GCD")]
 	DefenseSingleGCD,
 
 	/// <summary>
 	/// Single target defensive oGCDs (shields, mitigation, etc).
 	/// </summary>
-	[Description("Defense Single Ability")]
+	[Description("单体减伤 oGCD")]
 	DefenseSingleAbility,
 
 	/// <summary>
 	/// Move forward GCD.
 	/// </summary>
-	[Description("Move Forward GCD")]
+	[Description("前冲 GCD")]
 	MoveForwardGCD,
 
 	/// <summary>
 	/// Move forward ability.
 	/// </summary>
-	[Description("Move Forward Ability")]
+	[Description("前冲 oGCD")]
 	MoveForwardAbility,
 
 	/// <summary>
 	/// Move back ability.
 	/// </summary>
-	[Description("Move Back Ability")]
+	[Description("后撤 oGCD")]
 	MoveBackAbility,
 
 	/// <summary>
 	/// Speed ability.
 	/// </summary>
-	[Description("Speed Ability")]
+	[Description("加速 oGCD")]
 	SpeedAbility,
 }
