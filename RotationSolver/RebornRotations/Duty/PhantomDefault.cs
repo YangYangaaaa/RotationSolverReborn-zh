@@ -8,50 +8,50 @@ namespace RotationSolver.RebornRotations.Duty;
 public sealed class PhantomDefault : PhantomRotation
 {
 	#region Configs
-	[RotationConfig(CombatType.PvE, Name = "Save Phantom Attacks for class specific damage bonus?")]
+	[RotationConfig(CombatType.PvE, Name = "为职业特定伤害加成保留幻影攻击？")]
 	public bool SaveForBurstWindow { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Prioritize Viper buff application and refresh over Phantom GCDs")]
+	[RotationConfig(CombatType.PvE, Name = "优先施放并刷新 VPR 增益而非幻影 GCD")]
 	public bool ViperTime { get; set; } = true;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Player HP percent needed to use Occult Resuscitation", PhantomJob = PhantomJob.Freelancer)]
+	[RotationConfig(CombatType.PvE, Name = "使用秘术复苏所需玩家 HP 百分比", PhantomJob = PhantomJob.Freelancer)]
 	public float OccultResuscitationThreshold { get; set; } = 0.7f;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Pray as a Heal", PhantomJob = PhantomJob.Knight)]
+	[RotationConfig(CombatType.PvE, Name = "将祈祷作为治疗使用", PhantomJob = PhantomJob.Knight)]
 	public bool PrayHeal { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Pledge on self", PhantomJob = PhantomJob.Knight)]
+	[RotationConfig(CombatType.PvE, Name = "对自己使用誓言", PhantomJob = PhantomJob.Knight)]
 	public bool PledgeSelf { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Phantom Judgement", PhantomJob = PhantomJob.Oracle)]
+	[RotationConfig(CombatType.PvE, Name = "使用幻影审判", PhantomJob = PhantomJob.Oracle)]
 	public bool PhantomJudgementUseage { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Cleansing", PhantomJob = PhantomJob.Oracle)]
+	[RotationConfig(CombatType.PvE, Name = "使用净化", PhantomJob = PhantomJob.Oracle)]
 	public bool CleansingUseage { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Blessing", PhantomJob = PhantomJob.Oracle)]
+	[RotationConfig(CombatType.PvE, Name = "使用祝福", PhantomJob = PhantomJob.Oracle)]
 	public bool BlessingUseage { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Starfall", PhantomJob = PhantomJob.Oracle)]
+	[RotationConfig(CombatType.PvE, Name = "使用星陨", PhantomJob = PhantomJob.Oracle)]
 	public bool StarfallUseage { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Invulnerability for Starfall", PhantomJob = PhantomJob.Oracle)]
+	[RotationConfig(CombatType.PvE, Name = "为星陨使用无敌", PhantomJob = PhantomJob.Oracle)]
 	public bool SaveInvulnForStarfall { get; set; } = true;
 
 	[Range(1, 15, ConfigUnitType.Yalms)]
-	[RotationConfig(CombatType.PvE, Name = "Max distance you can be from target for Phantom Kick use (Danger, you will die)", PhantomJob = PhantomJob.Monk)]
+	[RotationConfig(CombatType.PvE, Name = "使用幻影踢时与目标的最大距离（危险，可能致死）", PhantomJob = PhantomJob.Monk)]
 	public float PhantomKickDistance { get; set; } = 5f;
 
 	[Range(0, 10000, ConfigUnitType.None, 1)]
-	[RotationConfig(CombatType.PvE, Name = "Your MP needed to use Occult Chakra", PhantomJob = PhantomJob.Monk)]
+	[RotationConfig(CombatType.PvE, Name = "使用秘术脉轮所需 MP", PhantomJob = PhantomJob.Monk)]
 	public int OccultChakraMPThreshold { get; set; } = 3000;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Your HP percentage needed to use Occult Chakra", PhantomJob = PhantomJob.Monk)]
+	[RotationConfig(CombatType.PvE, Name = "使用秘术脉轮所需 HP 百分比", PhantomJob = PhantomJob.Monk)]
 	public float OccultChakraHPThreshold { get; set; } = 0.3f;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Dark Cannon or Shock Cannon in cases where the mob is immune to both blind and paralysis", PhantomJob = PhantomJob.Cannoneer)]
+	[RotationConfig(CombatType.PvE, Name = "当怪物对失明和麻痹均免疫时使用暗黑加农炮或震荡加农炮", PhantomJob = PhantomJob.Cannoneer)]
 	public DarkShockCannonImmuneStrategy DarkShockCannonImmuneUsage { get; set; } = DarkShockCannonImmuneStrategy.DarkCannon;
 
 	public enum DarkShockCannonImmuneStrategy : byte
@@ -63,7 +63,7 @@ public sealed class PhantomDefault : PhantomRotation
 		ShockCannon,
 	}
 
-	[RotationConfig(CombatType.PvE, Name = "Use Dark Cannon or Shock Cannon in cases where the mob is susceptible to both blind and paralysis", PhantomJob = PhantomJob.Cannoneer)]
+	[RotationConfig(CombatType.PvE, Name = "当怪物对失明和麻痹均易感时使用暗黑加农炮或震荡加农炮", PhantomJob = PhantomJob.Cannoneer)]
 	public DarkShockCannonStrategy DarkShockCannonUsage { get; set; } = DarkShockCannonStrategy.DarkCannon;
 
 	public enum DarkShockCannonStrategy : byte
@@ -76,35 +76,35 @@ public sealed class PhantomDefault : PhantomRotation
 	}
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Average party HP percent to predict to heal with judgement instead of damage things", PhantomJob = PhantomJob.Oracle)]
+	[RotationConfig(CombatType.PvE, Name = "以审判预测治疗而非造成伤害的平均小队 HP 百分比", PhantomJob = PhantomJob.Oracle)]
 	public float PredictJudgementThreshold { get; set; } = 0.7f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Average party HP percent to predict to heal instead of damage things", PhantomJob = PhantomJob.Oracle)]
+	[RotationConfig(CombatType.PvE, Name = "预测治疗而非造成伤害的平均小队 HP 百分比", PhantomJob = PhantomJob.Oracle)]
 	public float PredictBlessingThreshold { get; set; } = 0.5f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Average party HP percent needed to use Occult Elixir", PhantomJob = PhantomJob.Chemist)]
+	[RotationConfig(CombatType.PvE, Name = "使用秘术灵药所需平均小队 HP 百分比", PhantomJob = PhantomJob.Chemist)]
 	public float OccultElixirThreshold { get; set; } = 0.3f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Target HP percent needed to use Occult Potion", PhantomJob = PhantomJob.Chemist)]
+	[RotationConfig(CombatType.PvE, Name = "使用秘术药水所需目标 HP 百分比", PhantomJob = PhantomJob.Chemist)]
 	public float OccultPotionThreshold { get; set; } = 0.5f;
 
-	[RotationConfig(CombatType.PvE, Name = "Only use Occult Potion on self", PhantomJob = PhantomJob.Chemist)]
+	[RotationConfig(CombatType.PvE, Name = "仅对自己使用秘术药水", PhantomJob = PhantomJob.Chemist)]
 	public bool OccultPotionSelf { get; set; } = true;
 
 	[Range(0, 10000, ConfigUnitType.None, 1)]
-	[RotationConfig(CombatType.PvE, Name = "Target MP needed to use Occult Ether", PhantomJob = PhantomJob.Chemist)]
+	[RotationConfig(CombatType.PvE, Name = "使用秘术以太所需目标 MP", PhantomJob = PhantomJob.Chemist)]
 	public int OccultEtherThreshold { get; set; } = 2000;
 
-	[RotationConfig(CombatType.PvE, Name = "Only use Occult Ether on self", PhantomJob = PhantomJob.Chemist)]
+	[RotationConfig(CombatType.PvE, Name = "仅对自己使用秘术以太", PhantomJob = PhantomJob.Chemist)]
 	public bool OccultEtherSelf { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Suspend out of combat", PhantomJob = PhantomJob.Geomancer)]
+	[RotationConfig(CombatType.PvE, Name = "非战斗时使用暂停", PhantomJob = PhantomJob.Geomancer)]
 	public bool SuspendOut { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Suspend in combat", PhantomJob = PhantomJob.Geomancer)]
+	[RotationConfig(CombatType.PvE, Name = "战斗时使用暂停", PhantomJob = PhantomJob.Geomancer)]
 	public bool SuspendIn { get; set; } = false;
 
 	#endregion

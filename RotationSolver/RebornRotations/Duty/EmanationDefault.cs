@@ -18,7 +18,7 @@ internal class EmanationDefault : EmanationRotation
 	}
 
 	#region Configs
-	[RotationConfig(CombatType.PvE, Name = "Auto Use Vril")]
+	[RotationConfig(CombatType.PvE, Name = "自动使用维尔")]
 	public bool AllowVril2 { get; set; } = true;
 	#endregion
 
