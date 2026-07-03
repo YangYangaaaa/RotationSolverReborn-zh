@@ -8,109 +8,78 @@ on:
 jobs:
   build:
     runs-on: windows-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: zh-cn
           submodules: recursive
           fetch-depth: 0
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v5
         with:
           dotnet-version: '10.0.x'
 
-      - name: Setup Dalamud environment
-        shell: bash
+      - name: Download Dalamud Latest
+        shell: pwsh
         run: |
-          mkdir -p $HOME/dalamud
-          curl -sL "https://goatcorp.github.io/dalamud-distrib/stable/latest.zip" -o dalamud.zip
-          unzip -q dalamud.zip -d $HOME/dalamud
-          echo "DALAMUD_LIB_PATH=$HOME/dalamud/" >> $GITHUB_ENV
+          Invoke-WebRequest -Uri https://goatcorp.github.io/dalamud-distrib/latest.zip -OutFile latest.zip
+          Expand-Archive -Force latest.zip -DestinationPath "$env:AppData\XIVLauncher\addon\Hooks\dev"
 
-      - name: Restore
-        shell: pwsh
-        run: dotnet restore
+      - name: Restore NuGet Packages
+        run: dotnet restore RotationSolver/RotationSolver.csproj
 
-      - name: Build Release
+      - name: Build Plugin
         shell: pwsh
-        run: dotnet build -c Release -p:Platform=x64 --no-restore
+        run: dotnet build --no-restore -c Release RotationSolver/RotationSolver.csproj --output .\build
 
       - name: Read version
         id: version
         shell: pwsh
         run: |
+          $tag = (Get-Date -Format "yyyyMMdd-HHmmss")
+          Write-Output "tag=$tag" >> $env:GITHUB_OUTPUT
+          Write-Host "Tag: $tag"
+
+      - name: Prepare release zip and pluginmaster
+        shell: pwsh
+        run: |
+          $tag = "${{ steps.version.outputs.tag }}"
+          $buildDir = ".\build\RotationSolver"
+          $outDir = ".\ReleaseOutput"
+          New-Item -ItemType Directory -Path $outDir -Force | Out-Null
+          $zipName = "RotationSolverReborn-zh-$tag.zip"
+          Compress-Archive -Path "$buildDir\*" -DestinationPath "$outDir\$zipName" -Force
           $manifest = Get-Content "RotationSolver/RotationSolver.json" -Raw | ConvertFrom-Json
-          $version = $manifest.AssemblyVersion
-          if (-not $version) { $version = (Get-Date -Format "yyyyMMdd-HHmmss") }
-          Write-Output "version=$version" >> $env:GITHUB_OUTPUT
-          Write-Host "Version: $version"
-
-      - name: Prepare release artifacts
-        shell: pwsh
-        run: |
-          $out = "ReleaseOutput"
-          New-Item -ItemType Directory -Path $out -Force | Out-Null
-          $buildDirs = @("RotationSolver\bin\x64\Release", "RotationSolver\bin\Release")
-          $sourceDir = $null
-          foreach ($d in $buildDirs) {
-            if (Test-Path "$d\RotationSolver.dll") { $sourceDir = $d; break }
-          }
-          if (-not $sourceDir) { throw "找不到 RotationSolver.dll 构建产物" }
-          Write-Host "构建目录: $sourceDir"
-          $keepFiles = @(
-            "RotationSolver.dll",
-            "RotationSolver.Basic.dll",
-            "RotationSolver.pdb",
-            "RotationSolver.Basic.pdb",
-            "ECommons.dll",
-            "RotationSolver.json"
-          )
-          foreach ($f in $keepFiles) {
-            $src = Join-Path $sourceDir $f
-            if (Test-Path $src) {
-              Copy-Item $src -Destination $out -Force
-              Write-Host "复制: $f"
-            }
-          }
-          Get-ChildItem $out | Format-Table Name, Length
-
-      - name: Make pluginmaster.json
-        shell: pwsh
-        run: |
-          $out = "ReleaseOutput"
-          $manifestPath = "RotationSolver\RotationSolver.json"
-          $manifest = Get-Content $manifestPath -Raw | ConvertFrom-Json
-          $version = "${{ steps.version.outputs.version }}"
-          $zipName = "RotationSolverReborn-zh-$version.zip"
-          $zipPath = Join-Path $out $zipName
-          Compress-Archive -Path "$out\*" -DestinationPath $zipPath -Force
           $pluginMaster = @{
-            "$version" = @{
-              "AssemblyVersion" = $version
-              "TestingAssemblyVersion" = $version
+            "$tag" = @{
+              "AssemblyVersion" = $tag
+              "TestingAssemblyVersion" = $tag
               "DalamudApiLevel" = $manifest.DalamudApiLevel
               "TestingDalamudApiLevel" = $manifest.TestingDalamudApiLevel
               "IsHide" = $false
               "IsTestingExclusive" = $manifest.IsTestingExclusive -eq $true
-              "DownloadLinkInstall" = "https://github.com/YangYangaaaa/RotationSolverReborn-zh/releases/download/$version/$zipName"
-              "DownloadLinkUpdate" = "https://github.com/YangYangaaaa/RotationSolverReborn-zh/releases/download/$version/$zipName"
-              "DownloadLinkTesting" = "https://github.com/YangYangaaaa/RotationSolverReborn-zh/releases/download/$version/$zipName"
+              "DownloadLinkInstall" = "https://github.com/YangYangaaaa/RotationSolverReborn-zh/releases/download/$tag/$zipName"
+              "DownloadLinkUpdate" = "https://github.com/YangYangaaaa/RotationSolverReborn-zh/releases/download/$tag/$zipName"
+              "DownloadLinkTesting" = "https://github.com/YangYangaaaa/RotationSolverReborn-zh/releases/download/$tag/$zipName"
               "Changelog" = "中文汉化版"
             }
           }
-          $pluginMaster | ConvertTo-Json -Depth 10 | Out-File -FilePath "pluginmaster.json" -Encoding utf8
-          Write-Host "pluginmaster.json:"
-          Get-Content pluginmaster.json
+          $pluginMasterJsonPath = "pluginmaster.json"
+          $pluginMaster | ConvertTo-Json -Depth 10 | Out-File -FilePath $pluginMasterJsonPath -Encoding utf8
+          Write-Host "=== pluginmaster.json ==="
+          Get-Content $pluginMasterJsonPath
 
       - name: Create Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
-          tag_name: ${{ steps.version.outputs.version }}
-          name: ${{ steps.version.outputs.version }}
+          tag_name: ${{ steps.version.outputs.tag }}
+          name: RotationSolverReborn-zh ${{ steps.version.outputs.tag }}
           body: |
-            # RotationSolverReborn 中文汉化版 ${{ steps.version.outputs.version }}
+            # RotationSolverReborn 中文汉化版 ${{ steps.version.outputs.tag }}
 
             基于 FFXIV-CombatReborn/RotationSolverReborn 上游构建，仅汉化 UI 文案:
             - RotationSolver/Data/UiString.cs (222 条 Description 翻译)
@@ -118,8 +87,8 @@ jobs:
 
             翻译基于 RSR 官方 wiki + FF14 国服通行术语。
           files: |
-            ReleaseOutput/*.zip
             pluginmaster.json
+            ReleaseOutput/*.zip
           prerelease: false
           make_latest: true
 
@@ -130,4 +99,4 @@ jobs:
           publish_dir: .
           publish_branch: gh-pages
           keep_files: false
-          full_commit_message: "Deploy pluginmaster.json for ${{ steps.version.outputs.version }}"
+          full_commit_message: Deploy pluginmaster.json for ${{ steps.version.outputs.tag }}
