@@ -8,7 +8,7 @@ namespace RotationSolver.RebornRotations.Healer;
 public sealed class AST_Reborn : AstrologianRotation
 {
 	#region Config Options
-	[RotationConfig(CombatType.PvE, Name = "限制宏观宇宙仅在多段伤害集合时使用")]
+	[RotationConfig(CombatType.PvE, Name = "限制大宇宙仅在多段伤害集合时使用")]
 	public bool MultiHitRestrict { get; set; } = false;
 
 	[RotationConfig(CombatType.PvE, Name = "启用瞬发限制逻辑：拥有神速咏唱时尝试阻止除复活外的其他行为")]
@@ -20,10 +20,10 @@ public sealed class AST_Reborn : AstrologianRotation
 	[RotationConfig(CombatType.PvE, Name = "使用 GCD 进行治疗。（若你是小队中唯一治疗则忽略）")]
 	public bool GCDHeal { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "可用时优先使用微观宇宙而非所有其他治疗")]
+	[RotationConfig(CombatType.PvE, Name = "可用时优先使用小宇宙而非所有其他治疗")]
 	public bool MicroPrio { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "简化王冠之君逻辑（在占卜下使用）")]
+	[RotationConfig(CombatType.PvE, Name = "简化王冠之领主逻辑（在占卜下使用）")]
 	public bool SimpleLord { get; set; } = false;
 
 	[RotationConfig(CombatType.PvE, Name = "拥有巨星支配时引爆地星")]
@@ -37,11 +37,11 @@ public sealed class AST_Reborn : AstrologianRotation
 	public float UseEarthlyStarTime { get; set; } = 4;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用星位福星所需的队友最低 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用吉星相位所需的队友最低 HP 阈值")]
 	public float AspectedBeneficHeal { get; set; } = 0.4f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用星脉所需的队友最低 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用星位合图所需的队友最低 HP 阈值")]
 	public float SynastryHeal { get; set; } = 0.5f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
@@ -49,22 +49,22 @@ public sealed class AST_Reborn : AstrologianRotation
 	public float HoroscopeHeal { get; set; } = 0.5f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用王女之卡所需的队友平均最低 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用王冠之贵妇所需的队友平均最低 HP 阈值")]
 	public float LadyOfHeals { get; set; } = 0.8f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用本质尊严第3层充能所需的队友最低 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用先天禀赋第3层充能所需的队友最低 HP 阈值")]
 	public float EssentialDignityThird { get; set; } = 0.8f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用本质尊严第2层充能所需的队友最低 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用先天禀赋第2层充能所需的队友最低 HP 阈值")]
 	public float EssentialDignitySecond { get; set; } = 0.7f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用本质尊严最后一层充能所需的队友最低 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用先天禀赋最后一层充能所需的队友最低 HP 阈值")]
 	public float EssentialDignityLast { get; set; } = 0.6f;
 
-	[RotationConfig(CombatType.PvE, Name = "可用时优先使用本质尊严而非单体 GCD 治疗")]
+	[RotationConfig(CombatType.PvE, Name = "可用时优先使用先天禀赋而非单体 GCD 治疗")]
 	public EssentialPrioStrategy EssentialPrio2 { get; set; } = EssentialPrioStrategy.UseGCDs;
 
 	public enum EssentialPrioStrategy : byte

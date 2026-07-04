@@ -23,7 +23,7 @@ public sealed class ChurinMNK : MonkRotation
 	{
 		[Description("双龙脚 - 5秒")] DragonKick5,
 		[Description("双龙脚 - 7秒")] DragonKick7,
-		[Description("破坏 - 7秒")] Demolish7
+		[Description("破碎拳 - 7秒")] Demolish7
 	}
 
 	private enum Nadi : byte
@@ -36,9 +36,9 @@ public sealed class ChurinMNK : MonkRotation
 	private enum Blitz : byte
 	{
 		[Description("无")] None,
-		[Description("斗气爆发")] ElixirBurst,         // Grants Lunar
-		[Description("凤凰飞升")] RisingPhoenix,     // Grants Solar
-		[Description("幻影突击")] PhantomRush,         // Consumes Both
+		[Description("苍气炮")] ElixirBurst,         // Grants Lunar
+		[Description("凤凰舞")] RisingPhoenix,     // Grants Solar
+		[Description("梦幻斗舞")] PhantomRush,         // Consumes Both
 	}
 
 	#endregion

@@ -31,17 +31,17 @@ public sealed class BeirutaNIN : NinjaRotation
 	public bool RotationNotes { get; set; } = true;
 
 	[Range(3f, 5f, ConfigUnitType.Seconds, 0.1f)]
-	[RotationConfig(CombatType.PvE, Name = "倒计时水遁排队时间（若信任队友可改为 5，否则应为 4 或 3 以防止 5 秒倒计时陷阱）")]
+	[RotationConfig(CombatType.PvE, Name = "倒计时水遁之术排队时间（若信任队友可改为 5，否则应为 4 或 3 以防止 5 秒倒计时陷阱）")]
 	public float CountdownSuitonQueueTime { get; set; } = 4f;
 
-	[RotationConfig(CombatType.PvE, Name = "脱离时使用雷遁/火遁保持输出（从 60 秒移动一个雷遁/火遁用于保持输出）")]
+	[RotationConfig(CombatType.PvE, Name = "脱离时使用雷遁之术/火遁之术保持输出（从 60 秒移动一个雷遁之术/火遁之术用于保持输出）")]
 	public bool UseRaitonDisengageFallback { get; set; } = true;
 
 	[Range(0, 20, ConfigUnitType.Yalms, 1)]
 	[RotationConfig(CombatType.PvE, Name = "脱离 fallback 的最小目标距离")]
 	public float RaitonFallbackMinDistance { get; set; } = 3.0f;
 
-	[RotationConfig(CombatType.PvE, Name = "尝试在 GCD 后半段插入苦无之灾/骗击（若插入失败则禁用）")]
+	[RotationConfig(CombatType.PvE, Name = "尝试在 GCD 后半段插入百雷铓/攻其不备（若插入失败则禁用）")]
 	public bool RequireLateWeaveForBurstBuff { get; set; } = true;
 
 	[RotationConfig(CombatType.PvE, Name = "使用哪种起手")]
@@ -49,7 +49,7 @@ public sealed class BeirutaNIN : NinjaRotation
 	public BurstTimingOption BurstTiming { get; set; } = BurstTimingOption.StandardFourthGcd;
 
 	[Range(15f, 21f, ConfigUnitType.Seconds, 1f)]
-	[RotationConfig(CombatType.PvE, Name = "水遁/风遁准备窗口（骗击/苦无之灾前的秒数）")]
+	[RotationConfig(CombatType.PvE, Name = "水遁之术/风遁之术准备窗口（攻其不备/百雷铓前的秒数）")]
 	public float BurstPrepThreshold { get; set; } = 21f;
 
 	public enum BurstTimingOption : byte
@@ -87,8 +87,8 @@ public sealed class BeirutaNIN : NinjaRotation
 
 	private enum NINPotionPreset
 	{
-		[Description("0-6-11（毒雾）")] Standard0611,
-		[Description("0-5-10（苦无之灾）")] Standard0510,
+		[Description("0-6-11（介毒之术）")] Standard0611,
+		[Description("0-5-10（百雷铓）")] Standard0510,
 	}
 
 	private delegate bool ActionExecutor(out IAction? act);

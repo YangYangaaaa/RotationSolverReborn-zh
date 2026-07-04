@@ -1,4 +1,4 @@
-﻿namespace RotationSolver.RebornRotations.Tank;
+namespace RotationSolver.RebornRotations.Tank;
 
 [Rotation("Reborn", CombatType.PvE, GameVersion = "7.5")]
 [SourceCode(Path = "main/RebornRotations/Tank/PLD_Reborn.cs")]
@@ -44,18 +44,18 @@ public sealed class PLD_Reborn : PaladinRotation
 	[RotationConfig(CombatType.PvE, Name = "脱离近战范围时使用圣灵")]
 	private bool UseHolyWhenAway { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "配合安魂祈祷使用赎罪")]
+	[RotationConfig(CombatType.PvE, Name = "配合安魂祈祷使用慈悲")]
 	private bool RequiescatHealBot { get; set; } = true;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "配合安魂祈祷使用赎罪时队友所需的最低HP阈值")]
-	public float ClemencyRequi { get; set; } = 0.2f;
+	[RotationConfig(CombatType.PvE, Name = "配合安魂祈祷使用慈悲时队友所需的最低HP阈值")]
+		public float ClemencyRequi { get; set; } = 0.2f;
 
-	[RotationConfig(CombatType.PvE, Name = "不配合安魂祈祷使用赎罪")]
+	[RotationConfig(CombatType.PvE, Name = "不配合安魂祈祷使用慈悲")]
 	private bool HealBot { get; set; } = true;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "不配合安魂祈祷使用赎罪时队友所需的最低HP阈值")]
+	[RotationConfig(CombatType.PvE, Name = "不配合安魂祈祷使用慈悲时队友所需的最低HP阈值")]
 	public float ClemencyNoRequi { get; set; } = 0.4f;
 	#endregion
 

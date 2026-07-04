@@ -14,13 +14,13 @@ public sealed class NIN_Reborn : NinjaRotation
 	[RotationConfig(CombatType.PvE, Name = "解除隐遁")]
 	public bool AutoUnhide { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "敌人靠近时在战斗外使用结印")]
+	[RotationConfig(CombatType.PvE, Name = "敌人靠近时在战斗外使用忍术")]
 	public bool CombatMudra { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "使用两层结印")]
+	[RotationConfig(CombatType.PvE, Name = "使用两层忍术")]
 	public bool BurnMudraStacks { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "超出范围时使用分叉雷兽替代短暂雷兽（危险）")]
+	[RotationConfig(CombatType.PvE, Name = "超出范围时使用月影雷兽爪替代月影雷兽牙（危险）")]
 	public bool ForkedUse { get; set; } = false;
 	#endregion
 

@@ -17,38 +17,38 @@ public sealed class BeirutaPCT : PictomancerRotation
 	}
 
 	[RotationConfig(CombatType.PvE, Name =
-		"请注意：该循环针对以倒计时彩虹滴绘起手的战斗进行优化。\n" +
+		"请注意：该循环针对以倒计时彩虹滴起手的战斗进行优化。\n" +
 		"• 推荐 GCD 为 2.48/2.49/2.50，根据网络延迟选择\n" +
-		"• 2.48 GCD 更容易将彩虹滴绘塞进星空灵感内\n" +
+		"• 2.48 GCD 更容易将彩虹滴塞进星空灵感内\n" +
 		"• 理想情况下，战斗开始前 5 秒或爆发期间不要拦截防御技能\n" +
-		"• 启用法术拦截可在 Boss 变为不可选中前手动使用彩虹滴绘。\n" +
+		"• 启用法术拦截可在 Boss 变为不可选中前手动使用彩虹滴。\n" +
 		"• 该循环设计为将玛迪恩对齐到爆发窗口内。\n" +
-		"• 超幻想在爆发早期优先使用，以更早提供移动灵活性。\n" +
-		"• 拦截彩虹滴绘时若彩虹滴绘已排队将自动使用即时咏唱（按得太晚或正在咏唱减色墨水/底稿时可能失败）。\n" +
-		"• 手动即时咏唱输入会消耗在底稿上（生物 -> 武器 -> 风景）。"
+		"• 绘灵幻景在爆发早期优先使用，以更早提供移动灵活性。\n" +
+		"• 拦截彩虹滴时若彩虹滴已排队将自动使用即刻咏唱（按得太晚或正在咏唱减色墨水/彩绘时可能失败）。\n" +
+		"• 手动即刻咏唱输入会消耗在彩绘上（生物 -> 武器 -> 风景）。"
 	)]
 	public bool Info_DoNotChange { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "移动时使用白圣或黑彗")]
+	[RotationConfig(CombatType.PvE, Name = "移动时使用神圣之白或彗星之黑")]
 	public bool HolyCometMoving { get; set; } = true;
 
 	[RotationConfig(CombatType.PvE, Name = "颜料溢出保护。")]
 	public bool UseCapCometHoly { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "启用颜料溢出保护（若设置开启，移动时仍会使用彗星）")]
+	[RotationConfig(CombatType.PvE, Name = "启用颜料溢出保护（若设置开启，移动时仍会使用彗星之黑）")]
 	public bool UseCapCometOnly { get; set; } = false;
 
 	[Range(1, 5, ConfigUnitType.None, 1)]
-	[RotationConfig(CombatType.PvE, Name = "颜料溢出保护阈值。非爆发时达到多少颜料才使用神圣（拥有超幻想时忽略此设置）")]
+	[RotationConfig(CombatType.PvE, Name = "颜料溢出保护阈值。非爆发时达到多少颜料才使用神圣之白（拥有绘灵幻景时忽略此设置）")]
 	public int HolyCometMax { get; set; } = 5;
 
-	[RotationConfig(CombatType.PvE, Name = "Boss 不可选中前对拦截的彩虹滴绘使用即时咏唱")]
+	[RotationConfig(CombatType.PvE, Name = "Boss 不可选中前对拦截的彩虹滴使用即刻咏唱")]
 	public bool RainbowDripSwift { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "对底稿使用即时咏唱")]
+	[RotationConfig(CombatType.PvE, Name = "对彩绘使用即刻咏唱")]
 	public bool MotifSwiftCastSwift { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "对哪个底稿使用即时咏唱")]
+	[RotationConfig(CombatType.PvE, Name = "对哪个彩绘使用即刻咏唱")]
 	public CanvasFlags MotifSwiftCast { get; set; } = CanvasFlags.Claw;
 
 	[RotationConfig(CombatType.PvE, Name = "爆发期间阻止使用防御技能")]

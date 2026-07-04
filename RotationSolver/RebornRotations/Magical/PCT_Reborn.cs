@@ -1,4 +1,4 @@
-﻿namespace RotationSolver.RebornRotations.Magical;
+namespace RotationSolver.RebornRotations.Magical;
 
 [Rotation("Reborn", CombatType.PvE, GameVersion = "7.5")]
 [SourceCode(Path = "main/RebornRotations/Magical/PCT_Reborn.cs")]
@@ -6,26 +6,26 @@
 public sealed class PCT_Reborn : PictomancerRotation
 {
 	#region Config Options
-	[RotationConfig(CombatType.PvE, Name = "移动时使用圣白或黑彗星")]
+	[RotationConfig(CombatType.PvE, Name = "移动时使用神圣之白或彗星之黑")]
 	public bool HolyCometMoving { get; set; } = true;
 
 	[RotationConfig(CombatType.PvE, Name = "颜料溢出保护。")]
 	public bool UseCapCometHoly { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "使用颜料溢出保护（若开启设置，移动时仍会使用黑彗星）")]
+	[RotationConfig(CombatType.PvE, Name = "使用颜料溢出保护（若开启设置，移动时仍会使用彗星之黑）")]
 	public bool UseCapCometOnly { get; set; } = false;
 
 	[Range(1, 5, ConfigUnitType.None, 1)]
-	[RotationConfig(CombatType.PvE, Name = "颜料溢出保护上限。爆发外使用圣白所需的颜料数量（拥有极致幻象时忽略此项）")]
+	[RotationConfig(CombatType.PvE, Name = "颜料溢出保护上限。爆发外使用神圣之白所需的颜料数量（拥有绘灵幻景时忽略此项）")]
 	public int HolyCometMax { get; set; } = 5;
 
-	[RotationConfig(CombatType.PvE, Name = "对彩虹滴使用迅速魔（优先级高于以下设置）")]
+	[RotationConfig(CombatType.PvE, Name = "对彩虹滴使用即刻咏唱（优先级高于以下设置）")]
 	public bool RainbowDripSwift { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "对图案使用迅速魔")]
+	[RotationConfig(CombatType.PvE, Name = "对图案使用即刻咏唱")]
 	public bool MotifSwiftCastSwift { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "对哪个图案使用迅速魔")]
+	[RotationConfig(CombatType.PvE, Name = "对哪个图案使用即刻咏唱")]
 	public CanvasFlags MotifSwiftCast { get; set; } = CanvasFlags.Weapon;
 
 	[RotationConfig(CombatType.PvE, Name = "爆发期间禁止使用减伤技能")]

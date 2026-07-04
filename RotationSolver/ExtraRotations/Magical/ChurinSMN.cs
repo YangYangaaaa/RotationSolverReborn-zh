@@ -51,19 +51,19 @@ public sealed class ChurinSMN : SummonerRotation
 	[RotationConfig(CombatType.PvE, Name = "移动时使用深红旋风")]
 	public bool AddCrimsonCycloneMoving { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "复活时使用即时咏唱")]
+	[RotationConfig(CombatType.PvE, Name = "复活时使用即刻咏唱")]
 	public bool AddSwiftcastOnRaise { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "等级不足以使用红宝石仪式时，对红宝石灾祸使用即时咏唱")]
+	[RotationConfig(CombatType.PvE, Name = "等级不足以使用红宝石之仪时，对红宝石灾难使用即刻咏唱")]
 	public bool AddSwiftcastOnLowSt { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "等级不足以使用红宝石仪式时，对红宝石爆发使用即时咏唱")]
+	[RotationConfig(CombatType.PvE, Name = "等级不足以使用红宝石之仪时，对红宝石迴裂使用即刻咏唱")]
 	public bool AddSwiftcastOnLowAOE { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "对迦楼罗使用即时咏唱")]
+	[RotationConfig(CombatType.PvE, Name = "对迦楼罗使用即刻咏唱")]
 	public bool AddSwiftcastOnGaruda { get; set; }
 
-	[RotationConfig(CombatType.PvE, Name = "等级不足以使用迦楼罗时，对红宝石仪式使用即时咏唱")]
+	[RotationConfig(CombatType.PvE, Name = "等级不足以使用迦楼罗时，对红宝石之仪使用即刻咏唱")]
 	public bool AddSwiftcastOnRuby { get; set; } = false;
 
 	[RotationConfig(CombatType.PvE, Name = "顺序")]

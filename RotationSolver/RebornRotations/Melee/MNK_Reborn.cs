@@ -32,10 +32,10 @@ public sealed class MNK_Reborn : MonkRotation
 	[RotationConfig(CombatType.PvE, Name = "自动使用震脚（AoE 激进震脚倾泻，若不想在 Boss 战中浪费震脚请关闭）")]
 	public bool AutoPB_AOE { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "对单体敌人使用怒啸拳/斗气旋风脚作为远程攻击")]
+	[RotationConfig(CombatType.PvE, Name = "对单体敌人使用空鸣拳/斗魂旋风脚作为远程攻击")]
 	public bool HowlingSingle2 { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "技能可用时立即使用六道轮回之舞。")]
+	[RotationConfig(CombatType.PvE, Name = "技能可用时立即使用必杀技。")]
 	public MasterfulBlitzUse MBAbilities { get; set; } = MasterfulBlitzUse.RiddleOfFireUse;
 
 	[RotationConfig(CombatType.PvE, Name = "在此技能后使用红莲极意")]

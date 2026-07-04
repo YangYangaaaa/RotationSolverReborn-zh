@@ -6,21 +6,21 @@ namespace RotationSolver.RebornRotations.Melee;
 public sealed class DRG_Reborn : DragoonRotation
 {
 	#region Config Options
-	[RotationConfig(CombatType.PvE, Name = "脱离近战范围时使用死狱刺保持输出，即使断连击")]
+	[RotationConfig(CombatType.PvE, Name = "脱离近战范围时使用死天枪保持输出，即使断连击")]
 	public bool DoomSpikeWhenever { get; set; } = true;
 
 	[Range(1, 20, ConfigUnitType.Yalms)]
-	[RotationConfig(CombatType.PvE, Name = "使用命运之环所需的与目标最大距离")]
+	[RotationConfig(CombatType.PvE, Name = "使用坠星冲所需的与目标最大距离")]
 	public float StardiverDistance { get; set; } = 20;
 
-	[RotationConfig(CombatType.PvE, Name = "移动时使用命运之环")]
+	[RotationConfig(CombatType.PvE, Name = "移动时使用坠星冲")]
 	public bool StardiverMoving { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "移动时使用龙剑冲")]
+	[RotationConfig(CombatType.PvE, Name = "移动时使用龙炎冲")]
 	public bool DragonfireDiveMoving { get; set; } = true;
 
 	[Range(1, 20, ConfigUnitType.Yalms)]
-	[RotationConfig(CombatType.PvE, Name = "使用龙剑冲所需的与目标最大距离")]
+	[RotationConfig(CombatType.PvE, Name = "使用龙炎冲所需的与目标最大距离")]
 	public float DragonfireDiveDistance { get; set; } = 20;
 	#endregion
 

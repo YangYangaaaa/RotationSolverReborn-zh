@@ -53,7 +53,7 @@ public sealed class ChurinDNC : DancerRotation
 		[Description("在舞步前使用爆发药，紧接技巧/标准舞步之后")]
 		BeforeStep,
 
-		[Description("在舞步后使用爆发药，当舞步落幕就绪时")]
+		[Description("在舞步后使用爆发药，当舞步结束就绪时")]
 		AfterStep
 	}
 
@@ -362,7 +362,7 @@ public sealed class ChurinDNC : DancerRotation
 
 	#region Tech Step Configs
 
-	[RotationConfig(CombatType.PvE, Name = "技巧舞步、技巧落幕与提拉纳保留策略")]
+	[RotationConfig(CombatType.PvE, Name = "技巧舞步、技巧舞步结束与提拉纳保留策略")]
 	private HoldStrategy TechHoldStrategy { get; set; } = HoldStrategy.HoldStepAndFinish;
 
 	[Range(0, 16, ConfigUnitType.Seconds, 0)]
@@ -373,7 +373,7 @@ public sealed class ChurinDNC : DancerRotation
 	private float OpenerTechTime { get; set; } = 7f;
 
 	[Range(0, 1, ConfigUnitType.Seconds, 0)]
-	[RotationConfig(CombatType.PvE, Name = "战斗开始前多少秒使用技巧落幕？",
+	[RotationConfig(CombatType.PvE, Name = "战斗开始前多少秒使用技巧舞步结束？",
 		Parent = nameof(ChosenOpener),
 		ParentValue = "技巧起手")]
 	private float OpenerTechFinishTime { get; set; } = 0.5f;
@@ -382,7 +382,7 @@ public sealed class ChurinDNC : DancerRotation
 
 	#region Standard Step Configs
 
-	[RotationConfig(CombatType.PvE, Name = "标准舞步、标准落幕与结束动作保留策略")]
+	[RotationConfig(CombatType.PvE, Name = "标准舞步、标准舞步结束与结束动作保留策略")]
 	private HoldStrategy StandardHoldStrategy { get; set; } = HoldStrategy.HoldStepAndFinish;
 
 	[Range(0, 16, ConfigUnitType.Seconds, 0)]
@@ -392,7 +392,7 @@ public sealed class ChurinDNC : DancerRotation
 	private float OpenerStandardStepTime { get; set; } = 15.5f;
 
 	[Range(0, 1, ConfigUnitType.Seconds, 0)]
-	[RotationConfig(CombatType.PvE, Name = "战斗开始前多少秒使用标准落幕？",
+	[RotationConfig(CombatType.PvE, Name = "战斗开始前多少秒使用标准舞步结束？",
 		Parent = nameof(ChosenOpener),
 		ParentValue = "标准起手")]
 	private float OpenerStandardFinishTime { get; set; } = 0.5f;

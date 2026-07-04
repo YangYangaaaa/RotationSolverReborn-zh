@@ -1,4 +1,4 @@
-﻿namespace RotationSolver.RebornRotations.Magical;
+namespace RotationSolver.RebornRotations.Magical;
 
 [Rotation("Reborn", CombatType.PvE, GameVersion = "7.5")]
 [SourceCode(Path = "main/RebornRotations/Magical/RDM_Reborn.cs")]
@@ -24,13 +24,13 @@ public sealed class RDM_Reborn : RedMageRotation
 	[RotationConfig(CombatType.PvE, Name = "无瞬发时移动施放赤突进。")]
 	public bool RangedSwordplay { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "仅在近战范围内使用鼓舞。")]
+	[RotationConfig(CombatType.PvE, Name = "仅在近战范围内使用鼓励。")]
 	public bool AnyonesMeleeRule { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "赤近战后使用赤闪避（风险自负）。")]
+	[RotationConfig(CombatType.PvE, Name = "赤近战后使用移转（风险自负）。")]
 	public bool SuicideByDumber { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "允许移动时使用赤冲锋（风险自负）。")]
+	[RotationConfig(CombatType.PvE, Name = "允许移动时使用短兵相接（风险自负）。")]
 	public bool CorpsacorpsMove { get; set; } = false;
 	#endregion
 

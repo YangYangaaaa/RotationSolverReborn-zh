@@ -11,7 +11,7 @@ public sealed class WHM_Reborn : WhiteMageRotation
 	[RotationConfig(CombatType.PvE, Name = "在高难度副本中使用 the balance 起手")]
 	public bool UseOpenerHighEnd { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "限制圣铃祈祷仅在多段伤害集合时使用")]
+	[RotationConfig(CombatType.PvE, Name = "限制礼仪之铃仅在多段伤害集合时使用")]
 	public bool MultiHitRestrict { get; set; } = false;
 
 	[RotationConfig(CombatType.PvE, Name = "在即将使用神速时使用幻药/宝石药剂")]
@@ -46,7 +46,7 @@ public sealed class WHM_Reborn : WhiteMageRotation
 	public bool AsylumSingle { get; set; } = false;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用神祝祈祷所需的队友最低生命值阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用天赐祝福所需的队友最低生命值阈值")]
 	public float BenedictionHeal { get; set; } = 0.3f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
@@ -54,16 +54,16 @@ public sealed class WHM_Reborn : WhiteMageRotation
 	public float RegenHeal { get; set; } = 0.3f;
 
 	[Range(0, 10000, ConfigUnitType.None, 100)]
-	[RotationConfig(CombatType.PvE, Name = "使用无咒所需的施法消耗阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用无中生有所需的施法消耗阈值")]
 
 	public float ThinAirNeed { get; set; } = 1000;
 
-	[RotationConfig(CombatType.PvE, Name = "如何管理最后一个无咒充能")]
+	[RotationConfig(CombatType.PvE, Name = "如何管理最后一个无中生有充能")]
 	public ThinAirUsageStrategy ThinAirLastChargeUsage { get; set; } = ThinAirUsageStrategy.ReserveLastChargeForRaise;
 
 	public enum ThinAirUsageStrategy : byte
 	{
-		[Description("在昂贵的法术上使用所有无咒充能")]
+		[Description("在昂贵的法术上使用所有无中生有充能")]
 		UseAllCharges,
 
 		[Description("保留最后一层充能用于复活")]

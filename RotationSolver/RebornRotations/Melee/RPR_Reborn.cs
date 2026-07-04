@@ -1,4 +1,4 @@
-﻿namespace RotationSolver.RebornRotations.Melee;
+namespace RotationSolver.RebornRotations.Melee;
 
 [Rotation("Reborn", CombatType.PvE, GameVersion = "7.5")]
 [SourceCode(Path = "main/RebornRotations/Melee/RPR_Reborn.cs")]
@@ -6,7 +6,7 @@
 public sealed class RPR_Reborn : ReaperRotation
 {
 	#region Config Options
-	[RotationConfig(CombatType.PvE, Name = "为秘法环积攒葬礼。")]
+	[RotationConfig(CombatType.PvE, Name = "为夜游魂衣积攒葬礼。")]
 	public bool EnshroudPooling { get; set; } = false;
 
 	[RotationConfig(CombatType.PvE, Name = "使用自定义时机刷新死之设计")]

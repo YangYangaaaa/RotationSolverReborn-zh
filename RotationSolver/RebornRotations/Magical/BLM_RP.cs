@@ -1,4 +1,4 @@
-﻿namespace RotationSolver.RebornRotations.Magical;
+namespace RotationSolver.RebornRotations.Magical;
 
 [Rotation("RebornPowerdox(TESTING)", CombatType.PvE, GameVersion = "7.5")]
 [SourceCode(Path = "main/BasicRotations/Magical/BLM_RP.cs")]
@@ -12,7 +12,7 @@ public class BLM_RP : BlackMageRotation
 	[RotationConfig(CombatType.PvE, Name = "自动使用两层黑魔纹")]
 	public bool Leyline2Madness { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "战斗中脱离黑魔纹且站立不动时使用再生")]
+	[RotationConfig(CombatType.PvE, Name = "战斗中脱离黑魔纹且站立不动时使用魔纹重置")]
 	public bool UseRetrace { get; set; } = false;
 
 	[RotationConfig(CombatType.PvE, Name = "使用宝石药/强效幻药/幻药")]

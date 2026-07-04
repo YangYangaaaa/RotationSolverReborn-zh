@@ -4,15 +4,22 @@
 
 ## 汉化内容
 
-| 文件 | 改动 |
-|---|---|
-| `RotationSolver/Data/UiString.cs` | 222 条 `[Description]` 字符串翻译为中文 |
-| `RotationSolver/UI/RotationConfigWindowTab.cs` | 侧边栏 Tab 中文名(上游已有,保留) |
+| 模块 | 文件范围 | 改动 |
+|---|---|---|
+| UI 界面 | `RotationSolver/Data/UiString.cs` | 222 条 `[Description]` 字符串翻译为中文 |
+| UI 界面 | `UiString.cs` / `RotationConfigWindowTab.cs` | 界面 Tab / 标签 / 按钮汉化 |
+| 基础配置 | `Configuration/Configs.cs` / `CustomRotation_OtherInfo.cs` 等 | 100+ 条 `[Description]` 配置项汉化 |
+| 状态面板 | `BasicRotations` 各职业状态面板文本 | 各职业监控文本汉化 |
+| 命令系统 | `RotationsController.cs` 等 | 聊天框命令反馈消息汉化 |
+| 循环配置(RebornRotations) | `RebornRotations/` 下 24 个职业文件 | 282 条 `[RotationConfig] Name` 技能名汉化为国服官方译名 |
+| 循环配置(ExtraRotations) | `ExtraRotations/` 下 14 个文件 | 200+ 条 `[RotationConfig] Name/Description` 汉化 |
+| 插件冲突提示 | `Resources/IncompatiblePlugins.json` | 9 条 Features 说明汉化 |
 
 翻译基于:
 - [RSR 官方 Wiki](https://github.com/FFXIV-CombatReborn/RotationSolverReborn/wiki)(Actions / Auto / Basic / Extra / List 5 个页面)
 - FF14 国服通行术语(GCD / oGCD / AoE / 坦克死刑 / 击退 / 凝视 / 减伤 / 无敌 / 复活 / 转嫁仇恨 / 身位 / 驱散)
 - 国服副本类型官方译名(零式 / 绝境战 / 极蛮神 / 联盟突袭 / 深层迷宫 / 异闻迷宫 / 宝物迷宫 / 假面狂欢 等)
+- [CafeMaker API](https://cafemaker.wakingsands.com/) 验证全职业技能名翻译
 
 **不修改任何逻辑代码**,功能与上游完全一致,仅 UI 文案为中文。
 

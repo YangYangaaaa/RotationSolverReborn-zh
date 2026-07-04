@@ -1,4 +1,4 @@
-﻿namespace RotationSolver.RebornRotations.Magical;
+namespace RotationSolver.RebornRotations.Magical;
 
 [Rotation("Reborn", CombatType.PvE, GameVersion = "7.5")]
 [SourceCode(Path = "main/BasicRotations/Magical/BLM_Default.cs")]
@@ -6,7 +6,7 @@
 public class BLM_Default : BlackMageRotation
 {
 	#region Config Options
-	[RotationConfig(CombatType.PvE, Name = "在悖论前使用移转切换到星极火")]
+	[RotationConfig(CombatType.PvE, Name = "在悖论前使用星灵位移切换到星极火")]
 	public bool UseTransposeForParadox { get; set; } = true;
 
 	[RotationConfig(CombatType.PvE, Name = "更保守地延长星极火时间（3 个 GCD）（默认 2 个 GCD）")]
@@ -21,7 +21,7 @@ public class BLM_Default : BlackMageRotation
 	[RotationConfig(CombatType.PvE, Name = "自动使用两层黑魔纹")]
 	public bool Leyline2Madness { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "战斗中脱离黑魔纹且站立不动时使用再生")]
+	[RotationConfig(CombatType.PvE, Name = "战斗中脱离黑魔纹且站立不动时使用魔纹重置")]
 	public bool UseRetrace { get; set; } = false;
 	#endregion
 

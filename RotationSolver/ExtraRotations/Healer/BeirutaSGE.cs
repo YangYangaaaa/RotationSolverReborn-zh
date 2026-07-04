@@ -16,22 +16,22 @@ public sealed class BeirutaSGE : SageRotation
 		"• 只有描述中列出的技能会被自动使用，其他所有技能都应手动使用或通过 CD 计划器使用\n" +
 		"• 如果队伍中没有团辅，请将拦截设置为仅 GCD 使用，并在需要时手动使用最后一层黏膜\n" +
 		"• 如果需要延迟本循环的爆发时机，禁用 AutoBurst 即可\n" +
-		"• 将护生施加给自己会被视为使用灵气或优生预后的信号，具体取决于队伍平均 HP 设置\n" +
-		"• 使用护生或宏循环 DefenseArea 来手动触发优生预后\n" +
+		"• 将活化施加给自己会被视为使用魂灵风息或均衡预后的信号，具体取决于队伍平均 HP 设置\n" +
+		"• 使用活化或宏循环 DefenseArea 来手动触发均衡预后\n" +
 		"• 本循环中单体 GCD 治疗受到严格限制\n" +
-		"• 如果启用倒计时护生/护盾，请注意可能有恶意玩家用短倒计时诱导你（离开时将 StartOnCountdown 设为 False）\n")]
+		"• 如果启用倒计时活化/护盾，请注意可能有恶意玩家用短倒计时诱导你（离开时将 StartOnCountdown 设为 False）\n")]
 	public bool RotationNotes { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "尝试通过在 GCD 逻辑末尾允许优生预后来防止卡死（实验性）")]
+	[RotationConfig(CombatType.PvE, Name = "尝试通过在 GCD 逻辑末尾允许均衡预后来防止卡死（实验性）")]
 	public bool AntiBrick { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "非战斗时使用优生学")]
+	[RotationConfig(CombatType.PvE, Name = "非战斗时使用均衡")]
 	public bool OOCEukrasia { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "启用即时咏唱限制逻辑：拥有即时咏唱时尝试阻止除复活外的其他行为")]
+	[RotationConfig(CombatType.PvE, Name = "启用即刻咏唱限制逻辑：拥有即刻咏唱时尝试阻止除复活外的其他行为")]
 	public bool SwiftLogic { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "移动时使用即时咏唱")]
+	[RotationConfig(CombatType.PvE, Name = "移动时使用即刻咏唱")]
 	public bool UseSwiftcastForMovement { get; set; } = true;
 
 	[Range(0, 5, ConfigUnitType.Seconds, 0.1f)]
@@ -41,65 +41,65 @@ public sealed class BeirutaSGE : SageRotation
 	[RotationConfig(CombatType.PvE, Name = "宏观宇宙生效时锁定治疗行为")]
 	public bool LockHealingActionsDuringMacrocosmos { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "倒计时开场时使用护生")]
+	[RotationConfig(CombatType.PvE, Name = "倒计时开场时使用活化")]
 	public bool UseZoeInOpener { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "倒计时开场时使用优生预后")]
+	[RotationConfig(CombatType.PvE, Name = "倒计时开场时使用均衡预后")]
 	public bool EukrasianPrognosisDuringCountdown { get; set; } = true;
 
 	[RotationConfig(CombatType.PvE, Name = "使用哪种开场")]
 	public OpenerStrategy OpenerSelection { get; set; } = OpenerStrategy.PneumaOpener;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用活性法所需的目标 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用白牛清液所需的目标 HP 阈值")]
 	public float TaurocholeHeal { get; set; } = 0.7f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用鞣酸法所需的目标 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用灵橡清液所需的目标 HP 阈值")]
 	public float DruocholeHeal { get; set; } = 0.6f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用救护所需的心脏目标 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用拯救所需的心脏目标 HP 阈值")]
 	public float SoteriaHeal { get; set; } = 0.8f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用胞饮所需的队伍平均 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用消化所需的队伍平均 HP 阈值")]
 	public float PepsisHeal { get; set; } = 0.4f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用花粉所需的队伍平均 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用寄生清液所需的队伍平均 HP 阈值")]
 	public float IxocholeHeal { get; set; } = 0.8f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用生理所需的队伍平均 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用自生所需的队伍平均 HP 阈值")]
 	public float PhysisHeal { get; set; } = 0.5f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "单体目标时使用灵气所需的队伍平均 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "单体目标时使用魂灵风息所需的队伍平均 HP 阈值")]
 	public float PneumaHeal { get; set; } = 0.40f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "多目标时使用灵气所需的队伍平均 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "多目标时使用魂灵风息所需的队伍平均 HP 阈值")]
 	public float PneumaDyskrasiaHeal { get; set; } = 0.70f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用活性法所需的队伍平均 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用白牛清液所需的队伍平均 HP 阈值")]
 	public float HealSingleTaurocholeHeal { get; set; } = 0.7f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用鞣酸法所需的队伍平均 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用灵橡清液所需的队伍平均 HP 阈值")]
 	public float HealSingleDruocholeHeal { get; set; } = 0.6f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "在灵气（如果较低）或优生预后（如果较高）上使用护生所需的队伍平均 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "在魂灵风息（如果较低）或均衡预后（如果较高）上使用活化所需的队伍平均 HP 阈值")]
 	public float ZoePneumaHeal { get; set; } = 0.40f;
 
 	public enum OpenerStrategy : byte
 	{
-		[Description("战前使用毒素开场")]
+		[Description("战前使用箭毒开场")]
 		ToxikonOpener,
 
-		[Description("战前使用灵气开场")]
+		[Description("战前使用魂灵风息开场")]
 		PneumaOpener,
 	}
 

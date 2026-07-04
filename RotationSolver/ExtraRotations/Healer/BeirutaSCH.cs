@@ -28,10 +28,10 @@ public sealed class BeirutaSCH : ScholarRotation
 	[RotationConfig(CombatType.PvE, Name = "炽天使出场时尽快使用第一层慰藉")]
 	public bool UseFirstConsolationAsapWhenSeraphIsOut { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "移动时使用即时咏唱")]
+	[RotationConfig(CombatType.PvE, Name = "移动时使用即刻咏唱")]
 	public bool UseSwiftcastForMovement { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "对鼓舞使用即时咏唱")]
+	[RotationConfig(CombatType.PvE, Name = "对鼓舞激励之策使用即刻咏唱")]
 	public bool UseSwiftcastOnAdloquium { get; set; } = true;
 
 	[Range(0, 5, ConfigUnitType.Seconds, 0.1f)]
@@ -53,19 +53,19 @@ public sealed class BeirutaSCH : ScholarRotation
 	public float ConsolationHeal { get; set; } = 0.8f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "优先使用不屈和即时治疗而非持续恢复效果的队伍平均 HP 百分比")]
+	[RotationConfig(CombatType.PvE, Name = "优先使用不屈不挠之策和即时治疗而非持续恢复效果的队伍平均 HP 百分比")]
 	public float EmergencyHealPercent { get; set; } = 0.1f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用低语或天使低语所需的队伍平均 HP 百分比")]
+	[RotationConfig(CombatType.PvE, Name = "使用仙光的低语或天使仙光的低语所需的队伍平均 HP 百分比")]
 	public float WhisperingDawnHeal { get; set; } = 0.6f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "缺少低语或天使低语时使用仙福所需的队伍平均 HP 百分比")]
+	[RotationConfig(CombatType.PvE, Name = "缺少仙光的低语或天使仙光的低语时使用异想的祥光所需的队伍平均 HP 百分比")]
 	public float FeyBlessingHeal { get; set; } = 0.7f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用不屈所需的队伍平均 HP 百分比")]
+	[RotationConfig(CombatType.PvE, Name = "使用不屈不挠之策所需的队伍平均 HP 百分比")]
 	public float IndomitabilityHeal { get; set; } = 0.3f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
@@ -77,18 +77,18 @@ public sealed class BeirutaSCH : ScholarRotation
 	public float HealAreaGcdEmergencyTacticsHeal { get; set; } = 0.3f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "在群体治疗 GCD 中使用飞升所需的队伍平均 HP 百分比")]
+	[RotationConfig(CombatType.PvE, Name = "在群体治疗 GCD 中使用降临之章所需的队伍平均 HP 百分比")]
 	public float HealAreaGcdAccessionHeal { get; set; } = 0.6f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "移动中且未处于应急战术时，在群体治疗 GCD 中使用飞升所需的队伍平均 HP 百分比")]
+	[RotationConfig(CombatType.PvE, Name = "移动中且未处于应急战术时，在群体治疗 GCD 中使用降临之章所需的队伍平均 HP 百分比")]
 	public float HealAreaGcdMovingAccessionHeal { get; set; } = 0.8f;
 
 	[Range(0, 10000, ConfigUnitType.None)]
 	[RotationConfig(CombatType.PvE, Name = "优先紧急治疗和复活前的最低 MP（愿意更早使用炽天附体）")]
 	public int EmergencyHealingMPThreshold { get; set; } = 2000;
 
-	[RotationConfig(CombatType.PvE, Name = "启用即时咏唱限制：即时咏唱生效时仅允许复活")]
+	[RotationConfig(CombatType.PvE, Name = "启用即刻咏唱限制：即刻咏唱生效时仅允许复活")]
 	public bool SwiftLogic { get; set; } = true;
 
 	[RotationConfig(CombatType.PvE, Name = "倒计时开场配置")]
@@ -97,10 +97,10 @@ public sealed class BeirutaSCH : ScholarRotation
 
 	public enum CountdownOpenerStrategy : byte
 	{
-		[Description("秘策 - 鼓舞 - 展开战术")]
+		[Description("秘策 - 鼓舞激励之策 - 展开战术")]
 		RecitationAdloquiumDeploymentTactics = 0,
 
-		[Description("鼓舞 - 展开战术")]
+		[Description("鼓舞激励之策 - 展开战术")]
 		AdloquiumDeploymentTactics = 1,
 
 		[Description("意气轩昂之策/鼓舞士气")]

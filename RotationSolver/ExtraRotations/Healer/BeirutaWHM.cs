@@ -17,24 +17,24 @@ public sealed class WHM_Reborn : WhiteMageRotation
 		"• 如果需要延迟本循环的爆发时机，禁用 AutoBurst 即可\n" +
 		"• 在爆发阶段、移动期间以及神速咏唱后的 20 秒内，灼烧会稍微提前刷新\n" +
 		"• 苦百合仅在爆发阶段使用，蓝百合溢出不会损失伤害\n" +
-		"• 进入战斗 6 秒后，本循环会冷却即用圣罚，如果想用 CD 计划器管理请在技能设置中禁用\n" +
-		"• 如果在爆发前 15 秒没有 3 层血百合，会开始倾泻蓝百合\n" +
+		"• 进入战斗 6 秒后，本循环会冷却即用法令，如果想用 CD 计划器管理请在技能设置中禁用\n" +
+		"• 如果在爆发前 15 秒没有 3 层苦难之心，会开始倾泻蓝百合\n" +
 		"• 本循环中单体治疗的使用故意更保守\n" +
-		"• 如果关闭 AutoBurst，圣罚将不会被自动使用\n" +
-		"• 使用神速咏唱后的 20 秒内，治疗三型、治疗二型、治疗三型、白百合、百合花和再生会被锁定\n" +
+		"• 如果关闭 AutoBurst，法令将不会被自动使用\n" +
+		"• 使用神速咏唱后的 20 秒内，愈疗、治疗二型、愈疗、安慰之心、狂喜之心和再生会被锁定\n" +
 		"• 你可以使用 <tt> 或 <me> 宏来使用庇护所，并在技能设置中禁用它\n")]
 	public bool RotationNotes { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "启用即时咏唱限制逻辑：拥有即时咏唱时尝试阻止除复活外的其他行为")]
+	[RotationConfig(CombatType.PvE, Name = "启用即刻咏唱限制逻辑：拥有即刻咏唱时尝试阻止除复活外的其他行为")]
 	public bool SwiftLogic { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "移动时使用即时咏唱")]
+	[RotationConfig(CombatType.PvE, Name = "移动时使用即刻咏唱")]
 	public bool UseSwiftcastForMovement { get; set; } = true;
 
 	[RotationConfig(CombatType.PvE, Name = "神圣抚摸可用时立即使用")]
 	public bool UseDivine { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "仅对坦克使用神祝祷")]
+	[RotationConfig(CombatType.PvE, Name = "仅对坦克使用天赐祝福")]
 	public bool BenedictionTankOnly { get; set; } = true;
 
 	[Range(0, 20, ConfigUnitType.Seconds, 0.5f)]
@@ -46,15 +46,15 @@ public sealed class WHM_Reborn : WhiteMageRotation
 	public float MovementTimeThreshold { get; set; } = 0.8f;
 
 	[Range(0, 10000, ConfigUnitType.None, 100)]
-	[RotationConfig(CombatType.PvE, Name = "使用无咒所需的施法消耗阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用无中生有所需的施法消耗阈值")]
 	public float ThinAirNeed { get; set; } = 1000;
 
-	[RotationConfig(CombatType.PvE, Name = "如何管理最后一个无咒充能")]
+	[RotationConfig(CombatType.PvE, Name = "如何管理最后一个无中生有充能")]
 	public ThinAirUsageStrategy ThinAirLastChargeUsage { get; set; } = ThinAirUsageStrategy.ReserveLastChargeForRaise;
 
 	public enum ThinAirUsageStrategy : byte
 	{
-		[Description("在昂贵的法术上使用所有无咒充能")]
+		[Description("在昂贵的法术上使用所有无中生有充能")]
 		UseAllCharges,
 
 		[Description("保留最后一层充能用于复活")]
@@ -65,47 +65,47 @@ public sealed class WHM_Reborn : WhiteMageRotation
 	}
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用神祝祷所需的队友最低 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用天赐祝福所需的队友最低 HP 阈值")]
 	public float BenedictionHeal { get; set; } = 0.1f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用四连咒第 2 层充能所需的队友最低 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用神名第 2 层充能所需的队友最低 HP 阈值")]
 	public float TetragrammatonSecond { get; set; } = 0.7f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用四连咒最后一层充能所需的队友最低 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用神名最后一层充能所需的队友最低 HP 阈值")]
 	public float TetragrammatonLast { get; set; } = 0.6f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "0 层血百合时使用白百合所需的队友最低 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "0 层苦难之心时使用安慰之心所需的队友最低 HP 阈值")]
 	public float SolaceHeal0 { get; set; } = 0.7f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "1 层血百合时使用白百合所需的队友最低 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "1 层苦难之心时使用安慰之心所需的队友最低 HP 阈值")]
 	public float SolaceHeal1 { get; set; } = 0.6f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "2 层血百合时使用白百合所需的队友最低 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "2 层苦难之心时使用安慰之心所需的队友最低 HP 阈值")]
 	public float SolaceHeal2 { get; set; } = 0.5f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "0 层血百合时使用百合花所需的队友平均最低 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "0 层苦难之心时使用狂喜之心所需的队友平均最低 HP 阈值")]
 	public float RaptureHeal0 { get; set; } = 0.8f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "1 层血百合时使用百合花所需的队友平均最低 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "1 层苦难之心时使用狂喜之心所需的队友平均最低 HP 阈值")]
 	public float RaptureHeal1 { get; set; } = 0.7f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "2 层血百合时使用百合花所需的队友平均最低 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "2 层苦难之心时使用狂喜之心所需的队友平均最低 HP 阈值")]
 	public float RaptureHeal2 { get; set; } = 0.6f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用治疗三型/治疗二型所需的队友平均最低 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用愈疗/治疗二型所需的队友平均最低 HP 阈值")]
 	public float MedicaHeal { get; set; } = 0.5f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用治疗三型所需的队友平均最低 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用愈疗所需的队友平均最低 HP 阈值")]
 	public float CureIIIHeal { get; set; } = 0.5f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]

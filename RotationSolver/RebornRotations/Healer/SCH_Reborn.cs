@@ -20,19 +20,19 @@ public sealed class SCH_Reborn : ScholarRotation
 	public float AetherpactMinimum { get; set; } = 0.8f;
 
 	[Range(0, 0.5f, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "将激发作为治疗而非减伤buff使用的最低 HP 百分比")]
+	[RotationConfig(CombatType.PvE, Name = "将深谋远虑之策作为治疗而非减伤buff使用的最低 HP 百分比")]
 	public float ExcogHeal { get; set; } = 0.5f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用应急战术配合鼓舞的队伍 HP 百分比阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用应急战术配合鼓舞激励之策的队伍 HP 百分比阈值")]
 	public float EmergencyTacticsHeal { get; set; } = 0.4f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用秘本配合不屈不挠所需的队伍平均 HP 百分比（必须低于 AoE 治疗阈值）")]
+	[RotationConfig(CombatType.PvE, Name = "使用秘策配合不屈不挠之策所需的队伍平均 HP 百分比（必须低于 AoE 治疗阈值）")]
 	public float ReciteIndomitability { get; set; } = 0.5f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "优先使用不屈不挠和瞬发治疗而非 HoT 效果的队伍平均 HP 百分比")]
+	[RotationConfig(CombatType.PvE, Name = "优先使用不屈不挠之策和瞬发治疗而非 HoT 效果的队伍平均 HP 百分比")]
 	public float EmergencyHealPercent { get; set; } = 0.1f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
@@ -40,7 +40,7 @@ public sealed class SCH_Reborn : ScholarRotation
 	public float BallparkPercent { get; set; } = 0.08f;
 
 	[Range(0, 10, ConfigUnitType.Seconds)]
-	[RotationConfig(CombatType.PvE, Name = "使用神圣大地前必须静止的秒数")]
+	[RotationConfig(CombatType.PvE, Name = "使用野战治疗阵前必须静止的秒数")]
 	public float SacredSoilTimeStill { get; set; } = 3f;
 
 	[Range(0, 5, ConfigUnitType.Seconds)]
@@ -65,22 +65,22 @@ public sealed class SCH_Reborn : ScholarRotation
 	[RotationConfig(CombatType.PvE, Name = "使用 GCD 进行治疗。（若你是小队中唯一治疗则忽略）")]
 	public bool GCDHeal { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "在倒计时起手中使用秘本")]
+	[RotationConfig(CombatType.PvE, Name = "在倒计时起手中使用秘策")]
 	public bool UseRecitationInOpener { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "在倒计时起手中使用鼓舞")]
+	[RotationConfig(CombatType.PvE, Name = "在倒计时起手中使用鼓舞激励之策")]
 	public bool AdloquiumDuringCountdown { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "使用秘本配合鼓舞、鼓动 或应允")]
+	[RotationConfig(CombatType.PvE, Name = "使用秘策配合鼓舞激励之策、鼓动 或应允")]
 	public bool ReciteSuccor { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "在爆发阶段使用以太超流")]
+	[RotationConfig(CombatType.PvE, Name = "在爆发阶段使用异化")]
 	public bool ShouldDissipate { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "将神圣大地的再生作为治疗效果使用")]
+	[RotationConfig(CombatType.PvE, Name = "将野战治疗阵的再生作为治疗效果使用")]
 	public bool SacredSoilHeal { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "若正在与 BOSS 战斗，则允许移动中使用神圣大地")]
+	[RotationConfig(CombatType.PvE, Name = "若正在与 BOSS 战斗，则允许移动中使用野战治疗阵")]
 	public bool SacredSoilBossExemption { get; set; } = true;
 
 	[RotationConfig(CombatType.PvE, Name = "启用粗略 DoT 击杀时间估算器（除正常 TTK 配置外）")]

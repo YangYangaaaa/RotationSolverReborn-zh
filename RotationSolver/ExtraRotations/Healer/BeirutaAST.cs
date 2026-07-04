@@ -18,8 +18,8 @@ public sealed class BeirutaAST : AstrologianRotation
 		"• DoT 效果在爆发阶段或移动期间可能会稍微提前刷新\n" +
 		"• 光速由循环自动管理，不应手动使用\n" +
 		"• 本循环中地星按冷却使用，如果想用 CD 计划器管理请在技能设置中禁用\n" +
-		"• 如果使用了地宫占卜或中立学派，本循环会立即跟随使用日耀结合\n" +
-		"• 来自 CD 计划器（或所有 GCD 操作）的宏观宇宙不可靠，请手动拦截\n" +
+		"• 如果使用了地宫占卜或中间学派，本循环会立即跟随使用太阳星座\n" +
+		"• 来自 CD 计划器（或所有 GCD 操作）的大宇宙不可靠，请手动拦截\n" +
 		"• 本循环中单体治疗的使用故意更保守\n")]
 	public bool RotationNotes { get; set; } = true;
 
@@ -38,13 +38,13 @@ public sealed class BeirutaAST : AstrologianRotation
 	[RotationConfig(CombatType.PvE, Name = "用日耀/方面日耀自动升级地宫占卜")]
 	public bool AutoUpgradeHoroscope { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "启用即时咏唱限制逻辑：拥有即时咏唱时尝试阻止除复活外的其他行为")]
+	[RotationConfig(CombatType.PvE, Name = "启用即刻咏唱限制逻辑：拥有即刻咏唱时尝试阻止除复活外的其他行为")]
 	public bool SwiftLogic { get; set; } = true;
 
 	[RotationConfig(CombatType.PvE, Name = "移动时使用光速（仍为爆发保留）")]
 	public bool UseLightspeedForMovement { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "移动时使用即时咏唱")]
+	[RotationConfig(CombatType.PvE, Name = "移动时使用即刻咏唱")]
 	public bool UseSwiftcastForMovement { get; set; } = true;
 
 	[Range(0, 5, ConfigUnitType.Seconds, 0.1f)]
@@ -54,7 +54,7 @@ public sealed class BeirutaAST : AstrologianRotation
 	[RotationConfig(CombatType.PvE, Name = "使用 GCD 治疗。（如果你是队伍中唯一的治疗则忽略）")]
 	public bool GCDHeal { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "可用时优先使用微观宇宙而非所有其他治疗")]
+	[RotationConfig(CombatType.PvE, Name = "可用时优先使用小宇宙而非所有其他治疗")]
 	public bool MicroPrio { get; set; } = false;
 
 	[Range(4, 20, ConfigUnitType.Seconds)]
@@ -74,7 +74,7 @@ public sealed class BeirutaAST : AstrologianRotation
 	public float HoroscopeHeal { get; set; } = 0.6f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "触发微观宇宙所需的队友最低 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "触发小宇宙所需的队友最低 HP 阈值")]
 	public float MicrocosmosHeal { get; set; } = 0.5f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
@@ -82,26 +82,26 @@ public sealed class BeirutaAST : AstrologianRotation
 	public float StellarDetonationHeal { get; set; } = 0.7f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用天星对立所需的队友最低平均 HP 阈值（仅在未持有巨星支配时）")]
+	[RotationConfig(CombatType.PvE, Name = "使用天星冲日所需的队友最低平均 HP 阈值（仅在未持有巨星支配时）")]
 	public float CelestialOppositionHeal { get; set; } = 0.7f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用王冠之妃所需的队友最低平均 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用王冠之贵妇所需的队友最低平均 HP 阈值")]
 	public float LadyOfHeals { get; set; } = 0.8f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用本质尊严第 3 层充能所需的队友最低 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用先天禀赋第 3 层充能所需的队友最低 HP 阈值")]
 	public float EssentialDignityThird { get; set; } = 0.7f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用本质尊严第 2 层充能所需的队友最低 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用先天禀赋第 2 层充能所需的队友最低 HP 阈值")]
 	public float EssentialDignitySecond { get; set; } = 0.5f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用本质尊严最后一层充能所需的队友最低 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用先天禀赋最后一层充能所需的队友最低 HP 阈值")]
 	public float EssentialDignityLast { get; set; } = 0.3f;
 
-	[RotationConfig(CombatType.PvE, Name = "可用时优先使用本质尊严而非单体 GCD 治疗")]
+	[RotationConfig(CombatType.PvE, Name = "可用时优先使用先天禀赋而非单体 GCD 治疗")]
 	public EssentialPrioStrategy EssentialPrio2 { get; set; } = EssentialPrioStrategy.AnyCharges;
 
 	public enum EssentialPrioStrategy : byte

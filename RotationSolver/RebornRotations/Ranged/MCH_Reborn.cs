@@ -1,4 +1,4 @@
-﻿namespace RotationSolver.RebornRotations.Ranged;
+namespace RotationSolver.RebornRotations.Ranged;
 
 [Rotation("Reborn", CombatType.PvE, GameVersion = "7.5")]
 [SourceCode(Path = "main/RebornRotations/Ranged/MCH_Reborn.cs")]
@@ -9,7 +9,7 @@ public sealed class MCH_Reborn : MachinistRotation
 	[RotationConfig(CombatType.PvE, Name = "倒计时期间使用爆发药（需开启自动爆发选项）")]
 	private bool OpenerBurstMeds { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "移动时使用生物爆破炮")]
+	[RotationConfig(CombatType.PvE, Name = "移动时使用毒菌冲击")]
 	private bool BioMove { get; set; } = true;
 
 	[RotationConfig(CombatType.PvE, Name = "仅在Boss目标上使用野火")]

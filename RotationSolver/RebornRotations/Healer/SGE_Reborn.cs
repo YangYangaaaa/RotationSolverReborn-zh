@@ -8,19 +8,19 @@ namespace RotationSolver.RebornRotations.Healer;
 public sealed class SGE_Reborn : SageRotation
 {
 	#region Config Options
-	[RotationConfig(CombatType.PvE, Name = "使用优生学技能进行治疗")]
+	[RotationConfig(CombatType.PvE, Name = "使用均衡技能进行治疗")]
 	public bool EukrasiaActionHeal { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "通过在 GCD 逻辑末尾允许优生预后（实验性）来防止卡死")]
+	[RotationConfig(CombatType.PvE, Name = "通过在 GCD 逻辑末尾允许均衡预后（实验性）来防止卡死")]
 	public bool AntiBrick { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "非战斗状态下使用优生学")]
+	[RotationConfig(CombatType.PvE, Name = "非战斗状态下使用均衡")]
 	public bool OOCEukrasia { get; set; } = true;
 
 	[RotationConfig(CombatType.PvE, Name = "非战斗状态下使用根素")]
 	public bool OOCRhizomata { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "限制 全血 仅在多段伤害集合时使用")]
+	[RotationConfig(CombatType.PvE, Name = "限制 泛输血 仅在多段伤害集合时使用")]
 	public bool MultiHitRestrict { get; set; } = false;
 
 	[RotationConfig(CombatType.PvE, Name = "使用 GCD 进行治疗。（若你是小队中唯一治疗则忽略）")]
@@ -30,25 +30,25 @@ public sealed class SGE_Reborn : SageRotation
 	public bool SwiftLogic { get; set; } = true;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用活性法所需的队友生命值阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用白牛清液所需的队友生命值阈值")]
 	public float TaurocholeHeal { get; set; } = 0.8f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用救护所需的队友生命值阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用拯救所需的队友生命值阈值")]
 	public float SoteriaHeal { get; set; } = 0.85f;
 
-	[RotationConfig(CombatType.PvE, Name = "适用时使用角溃进行治疗")]
+	[RotationConfig(CombatType.PvE, Name = "适用时使用坚角清液进行治疗")]
 	public bool KeracholePvEHealOption { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "适用时使用全息进行治疗")]
+	[RotationConfig(CombatType.PvE, Name = "适用时使用整体论进行治疗")]
 	public bool HolosHealOption { get; set; } = true;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用全息所需的队友平均生命值阈值", Parent = nameof(HolosHealOption))]
+	[RotationConfig(CombatType.PvE, Name = "使用整体论所需的队友平均生命值阈值", Parent = nameof(HolosHealOption))]
 	public float HolosHeal { get; set; } = 0.5f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用护生所需的坦克队友生命值阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用活化所需的坦克队友生命值阈值")]
 	public float ZoeHeal { get; set; } = 0.6f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
@@ -60,27 +60,27 @@ public sealed class SGE_Reborn : SageRotation
 	public float OGCDTankHeal { get; set; } = 0.65f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用增益所需的队友生命值阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用混合所需的队友生命值阈值")]
 	public float KrasisHeal { get; set; } = 0.3f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用增益所需的坦克队友生命值阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用混合所需的坦克队友生命值阈值")]
 	public float KrasisTankHeal { get; set; } = 0.7f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用灵气作为单体治疗所需的队友生命值阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用魂灵风息作为单体治疗所需的队友生命值阈值")]
 	public float PneumaSTPartyHeal { get; set; } = 0.2f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用灵气作为单体治疗所需的坦克队友生命值阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用魂灵风息作为单体治疗所需的坦克队友生命值阈值")]
 	public float PneumaSTTankHeal { get; set; } = 0.6f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用灵气作为 AoE 治疗所需的队友平均生命值阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用魂灵风息作为 AoE 治疗所需的队友平均生命值阈值")]
 	public float PneumaAOEPartyHeal { get; set; } = 0.65f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用灵气作为 AoE 治疗所需的坦克队友生命值阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用魂灵风息作为 AoE 治疗所需的坦克队友生命值阈值")]
 	public float PneumaAOETankHeal { get; set; } = 0.6f;
 
 	[RotationConfig(CombatType.PvE, Name = "使用哪种起手")]
@@ -88,10 +88,10 @@ public sealed class SGE_Reborn : SageRotation
 
 	public enum OpenerStrategy : byte
 	{
-		[Description("使用毒素起手（战前）")]
+		[Description("使用箭毒起手（战前）")]
 		ToxikonOpener,
 
-		[Description("使用灵气起手（战前）")]
+		[Description("使用魂灵风息起手（战前）")]
 		PneumaOpener,
 	}
 

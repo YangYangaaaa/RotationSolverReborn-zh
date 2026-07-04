@@ -35,7 +35,7 @@ public sealed class BeirutaRDM : RedMageRotation
 	[RotationConfig(CombatType.PvE, Name = "爆发连击期间阻止复活")]
 	public bool PreventRaising { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "非战斗状态下使用双连咏唱施放愈疗。")]
+	[RotationConfig(CombatType.PvE, Name = "非战斗状态下使用双连咏唱施放赤治疗。")]
 	public bool UseVercure { get; set; } = false;
 
 	[RotationConfig(CombatType.PvE, Name = "移动且无瞬发时施放重击。")]
@@ -44,13 +44,13 @@ public sealed class BeirutaRDM : RedMageRotation
 	[RotationConfig(CombatType.PvE, Name = "仅在近战距离内使用鼓励。")]
 	public bool AnyonesMeleeRule { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "使用即时咏唱/加速进行 oGCD 窗口对齐（修复突进/还击漂移）")]
+	[RotationConfig(CombatType.PvE, Name = "使用即刻咏唱/加速进行 oGCD 窗口对齐（修复突进/还击漂移）")]
 	public bool UseWindowAlignment { get; set; } = true;
 
 	[RotationConfig(CombatType.PvE, Name = "超出距离时最多保留近战连击 2 秒")]
 	public bool HoldMeleeComboIfOutOfRange { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "延迟满溢/荆棘之厄以对齐增益（约在鼓励后 3 个 GCD）")]
+	[RotationConfig(CombatType.PvE, Name = "延迟光芒四射/荆棘环绕以对齐增益（约在鼓励后 3 个 GCD）")]
 	public bool DelayBuffOGCDs { get; set; } = true;
 
 	[Range(0, 4, ConfigUnitType.Seconds, 0.1f)]

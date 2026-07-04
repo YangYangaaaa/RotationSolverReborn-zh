@@ -1,4 +1,4 @@
-﻿namespace RotationSolver.RebornRotations.Melee;
+namespace RotationSolver.RebornRotations.Melee;
 
 [Rotation("Reborn", CombatType.PvE, GameVersion = "7.5")]
 [SourceCode(Path = "main/RebornRotations/Melee/VPR_Reborn.cs")]
@@ -7,35 +7,35 @@ public sealed class VPR_Reborn : ViperRotation
 {
 	#region Config Options
 
-	[RotationConfig(CombatType.PvE, Name = "爆发后保留一层蛇形怒火用于移动")]
+	[RotationConfig(CombatType.PvE, Name = "爆发后保留一层蛇灵气用于移动")]
 	public bool BurstUncoiledFuryHold { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "使用过强效幻药/宝石药后用完所有蛇形怒火层数（覆盖下一选项）")]
+	[RotationConfig(CombatType.PvE, Name = "使用过强效幻药/宝石药后用完所有蛇灵气层数（覆盖下一选项）")]
 	public bool MedicineUncoiledFury { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "远程时允许蛇形怒火和蛇缠之击覆盖 oGCD")]
+	[RotationConfig(CombatType.PvE, Name = "远程时允许蛇灵气和蛇缠之击覆盖 oGCD")]
 	public bool UFGhosting { get; set; } = true;
 
 	[Range(1, 3, ConfigUnitType.None, 1)]
-	[RotationConfig(CombatType.PvE, Name = "近战范围内使用蛇形怒火前需要达到的层数（忽略爆发，留 3 层用于远程输出期或仅爆发）")]
+	[RotationConfig(CombatType.PvE, Name = "近战范围内使用蛇灵气前需要达到的层数（忽略爆发，留 3 层用于远程输出期或仅爆发）")]
 	public int MaxUncoiledStacksUser { get; set; } = 3;
 
 	[Range(1, 30, ConfigUnitType.None, 1)]
-	[RotationConfig(CombatType.PvE, Name = "允许使用觉醒所需的迅速状态剩余时间（设置过低可能导致增益丢失）")]
+	[RotationConfig(CombatType.PvE, Name = "允许使用祖灵降临所需的迅速状态剩余时间（设置过低可能导致增益丢失）")]
 	public int SwiftTimer { get; set; } = 10;
 
 	[Range(1, 30, ConfigUnitType.None, 1)]
-	[RotationConfig(CombatType.PvE, Name = "允许使用觉醒所需的狩猎状态剩余时间（设置过低可能导致增益丢失）")]
+	[RotationConfig(CombatType.PvE, Name = "允许使用祖灵降临所需的狩猎状态剩余时间（设置过低可能导致增益丢失）")]
 	public int HuntersTimer { get; set; } = 10;
 
 	[Range(0, 120, ConfigUnitType.None, 5)]
-	[RotationConfig(CombatType.PvE, Name = "蛇之怒火冷却经过多久后循环开始为爆发积攒量表。不懂就别动。（即使到达上限仍会无视计时使用觉醒）")]
+	[RotationConfig(CombatType.PvE, Name = "蛇灵气冷却经过多久后循环开始为爆发积攒量表。不懂就别动。（即使到达上限仍会无视计时使用祖灵降临）")]
 	public int ReawakenDelayTimer { get; set; } = 75;
 
-	[RotationConfig(CombatType.PvE, Name = "实验性幻药使用（最多在蛇之怒火冷却结束前 5 秒使用）")]
+	[RotationConfig(CombatType.PvE, Name = "实验性幻药使用（最多在蛇灵气冷却结束前 5 秒使用）")]
 	public bool BurstMed { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "若可使用蛇尾、双血或双牙 oGCD 则限制 GCD 使用")]
+	[RotationConfig(CombatType.PvE, Name = "若可使用祖灵大蛇牙、双牙乱击或双牙连击 oGCD 则限制 GCD 使用")]
 	public bool AbilityPrio2 { get; set; } = true;
 	#endregion
 
