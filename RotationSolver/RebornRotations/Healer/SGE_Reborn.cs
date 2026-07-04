@@ -17,10 +17,10 @@ public sealed class SGE_Reborn : SageRotation
 	[RotationConfig(CombatType.PvE, Name = "非战斗状态下使用优生学")]
 	public bool OOCEukrasia { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "非战斗状态下使用 Rhizomata")]
+	[RotationConfig(CombatType.PvE, Name = "非战斗状态下使用根茎")]
 	public bool OOCRhizomata { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "限制 Panhaima 仅在多段伤害集合时使用")]
+	[RotationConfig(CombatType.PvE, Name = "限制 全血 仅在多段伤害集合时使用")]
 	public bool MultiHitRestrict { get; set; } = false;
 
 	[RotationConfig(CombatType.PvE, Name = "使用 GCD 进行治疗。（若你是小队中唯一治疗则忽略）")]
@@ -34,21 +34,21 @@ public sealed class SGE_Reborn : SageRotation
 	public float TaurocholeHeal { get; set; } = 0.8f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用 Soteria 所需的队友生命值阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用救护所需的队友生命值阈值")]
 	public float SoteriaHeal { get; set; } = 0.85f;
 
-	[RotationConfig(CombatType.PvE, Name = "适用时使用 Kerachole 进行治疗")]
+	[RotationConfig(CombatType.PvE, Name = "适用时使用角溃进行治疗")]
 	public bool KeracholePvEHealOption { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "适用时使用 Holos 进行治疗")]
+	[RotationConfig(CombatType.PvE, Name = "适用时使用全息进行治疗")]
 	public bool HolosHealOption { get; set; } = true;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用 Holos 所需的队友平均生命值阈值", Parent = nameof(HolosHealOption))]
+	[RotationConfig(CombatType.PvE, Name = "使用全息所需的队友平均生命值阈值", Parent = nameof(HolosHealOption))]
 	public float HolosHeal { get; set; } = 0.5f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用 Zoe 所需的坦克队友生命值阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用护生所需的坦克队友生命值阈值")]
 	public float ZoeHeal { get; set; } = 0.6f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
@@ -60,27 +60,27 @@ public sealed class SGE_Reborn : SageRotation
 	public float OGCDTankHeal { get; set; } = 0.65f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用 Krasis 所需的队友生命值阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用增益所需的队友生命值阈值")]
 	public float KrasisHeal { get; set; } = 0.3f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用 Krasis 所需的坦克队友生命值阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用增益所需的坦克队友生命值阈值")]
 	public float KrasisTankHeal { get; set; } = 0.7f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用 Pneuma 作为单体治疗所需的队友生命值阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用灵气作为单体治疗所需的队友生命值阈值")]
 	public float PneumaSTPartyHeal { get; set; } = 0.2f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用 Pneuma 作为单体治疗所需的坦克队友生命值阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用灵气作为单体治疗所需的坦克队友生命值阈值")]
 	public float PneumaSTTankHeal { get; set; } = 0.6f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用 Pneuma 作为 AoE 治疗所需的队友平均生命值阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用灵气作为 AoE 治疗所需的队友平均生命值阈值")]
 	public float PneumaAOEPartyHeal { get; set; } = 0.65f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用 Pneuma 作为 AoE 治疗所需的坦克队友生命值阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用灵气作为 AoE 治疗所需的坦克队友生命值阈值")]
 	public float PneumaAOETankHeal { get; set; } = 0.6f;
 
 	[RotationConfig(CombatType.PvE, Name = "使用哪种起手")]

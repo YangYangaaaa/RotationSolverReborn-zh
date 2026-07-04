@@ -71,7 +71,7 @@ public sealed class SCH_Reborn : ScholarRotation
 	[RotationConfig(CombatType.PvE, Name = "在倒计时起手中使用鼓舞")]
 	public bool AdloquiumDuringCountdown { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "使用秘本配合鼓舞、Concitation 或 Accession")]
+	[RotationConfig(CombatType.PvE, Name = "使用秘本配合鼓舞、鼓动 或应允")]
 	public bool ReciteSuccor { get; set; } = true;
 
 	[RotationConfig(CombatType.PvE, Name = "在爆发阶段使用以太超流")]

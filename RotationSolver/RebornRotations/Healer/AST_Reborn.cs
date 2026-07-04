@@ -37,7 +37,7 @@ public sealed class AST_Reborn : AstrologianRotation
 	public float UseEarthlyStarTime { get; set; } = 4;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "使用方位Benefic所需的队友最低 HP 阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用星位福星所需的队友最低 HP 阈值")]
 	public float AspectedBeneficHeal { get; set; } = 0.4f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
