@@ -2,7 +2,7 @@ using System.ComponentModel;
 
 namespace RotationSolver.ExtraRotations.Healer;
 
-[Rotation("BeirutaAST", CombatType.PvE, GameVersion = "7.45", Description = "Semi-Automatic Savage/Ultimate rotation, need to used with CD planner or manual inputs")]
+[Rotation("BeirutaAST", CombatType.PvE, GameVersion = "7.45", Description = "半自动零式/绝境战循环，需配合 CD 计划器或手动输入使用")]
 [SourceCode(Path = "main/ExtraRotations/Healer/BeirutaAST.cs")]
 [ExtraRotation]
 

@@ -2,7 +2,7 @@ using System.ComponentModel;
 
 namespace RotationSolver.ExtraRotations.Tank;
 
-[Rotation("ChurinDRK", CombatType.PvE, GameVersion = "7.4", Description = "Find it in your heart. You'll need to break past the ribs and then scoop it out, but it's in there, and you need to find it. Quickly.")]
+[Rotation("ChurinDRK", CombatType.PvE, GameVersion = "7.4", Description = "在你心中找到它。你需要突破阻力，把它挖出来，但它就在那里，你需要找到它。快点。")]
 [SourceCode(Path = "main/ExtraRotations/Tank/ChurinDRK.cs")]
 [ExtraRotation]
 public sealed class ChurinDRK : DarkKnightRotation

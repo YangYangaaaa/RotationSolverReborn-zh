@@ -8,7 +8,7 @@ namespace RotationSolver.ExtraRotations.Ranged;
 
 [Rotation("Churin DNC", CombatType.PvE, GameVersion = "7.5",
 	Description =
-		"Candles lit, runes drawn upon the floor, sacrifice prepared. Everything is ready for the summoning. I begin the incantation: \"Shakira, Shakira!\"")]
+		"蜡烛点燃，符文绘于地面，祭品准备就绪。召唤仪式一切就绪。我开始咏唱咒文：\"夏奇拉，夏奇拉！\"")]
 [SourceCode(Path = "main/ExtraRotations/Ranged/ChurinDNC.cs")]
 [ExtraRotation]
 

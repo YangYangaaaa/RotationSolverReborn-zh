@@ -2,7 +2,7 @@ using FFXIVClientStructs.FFXIV.Client.Game;
 
 namespace RotationSolver.ExtraRotations.Ranged;
 
-[Rotation("Churin MCH", CombatType.PvE, GameVersion = "7.3", Description = "Kill it with kindness. And if that fails, kill it with sharp sticks or knives...or guns!")]
+[Rotation("Churin MCH", CombatType.PvE, GameVersion = "7.3", Description = "用善意杀死它。如果不行，就用尖棍或刀子……或者枪！")]
 [SourceCode(Path = "ArgentiRotations/Ranged/Machinist/ChurinMCH.cs")]
 [ExtraRotation]
 public sealed class ChurinMCH : MachinistRotation

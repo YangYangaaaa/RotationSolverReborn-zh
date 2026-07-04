@@ -3,7 +3,7 @@ using System.ComponentModel;
 namespace RotationSolver.ExtraRotations.Ranged;
 
 [Rotation("Churin BRD", CombatType.PvE, GameVersion = "7.5",
-	Description = "I sing the body electric. I gasp the body organic. I miss the body remembered.")]
+	Description = "我歌唱带电的躯体。我渴望有机的躯体。我怀念记忆中的躯体。")]
 [SourceCode(Path = "main/ExtraRotations/Ranged/ChurinBRD.cs")]
 [ExtraRotation]
 

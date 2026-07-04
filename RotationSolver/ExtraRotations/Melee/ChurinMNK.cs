@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace RotationSolver.ExtraRotations.Melee;
 
-[Rotation("Churin MNK", CombatType.PvE, GameVersion = "7.4", Description = "An eye for an eye. A tooth for a tooth. An eye and a tooth for a loaf of bread. Eyes and teeth are the new currency.")]
+[Rotation("Churin MNK", CombatType.PvE, GameVersion = "7.4", Description = "以眼还眼。以牙还牙。用一只眼和一颗牙换一块面包。眼和牙是新的货币。")]
 [SourceCode(Path = "main/ExtraRotations/Melee/ChurinMNK.cs")]
 [ExtraRotation]
 
