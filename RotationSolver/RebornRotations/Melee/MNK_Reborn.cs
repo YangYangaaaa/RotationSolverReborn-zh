@@ -11,16 +11,16 @@ public sealed class MNK_Reborn : MonkRotation
 
 	public enum RiddleOfFireFirst : byte
 	{
-		[Description("Brotherhood")] Brotherhood,
+		[Description("义结金兰")] Brotherhood,
 
-		[Description("Perfect Balance")] PerfectBalance,
+		[Description("震脚")] PerfectBalance,
 	}
 
 	public enum MasterfulBlitzUse : byte
 	{
-		[Description("Use Immediately")] UseAsAble,
+		[Description("立即使用")] UseAsAble,
 
-		[Description("With ROF burst logic")] RiddleOfFireUse,
+		[Description("配合红莲爆发逻辑")] RiddleOfFireUse,
 	}
 
 	[RotationConfig(CombatType.PvE, Name = "使用演武")]

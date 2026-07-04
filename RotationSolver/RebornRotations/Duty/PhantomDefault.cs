@@ -56,10 +56,10 @@ public sealed class PhantomDefault : PhantomRotation
 
 	public enum DarkShockCannonImmuneStrategy : byte
 	{
-		[Description("Dark Cannon")]
+		[Description("暗黑加农炮")]
 		DarkCannon,
 
-		[Description("Shock Cannon")]
+		[Description("震荡加农炮")]
 		ShockCannon,
 	}
 
@@ -68,10 +68,10 @@ public sealed class PhantomDefault : PhantomRotation
 
 	public enum DarkShockCannonStrategy : byte
 	{
-		[Description("Dark Cannon")]
+		[Description("暗黑加农炮")]
 		DarkCannon,
 
-		[Description("Shock Cannon")]
+		[Description("震荡加农炮")]
 		ShockCannon,
 	}
 

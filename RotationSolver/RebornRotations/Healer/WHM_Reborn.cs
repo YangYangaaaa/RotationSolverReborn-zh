@@ -54,22 +54,22 @@ public sealed class WHM_Reborn : WhiteMageRotation
 	public float RegenHeal { get; set; } = 0.3f;
 
 	[Range(0, 10000, ConfigUnitType.None, 100)]
-	[RotationConfig(CombatType.PvE, Name = "使用无中生有所需的施法消耗阈值")]
+	[RotationConfig(CombatType.PvE, Name = "使用无咒所需的施法消耗阈值")]
 
 	public float ThinAirNeed { get; set; } = 1000;
 
-	[RotationConfig(CombatType.PvE, Name = "如何管理最后一个无中生有充能")]
+	[RotationConfig(CombatType.PvE, Name = "如何管理最后一个无咒充能")]
 	public ThinAirUsageStrategy ThinAirLastChargeUsage { get; set; } = ThinAirUsageStrategy.ReserveLastChargeForRaise;
 
 	public enum ThinAirUsageStrategy : byte
 	{
-		[Description("Use all thin air charges on expensive spells")]
+		[Description("在昂贵的法术上使用所有无咒充能")]
 		UseAllCharges,
 
-		[Description("Reserve the last charge for raise")]
+		[Description("保留最后一层充能用于复活")]
 		ReserveLastChargeForRaise,
 
-		[Description("Reserve the last charge for manual use")]
+		[Description("保留最后一层充能用于手动使用")]
 		ReserveLastCharge,
 	}
 	#endregion

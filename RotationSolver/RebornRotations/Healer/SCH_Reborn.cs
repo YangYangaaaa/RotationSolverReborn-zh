@@ -91,10 +91,10 @@ public sealed class SCH_Reborn : ScholarRotation
 
 	public enum DeploymentTacticsUsageStrategy : byte
 	{
-		[Description("Use when a party member has Catalyze status")]
+		[Description("当队友拥有激流状态时使用")]
 		CatalyzeOnly,
 
-		[Description("Use when a party member has Catalyze or Galvanize status")]
+		[Description("当队友拥有激流或激昂状态时使用")]
 		CatalyzeOrGalvanize,
 	}
 	#endregion

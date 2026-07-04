@@ -69,13 +69,13 @@ public sealed class AST_Reborn : AstrologianRotation
 
 	public enum EssentialPrioStrategy : byte
 	{
-		[Description("Ignore setting")]
+		[Description("忽略设置")]
 		UseGCDs,
 
-		[Description("When capped")]
+		[Description("满层时")]
 		CappedCharges,
 
-		[Description("Any charges")]
+		[Description("任意层数")]
 		AnyCharges,
 	}
 	#endregion

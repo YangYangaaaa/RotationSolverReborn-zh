@@ -11,13 +11,13 @@ public sealed class SMN_Reborn : SummonerRotation
 
 	public enum SummonOrderType : byte
 	{
-		[Description("Topaz-Emerald-Ruby")] TopazEmeraldRuby,
+		[Description("黄宝石-绿宝石-红宝石")] TopazEmeraldRuby,
 
-		[Description("Topaz-Ruby-Emerald")] TopazRubyEmerald,
+		[Description("黄宝石-红宝石-绿宝石")] TopazRubyEmerald,
 
-		[Description("Emerald-Topaz-Ruby")] EmeraldTopazRuby,
+		[Description("绿宝石-黄宝石-红宝石")] EmeraldTopazRuby,
 
-		[Description("Ruby-Emerald-Topaz")] RubyEmeraldTopaz,
+		[Description("红宝石-绿宝石-黄宝石")] RubyEmeraldTopaz,
 	}
 
 	[RotationConfig(CombatType.PvE, Name = "使用 GCD 治疗。（队伍中没有存活的治疗时忽略）")]

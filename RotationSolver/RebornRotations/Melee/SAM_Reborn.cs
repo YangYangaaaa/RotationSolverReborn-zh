@@ -11,9 +11,9 @@ public sealed class SAM_Reborn : SamuraiRotation
 
 	public enum STtoAOEStrategy : byte
 	{
-		[Description("Hagakure")] Hagakure,
+		[Description("叶隐")] Hagakure,
 
-		[Description("Setsugekka")] Setsugekka,
+		[Description("雪月花")] Setsugekka,
 	}
 
 	[RotationConfig(CombatType.PvE, Name = "存在多个目标时禁止使用彼岸花")]

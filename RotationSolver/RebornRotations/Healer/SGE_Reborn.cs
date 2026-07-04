@@ -88,10 +88,10 @@ public sealed class SGE_Reborn : SageRotation
 
 	public enum OpenerStrategy : byte
 	{
-		[Description("Use Toxikon prepull opener")]
+		[Description("使用毒素起手（战前）")]
 		ToxikonOpener,
 
-		[Description("Use Pneuma prepull opener")]
+		[Description("使用灵气起手（战前）")]
 		PneumaOpener,
 	}
 
