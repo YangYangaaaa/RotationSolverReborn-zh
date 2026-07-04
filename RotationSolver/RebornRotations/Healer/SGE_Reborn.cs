@@ -17,7 +17,7 @@ public sealed class SGE_Reborn : SageRotation
 	[RotationConfig(CombatType.PvE, Name = "非战斗状态下使用优生学")]
 	public bool OOCEukrasia { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "非战斗状态下使用根茎")]
+	[RotationConfig(CombatType.PvE, Name = "非战斗状态下使用根素")]
 	public bool OOCRhizomata { get; set; } = false;
 
 	[RotationConfig(CombatType.PvE, Name = "限制 全血 仅在多段伤害集合时使用")]
