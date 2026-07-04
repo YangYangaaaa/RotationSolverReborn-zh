@@ -1,4 +1,4 @@
-﻿using ECommons.DalamudServices;
+using ECommons.DalamudServices;
 using ECommons.EzIpcManager;
 using ECommons.Reflection;
 #pragma warning disable CS0169 // Field is never used
@@ -48,19 +48,15 @@ namespace RotationSolver.IPC
 	{
 		public enum CancellationReason
 		{
-			[Description("The Wrath user manually elected to revoke your lease.")]
+			[Description("Wrath 用户手动撤销了你的租约。")]
 			WrathUserManuallyCancelled,
-			[Description("Your plugin was detected as having been disabled, " +
-						 "not that you're likely to see this.")]
+			[Description("检测到你的插件已被禁用，不过你不太可能看到此消息。")]
 			LeaseePluginDisabled,
-			[Description("The Wrath plugin is being disabled.")]
+			[Description("Wrath 插件正在被禁用。")]
 			WrathPluginDisabled,
-			[Description("Your lease was released by IPC call, " +
-						 "theoretically this was done by you.")]
+			[Description("你的租约已通过 IPC 调用释放，理论上这是你自己的操作。")]
 			LeaseeReleased,
-			[Description("IPC Services have been disabled remotely. " +
-						 "Please see the commit history for /res/ipc_status.txt. \n " +
-						 "https://github.com/PunishXIV/WrathCombo/commits/main/res/ipc_status.txt")]
+			[Description("IPC 服务已被远程禁用。请查看 /res/ipc_status.txt 的提交历史。\n https://github.com/PunishXIV/WrathCombo/commits/main/res/ipc_status.txt")]
 			AllServicesSuspended,
 		}
 
@@ -103,25 +99,25 @@ namespace RotationSolver.IPC
 
 		public enum SetResult
 		{
-			[Description("A default value that shouldn't ever be seen.")]
+			[Description("不应出现的默认值。")]
 			IGNORED = -1,
-			[Description("The configuration was set successfully.")]
+			[Description("配置设置成功。")]
 			Okay = 0,
-			[Description("The configuration will be set, it is working asynchronously.")]
+			[Description("配置将被设置，正在异步处理。")]
 			OkayWorking = 1,
-			[Description("IPC services are currently disabled.")]
+			[Description("IPC 服务当前已禁用。")]
 			IPCDisabled = 10,
-			[Description("Invalid lease.")]
+			[Description("无效的租约。")]
 			InvalidLease = 11,
-			[Description("Blacklisted lease.")]
+			[Description("已拉黑的租约。")]
 			BlacklistedLease = 12,
-			[Description("Configuration you are trying to set is already set.")]
+			[Description("尝试设置的配置已被设置。")]
 			Duplicate = 13,
-			[Description("Player object is not available.")]
+			[Description("玩家对象不可用。")]
 			PlayerNotAvailable = 14,
-			[Description("The configuration you are trying to set is not available.")]
+			[Description("尝试设置的配置不可用。")]
 			InvalidConfiguration = 15,
-			[Description("The value you are trying to set is invalid.")]
+			[Description("尝试设置的值无效。")]
 			InvalidValue = 16,
 		}
 
