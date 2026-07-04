@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Client.Game;
+using FFXIVClientStructs.FFXIV.Client.Game;
 
 namespace RotationSolver.ExtraRotations.Ranged;
 
@@ -60,26 +60,26 @@ public sealed class ChurinMCH : MachinistRotation
 
 	#region Config Options
 
-	[RotationConfig(CombatType.PvE, Name = "Use Bioblaster while moving")]
+	[RotationConfig(CombatType.PvE, Name = "移动时使用生化炮")]
 	private bool BioMove { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Only use Wildfire on Boss targets")]
+	[RotationConfig(CombatType.PvE, Name = "仅对 Boss 目标使用野火")]
 	private bool WildfireBoss { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Enable Potion Usage")]
+	[RotationConfig(CombatType.PvE, Name = "启用爆发药使用")]
 	private bool PotionUsageEnabled
 	{ get => _churinPotions.Enabled; set => _churinPotions.Enabled = value; }
 
-	[RotationConfig(CombatType.PvE, Name = "Potion Usage Presets", Parent = nameof(PotionUsageEnabled))]
+	[RotationConfig(CombatType.PvE, Name = "爆发药使用预设", Parent = nameof(PotionUsageEnabled))]
 	private PotionStrategy PotionUsagePresets
 	{ get => _churinPotions.Strategy; set => _churinPotions.Strategy = value; }
 
 	[Range(0, 20, ConfigUnitType.Seconds, 0)]
-	[RotationConfig(CombatType.PvE, Name = "Use Opener Potion at minus (value in seconds)", Parent = nameof(PotionUsageEnabled))]
+	[RotationConfig(CombatType.PvE, Name = "开局爆发药使用时间（负秒）", Parent = nameof(PotionUsageEnabled))]
 	private float OpenerPotionTime { get => _churinPotions.OpenerPotionTime; set => _churinPotions.OpenerPotionTime = value; }
 
 	[Range(0, 1200, ConfigUnitType.Seconds, 0)]
-	[RotationConfig(CombatType.PvE, Name = "Use 1st Potion at (value in seconds - leave at 0 if using in opener)", Parent = nameof(PotionUsagePresets), ParentValue = "Use custom potion timings")]
+	[RotationConfig(CombatType.PvE, Name = "第 1 次爆发药使用时间（秒，起手使用则填 0）", Parent = nameof(PotionUsagePresets), ParentValue = "自定义爆发药时机")]
 	private float FirstPotionTiming
 	{
 		get => _firstPotionTiming;
@@ -91,7 +91,7 @@ public sealed class ChurinMCH : MachinistRotation
 	}
 
 	[Range(0, 1200, ConfigUnitType.Seconds, 0)]
-	[RotationConfig(CombatType.PvE, Name = "Use 2nd Potion at (value in seconds)", Parent = nameof(PotionUsagePresets), ParentValue = "Use custom potion timings")]
+	[RotationConfig(CombatType.PvE, Name = "第 2 次爆发药使用时间（秒）", Parent = nameof(PotionUsagePresets), ParentValue = "自定义爆发药时机")]
 	private float SecondPotionTiming
 	{
 		get => _secondPotionTiming;
@@ -103,7 +103,7 @@ public sealed class ChurinMCH : MachinistRotation
 	}
 
 	[Range(0, 1200, ConfigUnitType.Seconds, 0)]
-	[RotationConfig(CombatType.PvE, Name = "Use 3rd Potion at (value in seconds)", Parent = nameof(PotionUsagePresets), ParentValue = "Use custom potion timings")]
+	[RotationConfig(CombatType.PvE, Name = "第 3 次爆发药使用时间（秒）", Parent = nameof(PotionUsagePresets), ParentValue = "自定义爆发药时机")]
 	private float ThirdPotionTiming
 	{
 		get => _thirdPotionTiming;

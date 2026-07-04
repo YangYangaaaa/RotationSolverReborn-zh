@@ -19,73 +19,73 @@ public sealed class ChurinSMN : SummonerRotation
 
 	public enum SummonOrderType : byte
 	{
-		[Description("Topaz-Emerald-Ruby")] TopazEmeraldRuby,
+		[Description("黄宝石-绿宝石-红宝石")] TopazEmeraldRuby,
 
-		[Description("Topaz-Ruby-Emerald")] TopazRubyEmerald,
+		[Description("黄宝石-红宝石-绿宝石")] TopazRubyEmerald,
 
-		[Description("Emerald-Topaz-Ruby")] EmeraldTopazRuby,
+		[Description("绿宝石-黄宝石-红宝石")] EmeraldTopazRuby,
 
-		[Description("Emerald-Ruby-Topaz")] EmeraldRubyTopaz,
+		[Description("绿宝石-红宝石-黄宝石")] EmeraldRubyTopaz,
 
-		[Description("Ruby-Emerald-Topaz")] RubyEmeraldTopaz,
+		[Description("红宝石-绿宝石-黄宝石")] RubyEmeraldTopaz,
 
-		[Description("Ruby-Topaz-Emerald")] RubyTopazEmerald,
+		[Description("红宝石-黄宝石-绿宝石")] RubyTopazEmerald,
 	}
 
 	public enum FightPreset : ushort
 	{
-		[Description("None")] None,
-		[Description("AAC Cruiserweight M4 (Savage)")] CruiserweightM4S,
-		[Description("AAC Cruiserweight M3 (Savage) - WIP")] CruiserweightM3S,
-		[Description("AAC Cruiserweight M2 (Savage) - WIP")] CruiserweightM2S,
-		[Description("AAC Cruiserweight M1 (Savage) - WIP")] CruiserweightM1S,
+		[Description("无")] None,
+		[Description("AAC 轻量级 M4（零式）")] CruiserweightM4S,
+		[Description("AAC 轻量级 M3（零式）- 开发中")] CruiserweightM3S,
+		[Description("AAC 轻量级 M2（零式）- 开发中")] CruiserweightM2S,
+		[Description("AAC 轻量级 M1（零式）- 开发中")] CruiserweightM1S,
 	}
 
-	[RotationConfig(CombatType.PvE, Name = "Use Crimson Cyclone at any range, regardless of safety use with caution (Enabling this ignores the below distance setting).")]
+	[RotationConfig(CombatType.PvE, Name = "无视距离使用深红旋风，不保证安全，请谨慎启用（启用后将忽略下方的距离设置）。")]
 	public bool AddCrimsonCyclone { get; set; } = true;
 
 	[Range(1, 20, ConfigUnitType.Yalms)]
-	[RotationConfig(CombatType.PvE, Name = "Max distance you can be from the target for Crimson Cyclone use")]
+	[RotationConfig(CombatType.PvE, Name = "使用深红旋风的最大距离")]
 	public float CrimsonCycloneDistance { get; set; } = 3.0f;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Crimson Cyclone when moving")]
+	[RotationConfig(CombatType.PvE, Name = "移动时使用深红旋风")]
 	public bool AddCrimsonCycloneMoving { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Swiftcast on resurrection")]
+	[RotationConfig(CombatType.PvE, Name = "复活时使用即时咏唱")]
 	public bool AddSwiftcastOnRaise { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Swiftcast on Ruby Ruin when not enough level for Ruby Rite")]
+	[RotationConfig(CombatType.PvE, Name = "等级不足以使用红宝石仪式时，对红宝石灾祸使用即时咏唱")]
 	public bool AddSwiftcastOnLowSt { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Swiftcast on Ruby Outburst when not enough level for Ruby Rite")]
+	[RotationConfig(CombatType.PvE, Name = "等级不足以使用红宝石仪式时，对红宝石爆发使用即时咏唱")]
 	public bool AddSwiftcastOnLowAOE { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Swiftcast on Garuda")]
+	[RotationConfig(CombatType.PvE, Name = "对迦楼罗使用即时咏唱")]
 	public bool AddSwiftcastOnGaruda { get; set; }
 
-	[RotationConfig(CombatType.PvE, Name = "Use Swiftcast on Ruby Rite if you are not high enough level for Garuda")]
+	[RotationConfig(CombatType.PvE, Name = "等级不足以使用迦楼罗时，对红宝石仪式使用即时咏唱")]
 	public bool AddSwiftcastOnRuby { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Order")]
+	[RotationConfig(CombatType.PvE, Name = "顺序")]
 	public SummonOrderType SummonOrder { get; set; } = SummonOrderType.TopazEmeraldRuby;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Physick above level 30")]
+	[RotationConfig(CombatType.PvE, Name = "30 级以上使用医术")]
 	public bool Healbot { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Enable Potion Usage")]
+	[RotationConfig(CombatType.PvE, Name = "启用爆发药使用")]
 	private static bool PotionUsageEnabled
 	{ get => ChurinPotions.Enabled; set => ChurinPotions.Enabled = value; }
 
-	[RotationConfig(CombatType.PvE, Name = "Potion Usage Presets", Parent = nameof(PotionUsageEnabled))]
+	[RotationConfig(CombatType.PvE, Name = "爆发药使用预设", Parent = nameof(PotionUsageEnabled))]
 	private static PotionStrategy PotionUsagePresets
 	{ get => ChurinPotions.Strategy; set => ChurinPotions.Strategy = value; }
 
 	[Range(0, 20, ConfigUnitType.Seconds, 0)]
-	[RotationConfig(CombatType.PvE, Name = "Use Opener Potion at minus (value in seconds)", Parent = nameof(PotionUsageEnabled))]
+	[RotationConfig(CombatType.PvE, Name = "开局爆发药使用时间（负秒）", Parent = nameof(PotionUsageEnabled))]
 	private static float OpenerPotionTime { get => ChurinPotions.OpenerPotionTime; set => ChurinPotions.OpenerPotionTime = value; }
 
 	[Range(0, 1200, ConfigUnitType.Seconds, 0)]
-	[RotationConfig(CombatType.PvE, Name = "Use 1st Potion at (value in seconds - leave at 0 if using in opener)", Parent = nameof(PotionUsagePresets), ParentValue = "Use custom potion timings")]
+	[RotationConfig(CombatType.PvE, Name = "第 1 次爆发药使用时间（秒，起手使用则填 0）", Parent = nameof(PotionUsagePresets), ParentValue = "自定义爆发药时机")]
 	private float FirstPotionTiming
 	{
 		get => _firstPotionTiming;
@@ -97,7 +97,7 @@ public sealed class ChurinSMN : SummonerRotation
 	}
 
 	[Range(0, 1200, ConfigUnitType.Seconds, 0)]
-	[RotationConfig(CombatType.PvE, Name = "Use 2nd Potion at (value in seconds)", Parent = nameof(PotionUsagePresets), ParentValue = "Use custom potion timings")]
+	[RotationConfig(CombatType.PvE, Name = "第 2 次爆发药使用时间（秒）", Parent = nameof(PotionUsagePresets), ParentValue = "自定义爆发药时机")]
 	private float SecondPotionTiming
 	{
 		get => _secondPotionTiming;
@@ -109,7 +109,7 @@ public sealed class ChurinSMN : SummonerRotation
 	}
 
 	[Range(0, 1200, ConfigUnitType.Seconds, 0)]
-	[RotationConfig(CombatType.PvE, Name = "Use 3rd Potion at (value in seconds)", Parent = nameof(PotionUsagePresets), ParentValue = "Use custom potion timings")]
+	[RotationConfig(CombatType.PvE, Name = "第 3 次爆发药使用时间（秒）", Parent = nameof(PotionUsagePresets), ParentValue = "自定义爆发药时机")]
 	private float ThirdPotionTiming
 	{
 		get => _thirdPotionTiming;
@@ -120,10 +120,10 @@ public sealed class ChurinSMN : SummonerRotation
 		}
 	}
 
-	[RotationConfig(CombatType.PvE, Name = "Enable Fight Presets? (Experimental)")]
+	[RotationConfig(CombatType.PvE, Name = "启用副本预设？（实验性）")]
 	private bool EnableFightPresets { get; set; }
 
-	[RotationConfig(CombatType.PvE, Name = "Choose a Fight", Parent = nameof(EnableFightPresets))]
+	[RotationConfig(CombatType.PvE, Name = "选择副本", Parent = nameof(EnableFightPresets))]
 	public FightPreset FightPresets { get; set; } = FightPreset.None;
 
 	#endregion

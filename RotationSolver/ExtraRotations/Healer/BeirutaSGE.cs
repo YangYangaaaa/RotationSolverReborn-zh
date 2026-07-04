@@ -11,95 +11,95 @@ public sealed class BeirutaSGE : SageRotation
 	#region Config Options
 
 	[RotationConfig(CombatType.PvE, Name =
-		"Please note that this rotation is optimised for high-end encounters.\n" +
-		"• Healing actions are designed to be used automatically, while mitigation is kept minimal to better support CD planner or manual input\n" +
-		"• Only the actions listed in the description will be automatically used and everything else should be used manually or through CD planner\n" +
-		"• If no raid buffs in the team, please set Intercept to GCD usage and use last stack of Phlegma manually where required\n" +
-		"• Disabling AutoBurst is sufficient if you need to delay burst timing in this rotation\n" +
-		"• Applying Zoe to yourself will be treated as a signal to use Pneuma or Eukrasian Prognosis depending on average party HP settings\n" +
-		"• Use Zoe or marco rotation DefenseArea to manually trigger an Eukrasian Prognosis\n" +
-		"• Single-target GCD healing heavily restricted in this rotation\n" +
-		"• If you enabled countdown zoe/shield be aware of haters who might bait you with short countdowns (Turn StartOnCountdown False when away)\n")]
+		"请注意，本循环针对高端战斗进行优化。\n" +
+		"• 治疗行为设计为自动使用，而减伤保持最少，以更好地支持 CD 计划器或手动输入\n" +
+		"• 只有描述中列出的技能会被自动使用，其他所有技能都应手动使用或通过 CD 计划器使用\n" +
+		"• 如果队伍中没有团辅，请将拦截设置为仅 GCD 使用，并在需要时手动使用最后一层黏膜\n" +
+		"• 如果需要延迟本循环的爆发时机，禁用 AutoBurst 即可\n" +
+		"• 将护生施加给自己会被视为使用灵气或优生预后的信号，具体取决于队伍平均 HP 设置\n" +
+		"• 使用护生或宏循环 DefenseArea 来手动触发优生预后\n" +
+		"• 本循环中单体 GCD 治疗受到严格限制\n" +
+		"• 如果启用倒计时护生/护盾，请注意可能有恶意玩家用短倒计时诱导你（离开时将 StartOnCountdown 设为 False）\n")]
 	public bool RotationNotes { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Attempt to prevent bricking by allowing E.Prog at the end of GCD logic (experimental)")]
+	[RotationConfig(CombatType.PvE, Name = "尝试通过在 GCD 逻辑末尾允许优生预后来防止卡死（实验性）")]
 	public bool AntiBrick { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Eukrasia when out of combat")]
+	[RotationConfig(CombatType.PvE, Name = "非战斗时使用优生学")]
 	public bool OOCEukrasia { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Enable Swiftcast Restriction Logic to attempt to prevent actions other than Raise when you have swiftcast")]
+	[RotationConfig(CombatType.PvE, Name = "启用即时咏唱限制逻辑：拥有即时咏唱时尝试阻止除复活外的其他行为")]
 	public bool SwiftLogic { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Swiftcast for movement")]
+	[RotationConfig(CombatType.PvE, Name = "移动时使用即时咏唱")]
 	public bool UseSwiftcastForMovement { get; set; } = true;
 
 	[Range(0, 5, ConfigUnitType.Seconds, 0.1f)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum movement time before allowing movement-based actions")]
+	[RotationConfig(CombatType.PvE, Name = "允许移动类操作前的最小移动时间")]
 	public float MovementTimeThreshold { get; set; } = 0.8f;
 
-	[RotationConfig(CombatType.PvE, Name = "Lock healing actions while Macrocosmos is active")]
+	[RotationConfig(CombatType.PvE, Name = "宏观宇宙生效时锁定治疗行为")]
 	public bool LockHealingActionsDuringMacrocosmos { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Zoe during the countdown opener")]
+	[RotationConfig(CombatType.PvE, Name = "倒计时开场时使用护生")]
 	public bool UseZoeInOpener { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Eukrasian Prognosis during the countdown opener")]
+	[RotationConfig(CombatType.PvE, Name = "倒计时开场时使用优生预后")]
 	public bool EukrasianPrognosisDuringCountdown { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Which opener to use")]
+	[RotationConfig(CombatType.PvE, Name = "使用哪种开场")]
 	public OpenerStrategy OpenerSelection { get; set; } = OpenerStrategy.PneumaOpener;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Health threshold target needs to be to use Taurochole")]
+	[RotationConfig(CombatType.PvE, Name = "使用活性法所需的目标 HP 阈值")]
 	public float TaurocholeHeal { get; set; } = 0.7f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Health threshold target needs to be to use Druochole")]
+	[RotationConfig(CombatType.PvE, Name = "使用鞣酸法所需的目标 HP 阈值")]
 	public float DruocholeHeal { get; set; } = 0.6f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Health threshold Kardion target needs to be to use Soteria")]
+	[RotationConfig(CombatType.PvE, Name = "使用救护所需的心脏目标 HP 阈值")]
 	public float SoteriaHeal { get; set; } = 0.8f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Average party HP threshold to use Pepsis")]
+	[RotationConfig(CombatType.PvE, Name = "使用胞饮所需的队伍平均 HP 阈值")]
 	public float PepsisHeal { get; set; } = 0.4f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Average party HP threshold to use Ixochole")]
+	[RotationConfig(CombatType.PvE, Name = "使用花粉所需的队伍平均 HP 阈值")]
 	public float IxocholeHeal { get; set; } = 0.8f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Average party HP threshold to use Physis")]
+	[RotationConfig(CombatType.PvE, Name = "使用生理所需的队伍平均 HP 阈值")]
 	public float PhysisHeal { get; set; } = 0.5f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Average party HP threshold to use Pneuma in Single Target")]
+	[RotationConfig(CombatType.PvE, Name = "单体目标时使用灵气所需的队伍平均 HP 阈值")]
 	public float PneumaHeal { get; set; } = 0.40f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Average party HP threshold to use Pneuma in Multi Targets")]
+	[RotationConfig(CombatType.PvE, Name = "多目标时使用灵气所需的队伍平均 HP 阈值")]
 	public float PneumaDyskrasiaHeal { get; set; } = 0.70f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Average party HP threshold to use Taurochole")]
+	[RotationConfig(CombatType.PvE, Name = "使用活性法所需的队伍平均 HP 阈值")]
 	public float HealSingleTaurocholeHeal { get; set; } = 0.7f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Average party HP threshold to use Druochole")]
+	[RotationConfig(CombatType.PvE, Name = "使用鞣酸法所需的队伍平均 HP 阈值")]
 	public float HealSingleDruocholeHeal { get; set; } = 0.6f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Average party HP threshold to use Zoe on Pneuma (if lower) or Eukrasian Prognosis (if higher)")]
+	[RotationConfig(CombatType.PvE, Name = "在灵气（如果较低）或优生预后（如果较高）上使用护生所需的队伍平均 HP 阈值")]
 	public float ZoePneumaHeal { get; set; } = 0.40f;
 
 	public enum OpenerStrategy : byte
 	{
-		[Description("Use Toxikon prepull opener")]
+		[Description("战前使用毒素开场")]
 		ToxikonOpener,
 
-		[Description("Use Pneuma prepull opener")]
+		[Description("战前使用灵气开场")]
 		PneumaOpener,
 	}
 

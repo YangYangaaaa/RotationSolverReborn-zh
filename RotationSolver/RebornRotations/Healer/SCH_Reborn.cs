@@ -8,7 +8,7 @@ namespace RotationSolver.RebornRotations.Healer;
 public sealed class SCH_Reborn : ScholarRotation
 {
 	#region Config Options
-	[RotationConfig(CombatType.PvE, Name = "限制炽天使化仅在多段伤害集合时使用")]
+	[RotationConfig(CombatType.PvE, Name = "限制炽天附体仅在多段伤害集合时使用")]
 	public bool MultiHitRestrict { get; set; } = false;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
@@ -48,7 +48,7 @@ public sealed class SCH_Reborn : ScholarRotation
 	public float RuinTime { get; set; } = 0f;
 
 	[Range(0, 10000, ConfigUnitType.None)]
-	[RotationConfig(CombatType.PvE, Name = "优先使用应急治疗和复活前的最低 MP（更愿意提前使用炽天使化）")]
+	[RotationConfig(CombatType.PvE, Name = "优先使用应急治疗和复活前的最低 MP（更愿意提前使用炽天附体）")]
 	public int EmergencyHealingMPThreshold { get; set; } = 2000;
 
 	[Range(0, 2, ConfigUnitType.None)]

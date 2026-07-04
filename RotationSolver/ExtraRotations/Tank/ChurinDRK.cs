@@ -18,22 +18,22 @@ public sealed class ChurinDRK : DarkKnightRotation
 	#region Enums
 	private enum MpStrategy
 	{
-		[Description("Optimal")] Optimal,
-		[Description("Auto at 3000+ MP")] Auto3K,
-		[Description("Auto at 6000+ MP")] Auto6K,
-		[Description("Auto at 9000+ MP")] Auto9K,
-		[Description("Auto when about to cap")] AutoRefresh,
-		[Description("Force Edge of Darkness")] ForceEdge,
-		[Description("Force Flood of Darkness")] ForceFlood
+		[Description("最优")] Optimal,
+		[Description("3000+ MP 时自动")] Auto3K,
+		[Description("6000+ MP 时自动")] Auto6K,
+		[Description("9000+ MP 时自动")] Auto9K,
+		[Description("即将满 MP 时自动")] AutoRefresh,
+		[Description("强制暗之刃")] ForceEdge,
+		[Description("强制暗之洪水")] ForceFlood
 	}
 
 	private enum BloodStrategy
 	{
-		[Description("Automatic")] Automatic,
-		[Description("Use ASAP")] Asap,
-		[Description("Conserve for burst")] Conserve,
-		[Description("Only Bloodspiller")] OnlyBloodspiller,
-		[Description("Only Quietus")] OnlyQuietus
+		[Description("自动")] Automatic,
+		[Description("尽快使用")] Asap,
+		[Description("为爆发保留")] Conserve,
+		[Description("仅血溅")] OnlyBloodspiller,
+		[Description("仅寂灭")] OnlyQuietus
 	}
 
 	#endregion
@@ -57,36 +57,36 @@ public sealed class ChurinDRK : DarkKnightRotation
 
 	#region Config Options
 
-	[RotationConfig(CombatType.PvE, Name = "MP Spending Strategy")]
+	[RotationConfig(CombatType.PvE, Name = "MP 消耗策略")]
 	private MpStrategy MpSpendingStrategy { get; set; } = MpStrategy.Optimal;
 
-	[RotationConfig(CombatType.PvE, Name = "Blood Gauge Strategy")]
+	[RotationConfig(CombatType.PvE, Name = "血量策略")]
 	private BloodStrategy BloodSpendingStrategy { get; set; } = BloodStrategy.Automatic;
 
-	[RotationConfig(CombatType.PvE, Name = "Use The Blackest Night on lowest HP party member during AOE scenarios")]
+	[RotationConfig(CombatType.PvE, Name = "AoE 场景下对最低 HP 队员使用至黑之夜")]
 	private bool BlackLantern { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Shadowstride in countdown")]
+	[RotationConfig(CombatType.PvE, Name = "倒计时中使用暗影步")]
 	private bool Facepull { get; set; } = true;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Target health threshold needed to use Blackest Night with above option")]
+	[RotationConfig(CombatType.PvE, Name = "上述选项触发至黑之夜的目标血量阈值")]
 	private float BlackLanternRatio { get; set; } = 0.5f;
 
-	[RotationConfig(CombatType.PvE, Name = "Enable Potion Usage")]
+	[RotationConfig(CombatType.PvE, Name = "启用爆发药使用")]
 	private static bool PotionUsageEnabled
 	{ get => _churinPotions.Enabled; set => _churinPotions.Enabled = value; }
 
-	[RotationConfig(CombatType.PvE, Name = "Potion Usage Presets", Parent = nameof(PotionUsageEnabled))]
+	[RotationConfig(CombatType.PvE, Name = "爆发药使用预设", Parent = nameof(PotionUsageEnabled))]
 	private static PotionStrategy PotionUsagePresets
 	{ get => _churinPotions.Strategy; set => _churinPotions.Strategy = value; }
 
 	[Range(0, 20, ConfigUnitType.Seconds, 0)]
-	[RotationConfig(CombatType.PvE, Name = "Use Opener Potion at minus time in seconds", Parent = nameof(PotionUsageEnabled))]
+	[RotationConfig(CombatType.PvE, Name = "开局爆发药使用时间（负秒，即倒计时）", Parent = nameof(PotionUsageEnabled))]
 	private static float OpenerPotionTime { get => _churinPotions.OpenerPotionTime; set => _churinPotions.OpenerPotionTime = value; }
 
 	[Range(0, 1200, ConfigUnitType.Seconds, 0)]
-	[RotationConfig(CombatType.PvE, Name = "Use 1st Potion at (value in seconds - leave at 0 if using in opener)", Parent = nameof(PotionUsagePresets), ParentValue = "Use custom potion timings")]
+	[RotationConfig(CombatType.PvE, Name = "第 1 次爆发药使用时间（秒，起手使用则填 0）", Parent = nameof(PotionUsagePresets), ParentValue = "自定义爆发药时机")]
 	private float FirstPotionTiming
 	{
 		get => _firstPotionTiming;
@@ -98,7 +98,7 @@ public sealed class ChurinDRK : DarkKnightRotation
 	}
 
 	[Range(0, 1200, ConfigUnitType.Seconds, 0)]
-	[RotationConfig(CombatType.PvE, Name = "Use 2nd Potion at (value in seconds)", Parent = nameof(PotionUsagePresets), ParentValue = "Use custom potion timings")]
+	[RotationConfig(CombatType.PvE, Name = "第 2 次爆发药使用时间（秒）", Parent = nameof(PotionUsagePresets), ParentValue = "自定义爆发药时机")]
 	private float SecondPotionTiming
 	{
 		get => _secondPotionTiming;
@@ -110,7 +110,7 @@ public sealed class ChurinDRK : DarkKnightRotation
 	}
 
 	[Range(0, 1200, ConfigUnitType.Seconds, 0)]
-	[RotationConfig(CombatType.PvE, Name = "Use 3rd Potion at (value in seconds)", Parent = nameof(PotionUsagePresets), ParentValue = "Use custom potion timings")]
+	[RotationConfig(CombatType.PvE, Name = "第 3 次爆发药使用时间（秒）", Parent = nameof(PotionUsagePresets), ParentValue = "自定义爆发药时机")]
 	private float ThirdPotionTiming
 	{
 		get => _thirdPotionTiming;
