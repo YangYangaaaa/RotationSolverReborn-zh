@@ -5,37 +5,37 @@ namespace RotationSolver.RebornRotations.Magical;
 
 public sealed class BLU_Reborn : BlueMageRotation
 {
-	[RotationConfig(CombatType.PvE, Name = "Use Basic Instinct")]
+	[RotationConfig(CombatType.PvE, Name = "使用基本本能")]
 	public bool UseBasicInstinct { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Mighty Guard")]
+	[RotationConfig(CombatType.PvE, Name = "使用强力守护")]
 	public bool UseMightyGuard { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Spam Gobskin, keeping its status active")]
+	[RotationConfig(CombatType.PvE, Name = "持续施放哥布护盾，保持其状态")]
 	public bool GobskinSpam { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Transfusion to heal")]
+	[RotationConfig(CombatType.PvE, Name = "使用输血治疗")]
 	public bool UseTransfusion { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Snort to interrupt")]
+	[RotationConfig(CombatType.PvE, Name = "使用喷气打断")]
 	public bool UseSnort { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Bad Breath for AOE mitigation")]
+	[RotationConfig(CombatType.PvE, Name = "使用臭息进行 AoE 减伤")]
 	public bool UseBadBreath { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Low Chance abilities")]
+	[RotationConfig(CombatType.PvE, Name = "使用低几率技能")]
 	public bool LowChance { get; set; } = false;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum HP percent allowed for the use of Devour as a heal")]
+	[RotationConfig(CombatType.PvE, Name = "作为治疗使用吞噬所需的最低 HP 百分比")]
 	public float DevourHealThreshold { get; set; } = 0.6f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum HP percent allowed for the use of Missile")]
+	[RotationConfig(CombatType.PvE, Name = "使用飞弹所需的最低 HP 百分比")]
 	public float TheMissileKnowsWhereItIs { get; set; } = 0.6f;
 
 	[Range(0, 10000, ConfigUnitType.None, 100)]
-	[RotationConfig(CombatType.PvE, Name = "MP needed to use Blood Drain/Divination Rune for MP gain")]
+	[RotationConfig(CombatType.PvE, Name = "为回复 MP 而使用鲜血汲取/占卜符文所需的 MP")]
 
 	public float MPGainNeed { get; set; } = 5000;
 

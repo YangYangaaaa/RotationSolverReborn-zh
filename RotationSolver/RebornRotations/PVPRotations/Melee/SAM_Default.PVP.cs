@@ -7,17 +7,17 @@ public sealed class SAM_DefaultPvP : SamuraiRotation
 {
 	#region Configurations
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvP, Name = "Player health threshold needed for Bloodbath use")]
+	[RotationConfig(CombatType.PvP, Name = "使用鲜血浴所需玩家 HP 阈值")]
 	public float BloodBathPvPPercent { get; set; } = 0.75f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvP, Name = "Enemy health threshold needed for Smite use")]
+	[RotationConfig(CombatType.PvP, Name = "使用惩击所需敌方 HP 阈值")]
 	public float SmitePvPPercent { get; set; } = 0.25f;
 
-	[RotationConfig(CombatType.PvP, Name = "Allow Mineuchi to be used on any target rather than just targets that already have Kuzushi status.")]
+	[RotationConfig(CombatType.PvP, Name = "允许对任意目标使用眼穿，而非仅限已有崩势状态的目标。")]
 	public bool MineuchiAny { get; set; } = false;
 
-	[RotationConfig(CombatType.PvP, Name = "Allow Hissatsu Soten to be used on any target regardless of distance (good luck)")]
+	[RotationConfig(CombatType.PvP, Name = "允许对任意距离的目标使用必杀·苍天（祝你好运）")]
 	public bool SotenYeet { get; set; } = false;
 	#endregion
 

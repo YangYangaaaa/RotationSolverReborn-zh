@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 
 namespace RotationSolver.RebornRotations.Melee;
 
@@ -11,23 +11,23 @@ public sealed class SAM_Reborn : SamuraiRotation
 
 	public enum STtoAOEStrategy : byte
 	{
-		[Description("Hagakure")] Hagakure,
+		[Description("叶隐")] Hagakure,
 
-		[Description("Setsugekka")] Setsugekka,
+		[Description("雪月花")] Setsugekka,
 	}
 
-	[RotationConfig(CombatType.PvE, Name = "Prevent Higanbana use if theres more than one target")]
+	[RotationConfig(CombatType.PvE, Name = "存在多个目标时禁止使用彼岸花")]
 	public bool HiganbanaTargets { get; set; } = true;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Health threshold needed to use Tengentsu/ThirdEye outside of AOE mit scenarios.")]
+	[RotationConfig(CombatType.PvE, Name = "在 AoE 减伤场景外使用天眼通/心眼所需的 HP 阈值。")]
 	public float TengentsuHealth { get; set; } = 0.5f;
 
 	[Range(0, 1, ConfigUnitType.Seconds)]
-	[RotationConfig(CombatType.PvE, Name = "Meikyo Shisui countdown timing.")]
+	[RotationConfig(CombatType.PvE, Name = "明镜止水倒计时时间。")]
 	public float MeikyoShisuiCountdown { get; set; } = 14f;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Hagakure or Midare/Tendo Setsugekka when going from single target to AOE scenarios")]
+	[RotationConfig(CombatType.PvE, Name = "从单体切换到 AoE 场景时使用叶隐或乱雪月花/天动雪月花")]
 	public STtoAOEStrategy STtoAOE { get; set; } = STtoAOEStrategy.Hagakure;
 	#endregion
 

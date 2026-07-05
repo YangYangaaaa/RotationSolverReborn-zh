@@ -6,10 +6,10 @@ namespace RotationSolver.RebornRotations.Duty;
 internal class BozjaReborn : BozjaRotation
 {
 	#region Configs
-	[RotationConfig(CombatType.PvE, Name = "Skip Magical Aversion check for Lost Burst and use it as AOE spam")]
+	[RotationConfig(CombatType.PvE, Name = "跳过失力爆发的魔法回避检测，将其作为 AoE 连发使用")]
 	public bool BurstAversion { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Skip Physical Aversion check for Lost Rampage and use it as AOE spam")]
+	[RotationConfig(CombatType.PvE, Name = "跳过失力狂暴的物理回避检测，将其作为 AoE 连发使用")]
 	public bool RampageAversion { get; set; } = true;
 	#endregion
 

@@ -1,4 +1,4 @@
-﻿namespace RotationSolver.RebornRotations.Magical;
+namespace RotationSolver.RebornRotations.Magical;
 
 [Rotation("Reborn", CombatType.PvE, GameVersion = "7.5")]
 [SourceCode(Path = "main/BasicRotations/Magical/BLM_Default.cs")]
@@ -6,22 +6,22 @@
 public class BLM_Default : BlackMageRotation
 {
 	#region Config Options
-	[RotationConfig(CombatType.PvE, Name = "Use Transpose to Astral Fire before Paradox")]
+	[RotationConfig(CombatType.PvE, Name = "在悖论前使用星灵位移切换到星极火")]
 	public bool UseTransposeForParadox { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Extend Astral Fire time more conservatively (3 GCDs) (Default is 2 GCDs)")]
+	[RotationConfig(CombatType.PvE, Name = "更保守地延长星极火时间（3 个 GCD）（默认 2 个 GCD）")]
 	public bool ExtendTimeSafely { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = @"Use ""Double Paradox"" rotation [N15]")]
+	[RotationConfig(CombatType.PvE, Name = @"使用""双重悖论""循环 [N15]")]
 	public bool UseN15 { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Leylines in combat when standing still")]
+	[RotationConfig(CombatType.PvE, Name = "战斗中站立不动时使用黑魔纹")]
 	public bool LeylineMadness { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Use both stacks of Leylines automatically")]
+	[RotationConfig(CombatType.PvE, Name = "自动使用两层黑魔纹")]
 	public bool Leyline2Madness { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Retrace when out of Leylines in combat and standing still")]
+	[RotationConfig(CombatType.PvE, Name = "战斗中脱离黑魔纹且站立不动时使用魔纹重置")]
 	public bool UseRetrace { get; set; } = false;
 	#endregion
 

@@ -1,4 +1,4 @@
-﻿using Dalamud.Interface.Colors;
+using Dalamud.Interface.Colors;
 using Dalamud.Interface.Windowing;
 using ECommons.DalamudServices;
 
@@ -19,111 +19,111 @@ internal sealed class FirstStartTutorialWindow : Window
 	private static readonly TutorialStep[] Steps =
 	[
 		new(
-			"Welcome!",
-			"This walkthrough explains how to set up Rotation Solver Reborn and what each section controls and includes recommended macros.",
+			"欢迎！",
+			"本向导将介绍如何配置 Rotation Solver Reborn，以及各个部分的功能，并附带推荐宏。",
 			Bullets:
 			[
-				"Open the config with /rotation or the plugin UI button.",
-				"Use Next/Back to move through sections and apply changes as you go.",
-				"Most settings are safe to change while logged in, but avoid in-combat tweaks until you’re comfortable.",
-				"Right-click any setting or action label to copy its macro command."
+				"使用 /rotation 或插件 UI 按钮打开配置窗口。",
+				"使用「下一步/上一步」在各部分之间切换，并随时应用更改。",
+				"大多数设置在登录游戏中更改是安全的，但在战斗中调整前请先熟悉。",
+				"右键点击任意设置或技能标签可复制其宏命令。"
 			]),
 		new(
-			"Main Screen",
-			"Main is your overview hub: plugin info, compatibility info, links, and macro list live here.",
+			"主界面",
+			"Main 是你的总览中心：插件信息、兼容性信息、链接和宏列表都在这里。",
 			RotationConfigWindowTab.Main,
 			[
-				"Use this tab to verify incompatible plugins and open support links.",
-				"Read the macros section to learn quick chat commands.",
-				"If something breaks after an update, check this tab first."
+				"使用此标签页检查不兼容的插件并打开支持链接。",
+				"阅读宏命令部分以了解快捷聊天命令。",
+				"如果更新后出现问题，请先检查此标签页。"
 			]),
 		new(
-			"Job Settings",
-			"Job config controls rotation selection and job-specific options for your current class.",
+			"职业设置",
+			"Job 配置控制循环选择和你当前职业的专属选项。",
 			RotationConfigWindowTab.Job,
 			[
-				"Pick the rotation preset you want to run by clicking the rotation name (ie. Reborn).",
-				"Adjust job priorities (e.g., DNC partner, SGE Kardia) when applicable.",
-				"If a job feels off, start here before touching global settings."
+				"点击循环名称（如 Reborn）选择你想运行的循环预设。",
+				"适用时调整职业优先级（如 DNC 舞伴、SGE Kardia）。",
+				"如果某个职业感觉不对，先从这里开始检查，再动全局设置。"
 			]),
 		new(
-			"Actions",
-			"Actions config decides what abilities RSR can use and how they behave.",
+			"技能",
+			"Actions 配置决定 RSR 可以使用哪些技能以及它们的行为方式。",
 			RotationConfigWindowTab.Actions,
 			[
-				"Click an action icon in a category to see settings to enable/disable it or change its usage rules.",
-				"Use intercept if you want RSR to fire actions you queue manually.",
-				"Toggle cooldown window inclusion so overlays show only what you want."
+				"点击分类中的技能图标可查看设置、启用/禁用或更改使用规则。",
+				"如果你希望 RSR 触发你手动排队的技能，请启用「拦截」。",
+				"切换「在冷却窗口显示」以让覆盖层只显示你想要的技能。"
 			]),
 		new(
 			"Auto",
-			"Auto controls global action usage, AoE logic, interrupts, tinctures, and healing behavior.",
+			"Auto 控制全局技能使用、AoE 逻辑、打断、爆发药和治疗行为。",
 			RotationConfigWindowTab.Auto,
 			[
-				"Here you can adjust your AOE logic, (Off, Cleave, and Full).",
-				"Adjust healer thresholds and non-healer support options.",
-				"If you want a more conservative rotation, tighten these settings first."
+				"此处可调整 AoE 逻辑（Off、Cleave 和 Full）。",
+				"调整治疗阈值和非治疗职业的辅助选项。",
+				"如果想要更保守的循环，请先收紧这些设置。"
 			]),
 		new(
 			"Basic",
-			"Basic contains core timing and automation behaviors that affect all jobs.",
+			"Basic 包含影响所有职业的核心时序和自动化行为。",
 			RotationConfigWindowTab.Basic,
 			[
-				"Action Ahead affects weave count and clipping—smaller values = more oGCDs. You typically don't need to change this.",
-				"Min Updating Time trades performance for responsiveness.",
-				"Auto Switch controls when RSR turns on/off automatically (countdowns, deaths, duty events)."
+				"提前量影响穿插数量和卡顿——数值越小 oGCD 越多。通常不需要更改。",
+				"最小更新时间用性能换取响应速度。",
+				"Auto Switch 控制 RSR 何时自动开启/关闭（倒计时、死亡、副本事件等）。"
 			]),
 		new(
 			"UI",
-			"UI controls overlays, info windows, and Teaching Mode highlights.",
+			"UI 控制覆盖层、信息窗口和教学模式高亮。",
 			RotationConfigWindowTab.UI,
 			[
-				"Enable Control, Next Action, Cooldown, and Timeline windows here.",
-				"Use Teaching Mode to highlight hotbar buttons and learn rotations visually.",
-				"If you want windows to only show in duty/with enemies, toggle that option here."
+				"此处启用控制、下一技能、冷却和时间轴窗口。",
+				"使用教学模式高亮热键栏按钮，直观学习循环。",
+				"如果希望窗口仅在副本中或有敌人时显示，请在此切换该选项。"
 			]),
 		new(
 			"Target",
-			"Target controls what enemies or allies RSR considers valid.",
+			"Target 控制 RSR 认为有效的敌人或队友。",
 			RotationConfigWindowTab.Target,
 			[
-				"Tune vision cone and engage behavior to avoid unwanted pulls.",
-				"Configure target priority rules (FATE, quest mobs, markers).",
-				"If targeting feels wrong, adjust filters before changing rotations."
+				"调整视野锥形和接敌行为以避免意外开怪。",
+				"配置目标优先级规则（FATE、任务怪、标记）。",
+				"如果目标选择感觉不对，请先调整过滤器再更改循环。"
 			]),
 		new(
 			"List",
-			"List manages curated status lists: dispels, priority targets, knockbacks, and more.",
+			"List 管理精选状态列表：驱散、优先目标、击退等。",
 			RotationConfigWindowTab.List,
 			[
-				"Use Reset and Update to restore curated lists when needed.",
-				"Add or remove statuses by ID or name using the + buttons.",
-				"These lists drive smart reactions across all jobs."
+				"需要时使用「重置并更新」恢复精选列表。",
+				"使用 + 按钮按 ID 或名称添加或移除状态。",
+				"这些列表驱动所有职业的智能反应。"
 			]),
 		new(
 			"Duty",
-			"Duty holds encounter‑specific toggles for special behavior.",
+			"Duty 存放副本专属的特殊行为开关。",
 			RotationConfigWindowTab.Duty,
 			[
-				"Most of these at the moment can be left enabled but there will be more granular controls in the future.",
-				"These settings override general targeting/rotation behavior in specific fights."
+				"目前大部分选项可以保持启用，未来会有更精细的控制。",
+				"这些设置会在特定战斗中覆盖通用目标/循环行为。"
 			]),
 		new(
 			"Extra",
-			"Extra is for advanced or experimental tweaks.",
+			"Extra 用于高级或实验性调整。",
 			RotationConfigWindowTab.Extra,
 			[
-				"Animation lock and cooldown delay tweaks for those not using BMR.",
-				"Only change these if you understand the side effects.",
+				"为不使用 BMR 的用户提供动画锁和冷却延迟调整。",
+				"仅在了解副作用时才更改这些设置。",
 			]),
 		new(
-			"Macros",
-			"Starter macros let you control RSR quickly without opening the UI.",
+			"宏",
+			"入门宏让你无需打开 UI 即可快速控制 RSR。",
 			RotationConfigWindowTab.Main,
 			[
-				"Use the macros below to toggle Auto/Manual/Off instantly.",
-				"Right-click any setting or action to copy its macro command.",
-				"Build a small macro bar for fast in combat control."
+				"使用下方宏可即时切换 Auto/Manual/Off。",
+				"右键点击任意设置或技能可复制其宏命令。",
+				"建立一个小宏栏以便战斗中快速控制。"
 			],
 			StarterMacros),
 	];
@@ -163,18 +163,18 @@ internal sealed class FirstStartTutorialWindow : Window
 
 		if (step.RecommendedMacros is { Length: > 0 })
 		{
-			ImGui.TextColored(ImGuiColors.HealerGreen, "Recommended macros:");
+			ImGui.TextColored(ImGuiColors.HealerGreen, "推荐宏:");
 			for (var i = 0; i < step.RecommendedMacros.Length; i++)
 			{
 				var macro = step.RecommendedMacros[i];
 				DrawWrappedBullet(macro);
 
 				ImGui.SameLine();
-				var buttonId = $"Copy##TutorialMacro_{i}";
+				var buttonId = $"复制##TutorialMacro_{i}";
 				if (ImGui.SmallButton(buttonId))
 				{
 					ImGui.SetClipboardText(macro);
-					Svc.Toasts.ShowNormal("Macro copied to clipboard.");
+				Svc.Toasts.ShowNormal("宏已复制到剪贴板。");
 				}
 			}
 
@@ -183,7 +183,7 @@ internal sealed class FirstStartTutorialWindow : Window
 
 		if (step.Tab != null)
 		{
-			if (ImGui.Button($"Open {step.Tab} tab"))
+			if (ImGui.Button($"打开 {step.Tab} 标签"))
 			{
 				RotationSolverPlugin.ShowConfigWindow(step.Tab.Value);
 			}
@@ -218,7 +218,7 @@ internal sealed class FirstStartTutorialWindow : Window
 	private void DrawNavigation()
 	{
 		ImGui.BeginDisabled(_stepIndex == 0);
-		if (ImGui.Button("Back"))
+		if (ImGui.Button("上一步"))
 		{
 			_stepIndex = Math.Max(0, _stepIndex - 1);
 		}
@@ -228,14 +228,14 @@ internal sealed class FirstStartTutorialWindow : Window
 
 		if (_stepIndex < Steps.Length - 1)
 		{
-			if (ImGui.Button("Next"))
+			if (ImGui.Button("下一步"))
 			{
 				_stepIndex = Math.Min(Steps.Length - 1, _stepIndex + 1);
 			}
 		}
 		else
 		{
-			if (ImGui.Button("Finish"))
+			if (ImGui.Button("完成"))
 			{
 				FinishTutorial();
 			}

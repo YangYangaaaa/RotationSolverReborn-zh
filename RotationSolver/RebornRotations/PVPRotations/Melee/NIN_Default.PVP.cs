@@ -7,11 +7,11 @@ public sealed class NIN_DefaultPvP : NinjaRotation
 {
 	#region Configurations
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvP, Name = "Player health threshold needed for Bloodbath use")]
+	[RotationConfig(CombatType.PvP, Name = "使用鲜血浴所需玩家 HP 阈值")]
 	public float BloodBathPvPPercent { get; set; } = 0.75f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvP, Name = "Enemy health threshold needed for Smite use")]
+	[RotationConfig(CombatType.PvP, Name = "使用惩击所需敌方 HP 阈值")]
 	public float SmitePvPPercent { get; set; } = 0.25f;
 	#endregion
 

@@ -7,7 +7,7 @@ public sealed class BRD_DefaultPvP : BardRotation
 {
 	#region Configurations
 
-	[RotationConfig(CombatType.PvP, Name = "Use Warden's Paean on other players")]
+	[RotationConfig(CombatType.PvP, Name = "对其他玩家使用守护之歌")]
 	public bool BRDEsuna2 { get; set; } = false;
 	#endregion
 

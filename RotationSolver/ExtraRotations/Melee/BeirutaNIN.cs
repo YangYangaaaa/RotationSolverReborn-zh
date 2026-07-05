@@ -31,32 +31,32 @@ public sealed class BeirutaNIN : NinjaRotation
 	public bool RotationNotes { get; set; } = true;
 
 	[Range(3f, 5f, ConfigUnitType.Seconds, 0.1f)]
-	[RotationConfig(CombatType.PvE, Name = "Countdown Suiton queue time (change this to 5 if you can trust your teamm. Or it should be 4 or 3 to prevent 5s countdown bait)")]
+	[RotationConfig(CombatType.PvE, Name = "倒计时水遁之术排队时间（若信任队友可改为 5，否则应为 4 或 3 以防止 5 秒倒计时陷阱）")]
 	public float CountdownSuitonQueueTime { get; set; } = 4f;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Raiton/Katon for uptime while disengaged (Moving one raiton/katon from 60s for uptime)")]
+	[RotationConfig(CombatType.PvE, Name = "脱离时使用雷遁之术/火遁之术保持输出（从 60 秒移动一个雷遁之术/火遁之术用于保持输出）")]
 	public bool UseRaitonDisengageFallback { get; set; } = true;
 
 	[Range(0, 20, ConfigUnitType.Yalms, 1)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum target distance for disengage fallback")]
+	[RotationConfig(CombatType.PvE, Name = "脱离 fallback 的最小目标距离")]
 	public float RaitonFallbackMinDistance { get; set; } = 3.0f;
 
-	[RotationConfig(CombatType.PvE, Name = "Attempt to weave Kunai's Bane/Trick attack second half of GCD (Disable if you miss weaving)")]
+	[RotationConfig(CombatType.PvE, Name = "尝试在 GCD 后半段插入百雷铓/攻其不备（若插入失败则禁用）")]
 	public bool RequireLateWeaveForBurstBuff { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Which Opener to Use")]
+	[RotationConfig(CombatType.PvE, Name = "使用哪种起手")]
 	[Range(0, 2, ConfigUnitType.None, 1)]
 	public BurstTimingOption BurstTiming { get; set; } = BurstTimingOption.StandardFourthGcd;
 
 	[Range(15f, 21f, ConfigUnitType.Seconds, 1f)]
-	[RotationConfig(CombatType.PvE, Name = "Suiton/Huton Prep Window (seconds before Trick Attack / Kunai's Bane)")]
+	[RotationConfig(CombatType.PvE, Name = "水遁之术/风遁之术准备窗口（攻其不备/百雷铓前的秒数）")]
 	public float BurstPrepThreshold { get; set; } = 21f;
 
 	public enum BurstTimingOption : byte
 	{
-		[Description("Standard 4th GCD")] StandardFourthGcd,
-		[Description("Standard 3rd GCD")] StandardThirdGcd,
-		[Description("Alignment 4th GCD")] AlignmentFourthGcd,
+		[Description("标准第 4 个 GCD")] StandardFourthGcd,
+		[Description("标准第 3 个 GCD")] StandardThirdGcd,
+		[Description("对齐第 4 个 GCD")] AlignmentFourthGcd,
 	}
 
 	private int RaidBuffOpenTiming => BurstTiming switch
@@ -75,10 +75,10 @@ public sealed class BeirutaNIN : NinjaRotation
 		_ => 9,
 	};
 
-	[RotationConfig(CombatType.PvE, Name = "Enable Potion Usage")]
+	[RotationConfig(CombatType.PvE, Name = "启用爆发药使用")]
 	private static bool PotionUsageEnabled { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Potion Usage Preset", Parent = nameof(PotionUsageEnabled))]
+	[RotationConfig(CombatType.PvE, Name = "爆发药使用预设", Parent = nameof(PotionUsageEnabled))]
 	private static NINPotionPreset PotionUsagePreset { get; set; } = NINPotionPreset.Standard0611;
 
 	#endregion
@@ -87,8 +87,8 @@ public sealed class BeirutaNIN : NinjaRotation
 
 	private enum NINPotionPreset
 	{
-		[Description("0-6-11 (Dokumori)")] Standard0611,
-		[Description("0-5-10 (Kunai's Bane)")] Standard0510,
+		[Description("0-6-11（介毒之术）")] Standard0611,
+		[Description("0-5-10（百雷铓）")] Standard0510,
 	}
 
 	private delegate bool ActionExecutor(out IAction? act);

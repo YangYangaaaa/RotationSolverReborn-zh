@@ -9,63 +9,63 @@ public sealed class BeirutaRDM : RedMageRotation
 {
 	#region Config Options
 	[RotationConfig(CombatType.PvE, Name =
-		"Please note that this rotation is optimised for Lv100 high-end encounters. V&C/OC GCDs may break combo.\n" +
-		"• Recommend GCD for this rotation is 2.48 and above\n" +
-		"• Try to stay close to the target when Embolden will be ready in ~20s if you selected triple combo before embolden\n" +
-		"• Attempts to pool 73|73 mana for triple melee combo\n" +
-		"• Ideally do not intercept defence ability during first 5s of the fights or burst\n" +
-		"• Intentionally maintains an 11 mana gap to get Verholy/Verflare procs\n" +
-		"• Disabling AutoBurst is sufficient if you need to delay burst timing in this rotation. However, you will need to mannually intercept enchanted riposte if you want to start a combo when burst off\n" +
-		"• Manually use Enchanted Reprise if you cannot start a combo at the end of combat\n" +
-		"• Go to Actions - GCD - Attack - Impact, change number of targets needed to use this action to 2. It will be using on 2 when has accelation, on 3 when not\n")]
+		"请注意：该循环针对 100 级高端副本优化。V&C/OC 的 GCD 可能会断连击。\n" +
+		"• 推荐该循环使用 2.48 及以上的 GCD\n" +
+		"• 若选择了鼓励前三连击，鼓励就绪前约 20 秒请尽量靠近目标\n" +
+		"• 尝试为三连近战连击积攒 73|73 蓝量\n" +
+		"• 理想情况下，战斗开始前 5 秒或爆发期间不要拦截防御技能\n" +
+		"• 刻意保持 11 点蓝量差以触发圣神圣/圣火炎\n" +
+		"• 若需要延迟爆发时机，关闭自动爆发即可。但若想在无爆发时起手连击，需手动拦截魔击斩\n" +
+		"• 战斗末尾无法起手连击时，手动使用魔连击\n" +
+		"• 前往 操作 - GCD - 攻击 - 冲击，将使用该技能的目标数量改为 2。有加速时对 2 个目标使用，无加速时对 3 个目标使用\n")]
 	public bool RotationNotes { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use GCDs to heal. (Ignored if there are no healers alive in party)")]
+	[RotationConfig(CombatType.PvE, Name = "使用 GCD 治疗。（队伍中无存活治疗时忽略）")]
 	public bool GCDHeal { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Pool Black and White Mana for burst Embolden")]
+	[RotationConfig(CombatType.PvE, Name = "为爆发鼓励积攒黑魔元与白魔元")]
 	public bool Pooling { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Try triple combo before embolden (You will need to get in melee range 17s before embolden is ready)")]
+	[RotationConfig(CombatType.PvE, Name = "鼓励前尝试三连击（需在鼓励就绪前 17 秒进入近战距离）")]
 	public bool TryTripleCombo { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Prevent healing during burst combos")]
+	[RotationConfig(CombatType.PvE, Name = "爆发连击期间阻止治疗")]
 	public bool PreventHeal { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Prevent raising during burst combos")]
+	[RotationConfig(CombatType.PvE, Name = "爆发连击期间阻止复活")]
 	public bool PreventRaising { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Vercure for Dualcast when out of combat.")]
+	[RotationConfig(CombatType.PvE, Name = "非战斗状态下使用双连咏唱施放赤治疗。")]
 	public bool UseVercure { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Cast Reprise when moving with no instacast.")]
+	[RotationConfig(CombatType.PvE, Name = "移动且无瞬发时施放重击。")]
 	public bool RangedSwordplay { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Only use Embolden if in Melee range.")]
+	[RotationConfig(CombatType.PvE, Name = "仅在近战距离内使用鼓励。")]
 	public bool AnyonesMeleeRule { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Swift/Acceleration for oGCD window alignment (Fleche/Contre drift fix)")]
+	[RotationConfig(CombatType.PvE, Name = "使用即刻咏唱/加速进行 oGCD 窗口对齐（修复突进/还击漂移）")]
 	public bool UseWindowAlignment { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Hold melee combo up to 2s if out of range")]
+	[RotationConfig(CombatType.PvE, Name = "超出距离时最多保留近战连击 2 秒")]
 	public bool HoldMeleeComboIfOutOfRange { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Delay Prefulgence/Vice of Thorns for buff alignment (about 3 gcd after Embolden)")]
+	[RotationConfig(CombatType.PvE, Name = "延迟光芒四射/荆棘环绕以对齐增益（约在鼓励后 3 个 GCD）")]
 	public bool DelayBuffOGCDs { get; set; } = true;
 
 	[Range(0, 4, ConfigUnitType.Seconds, 0.1f)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum movement time before allowing movement-based actions")]
+	[RotationConfig(CombatType.PvE, Name = "允许移动类技能前的最小移动时间")]
 	public float MovementTimeThreshold { get; set; } = 3f;
 
-	[RotationConfig(CombatType.PvE, Name = "Opener/Burst open window (GCDs)")]
+	[RotationConfig(CombatType.PvE, Name = "起手/爆发开启窗口（GCD 数）")]
 	[Range(1, 3, ConfigUnitType.None, 1)]
 	public OpenWindowGcd OpenWindow { get; set; } = OpenWindowGcd.TwoGcd;
 
 	public enum OpenWindowGcd : byte
 	{
-		[Description("0 GCD (0.0s)")] ZeroGcd,
-		[Description("1 GCD (2.5s)")] OneGcd,
-		[Description("2 GCD (5.0s)")] TwoGcd,
+		[Description("0 GCD（0.0 秒）")] ZeroGcd,
+		[Description("1 GCD（2.5 秒）")] OneGcd,
+		[Description("2 GCD（5.0 秒）")] TwoGcd,
 	}
 	#endregion
 

@@ -11,7 +11,7 @@
           "ECommons": "3.2.1.15",
           "Microsoft.CodeAnalysis.CSharp": "5.3.0",
           "RotationSolverReborn.Basic": "1.0.0",
-          "RotationSolver.Basic": "2026.7.3.1904",
+          "RotationSolver.Basic": "2026.7.5.409",
           "runtimepack.Microsoft.Windows.SDK.NET.Ref": "10.0.26100.57"
         },
         "runtime": {
@@ -156,16 +156,16 @@
         },
         "runtime": {
           "RotationSolver.Basic.dll": {
-            "assemblyVersion": "2026.7.3.1904",
-            "fileVersion": "2026.7.3.1904"
+            "assemblyVersion": "2026.7.5.409",
+            "fileVersion": "2026.7.5.409"
           }
         }
       },
-      "RotationSolver.Basic/2026.7.3.1904": {
+      "RotationSolver.Basic/2026.7.5.409": {
         "runtime": {
           "RotationSolver.Basic.dll": {
-            "assemblyVersion": "2026.7.3.1904",
-            "fileVersion": "2026.7.3.1904"
+            "assemblyVersion": "2026.7.5.409",
+            "fileVersion": "2026.7.5.409"
           }
         }
       }
@@ -236,7 +236,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "RotationSolver.Basic/2026.7.3.1904": {
+    "RotationSolver.Basic/2026.7.5.409": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

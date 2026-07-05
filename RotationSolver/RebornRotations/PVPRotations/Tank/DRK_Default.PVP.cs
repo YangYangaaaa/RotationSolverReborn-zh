@@ -8,7 +8,7 @@ public sealed class DRK_DefaultPvP : DarkKnightRotation
 	#region Configurations
 
 	[Range(1, 100, ConfigUnitType.Percent, 1)]
-	[RotationConfig(CombatType.PvP, Name = "Shadowbringer Threshold")]
+	[RotationConfig(CombatType.PvP, Name = "漆黑使者阈值")]
 	public int ShadowbringerThreshold { get; set; } = 50;
 	#endregion
 

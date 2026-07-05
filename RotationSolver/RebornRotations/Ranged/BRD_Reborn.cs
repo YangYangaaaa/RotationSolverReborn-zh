@@ -1,7 +1,7 @@
 namespace RotationSolver.RebornRotations.Ranged;
 
 [Rotation("Reborn", CombatType.PvE, GameVersion = "7.5",
-	Description = "Please make sure that the three song times add up to 120 seconds, Wanderers default first song for now.")]
+	Description = "请确保三首歌的时间总长为 120 秒，放浪神预设为第一首。")]
 [SourceCode(Path = "main/RebornRotations/Ranged/BRD_Reborn.cs")]
 
 public sealed class BRD_Reborn : BardRotation
@@ -9,41 +9,41 @@ public sealed class BRD_Reborn : BardRotation
 	#region Config Options
 
 	[Range(1, 5, ConfigUnitType.Seconds, 0.1f)]
-	[RotationConfig(CombatType.PvE, Name = "Buff Alignment Timer (Experimental, do not touch if you don't understand it)")]
+	[RotationConfig(CombatType.PvE, Name = "增益对齐计时器（实验性，不理解请勿修改）")]
 	public float BuffAlignment { get; set; } = 1;
 
-	[RotationConfig(CombatType.PvE, Name = "Attempt to assign Raging Strikes, Battle Voice, and Radiant Finale to specific ogcd slots (Experimental)")]
+	[RotationConfig(CombatType.PvE, Name = "尝试将九天连箭、战斗之声和光明神的最终乐章分配到特定oGCD槽位（实验性）")]
 	public bool OGCDTimers { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Only use DOTs on targets with Boss Icon")]
+	[RotationConfig(CombatType.PvE, Name = "仅在带有Boss标识的目标上使用DoT")]
 	public bool DOTBoss { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Skip DOT check for Barrage usage")]
+	[RotationConfig(CombatType.PvE, Name = "使用弹幕时跳过DoT检查")]
 	public bool DOTBarrage { get; set; } = false;
 
 	[Range(80, 100, ConfigUnitType.None, 5)]
-	[RotationConfig(CombatType.PvE, Name = "Soul Voice Threshold for Apex Arrow")]
+	[RotationConfig(CombatType.PvE, Name = "绝峰箭的灵魂之声阈值")]
 	public float SoulVoiceConfig { get; set; } = 100;
 
 	[Range(1, 45, ConfigUnitType.Seconds, 1)]
-	[RotationConfig(CombatType.PvE, Name = "Wanderer's Minuet Uptime")]
+	[RotationConfig(CombatType.PvE, Name = "放浪神的小步舞曲持续时间")]
 	public float WANDTime { get; set; } = 43;
 
 	[Range(0, 45, ConfigUnitType.Seconds, 1)]
-	[RotationConfig(CombatType.PvE, Name = "Mage's Ballad Uptime")]
+	[RotationConfig(CombatType.PvE, Name = "贤者的叙事谣持续时间")]
 	public float MAGETime { get; set; } = 43;
 
 	[Range(0, 45, ConfigUnitType.Seconds, 1)]
-	[RotationConfig(CombatType.PvE, Name = "Army's Paeon Uptime")]
+	[RotationConfig(CombatType.PvE, Name = "军神的赞歌持续时间")]
 	public float ARMYTime { get; set; } = 34;
 
-	[RotationConfig(CombatType.PvE, Name = "First Song")]
+	[RotationConfig(CombatType.PvE, Name = "第一首诗人歌")]
 	private Song FirstSong { get; set; } = Song.WanderersMinuet;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Warden's Paean on other players")]
+	[RotationConfig(CombatType.PvE, Name = "对其他玩家使用光阴神的礼赞凯歌")]
 	public bool BRDEsuna { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Prevent the use of defense abilties during burst")]
+	[RotationConfig(CombatType.PvE, Name = "爆发期间阻止使用防御技能")]
 	private bool BurstDefense { get; set; } = true;
 
 	private float WANDRemainTime => 45 - WANDTime;

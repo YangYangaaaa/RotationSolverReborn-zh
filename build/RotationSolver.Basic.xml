@@ -1935,124 +1935,115 @@
             <returns>A string that represents the current object.</returns>
         </member>
         <member name="P:RotationSolver.Basic.Configuration.Configs.AoEType">
-            <markdown file="Auto" name="What kind of AoE moves to use" section="Action Usage and Control">
-            - Full: Use all available AoE actions.
-            - Cleave: Use only single-target AoE actions.
-            - Off: Do not use any AoE actions.
+            <markdown file="Auto" name="使用何种 AoE 技能" section="Action Usage and Control">
+            - Full：使用所有可用 AoE 技能。
+            - Cleave：仅使用单体 AoE 技能。
+            - Off：不使用任何 AoE 技能。
             </markdown>
         </member>
         <member name="F:RotationSolver.Basic.Configuration.Configs._TinctureType">
-            <markdown file="Auto" name="Gemdraughts/Tinctures/Pots Usage" section="Action Usage and Control">
-            Sets whether to use damage-boosting potions and in which duty. You also need to enable the specific
-            potion in the `Actions` tab, under `Items`.
+            <markdown file="Auto" name="增伤药水/爆发药/药品使用" section="Action Usage and Control">
+            设置是否使用增伤药水以及在哪些副本中使用。你还需要在 `Actions` 标签页的 `Items` 下
+            启用特定的药水。
             </markdown>
         </member>
         <member name="F:RotationSolver.Basic.Configuration.Configs._useHealWhenNotAHealer">
-            <markdown file="Auto" name="Use healing abilities when playing a non-healer role" section="Healing Usage and Control">
-            Allow usage of healing abilities when not playing as a healer (such as Vercure, Bloodbath, etc.)
+            <markdown file="Auto" name="非治疗职业时使用治疗能力技" section="Healing Usage and Control">
+            当不作为治疗职业时允许使用治疗能力技能（如赤治疗、浴血等）。
             </markdown>
         </member>
         <member name="F:RotationSolver.Basic.Configuration.Configs._dispelAll">
-            <markdown file="Auto" name="Cleanse all dispellable debuffs" section="Action Usage and Control">
-            Enabling this setting will force the usage of Esuna on all target that are affected by a
-            cleansable debuff.
+            <markdown file="Auto" name="驱散所有可驱散 Debuff" section="Action Usage and Control">
+            启用此设置将强制对受到可驱散负面状态影响的所有目标使用 Esuna。
             </markdown>
         </member>
         <member name="F:RotationSolver.Basic.Configuration.Configs._castingStop">
-            <markdown file="Auto" name="Disable hostile actions if something is casting an action on the Gaze/Stop list" section="Action Usage and Control">
-            This setting is linked with the <see cref="F:RotationSolver.Basic.Configuration.OtherConfiguration.HostileCastingStop">Gaze/Stop list.</see>
+            <markdown file="Auto" name="有目标施放凝视/止息列表技能时禁用敌对动作" section="Action Usage and Control">
+            此设置与 <see cref="F:RotationSolver.Basic.Configuration.OtherConfiguration.HostileCastingStop">Gaze/Stop 列表</see> 关联。
             </markdown>
         </member>
         <member name="F:RotationSolver.Basic.Configuration.Configs._autoHeal">
-            <markdown file="Auto" name="Automatic Healing Thresholds" section="Healing Usage and Control" isSubsection="1">
-            When enabled, you can customize the healing thresholds for when healing will be cast occur on target(s).
+            <markdown file="Auto" name="自动治疗阈值" section="Healing Usage and Control" isSubsection="1">
+            启用后，可以自定义在目标上施放治疗的治疗阈值。
             </markdown>
         </member>
         <member name="F:RotationSolver.Basic.Configuration.Configs._stopHealingAfterThresholdExperimental2">
-            <markdown file="Auto" name="Stop Healing Cast After Reaching Threshold" section="Healing Usage and Control" isSubsection="1">
-            When enabled, you can customize the healing thresholds for when healing will be cast occur on target(s).
+            <markdown file="Auto" name="达到阈值后停止治疗读条" section="Healing Usage and Control" isSubsection="1">
+            启用后，可以自定义在目标上施放治疗的治疗阈值。
             </markdown>
         </member>
         <member name="F:RotationSolver.Basic.Configuration.Configs._useAbility">
-            <markdown file="Auto" name="Auto-use oGCD abilities" section="Action Usage and Control" isSubsection="1">
-            Whether to use oGCD abilities or not at all.
+            <markdown file="Auto" name="自动使用 oGCD 能力技" section="Action Usage and Control" isSubsection="1">
+            是否使用 oGCD 能力技。
             </markdown>
         </member>
         <member name="F:RotationSolver.Basic.Configuration.Configs._autoUseTrueNorth">
-            <markdown file="Auto" name="Auto True North" section="Healing Usage and Control" subsection="RotationSolver.Basic.Configuration.Configs._useAbility">
-            Whether to cast True North when playing as a melee DPS when you do not have the right
-            positional on the enemy.
+            <markdown file="Auto" name="自动正北" section="Healing Usage and Control" subsection="RotationSolver.Basic.Configuration.Configs._useAbility">
+            作为近战输出时，若未命中敌人的正确身位是否自动施放正北。
             </markdown>
         </member>
         <member name="F:RotationSolver.Basic.Configuration.Configs._useGroundBeneficialAbilityWhenMoving">
-            <markdown file="Auto" name="Use beneficial ground-targeted actions when moving" section="Healing Usage and Control">
-            Enable to allow the usage of ground AoE actions while moving, such as Earthly Star (AST), Sacred Soil (SCH), etc.
+            <markdown file="Auto" name="移动时使用有益地面目标技能" section="Healing Usage and Control">
+            启用后允许在移动中使用地面 AoE 技能，如地星（占星）、神圣领域（学者）等。
             </markdown>
         </member>
         <member name="F:RotationSolver.Basic.Configuration.Configs._onlyHealSelfWhenNoHealer">
-            <markdown file="Auto" name="Only heal self when not a Healer" section="Healing Usage and Control">
-            When enabled and not a healer, skills that can target someone and heal will only target you.
+            <markdown file="Auto" name="非治疗职业时仅治疗自己" section="Healing Usage and Control">
+            启用后，若不是治疗职业，可以目标他人进行治疗技能将只目标你自己。
             </markdown>
         </member>
         <member name="P:RotationSolver.Basic.Configuration.Configs.MeleeRangedOffset">
-             <markdown file="Auto" name="Melee Range action using offset" section="Action Usage and Control">
-             Additional buffer in yalms where ranged attacks will be used for melee classes. For example,
-             if you are playing as Samurai and this setting is set to `1`, Enpi will only be used starting
-             at 4 yalms.
+             <markdown file="Auto" name="近战范围技能偏移使用" section="Action Usage and Control">
+             近战职业使用远程攻击的额外缓冲距离（单位：星码）。例如，
+             若你游玩武士且此设置设为 `1`，则从 4 星码开始才会使用飞刃。
             
-             This is because the default "overflow" for the melee range is 3 yalms, which means you can cast
-             melee attacks 3 yalms outside the enemy's hitbox. This setting (the offset) takes max melee range and
-             adds the value you set.
+             这是因为近战范围的默认"溢出"为 3 星码，意味着你可以在敌人判定圈外 3 星码处施放近战攻击。
+             此设置（偏移量）会取最大近战范围并加上你设置的值。
             
-             This setting exists to leave you time to approach and enter in melee range of the enemy without wasting
-             a GCD.
+             此设置的存在是为了让你有时间接近并进入敌人的近战范围，而不浪费 GCD。
              </markdown>
         </member>
         <member name="P:RotationSolver.Basic.Configuration.Configs.SwiftcastBuffer">
-            <markdown file="Auto" name="How early before next GCD should RSR use swiftcast for raise" section="Healing Usage and Control">
-            If your cast a GCD and your cooldown is of 2.5 seconds, if a teammate dies when your cooldown starts, the Swiftcast action will wait
-            the specified amount of time before your cooldown ends to cast Swiftcast. This is to prevent using your Swiftcast too early and waste it
-            if your co-healer manages to raise your target within your global cooldown period.
+            <markdown file="Auto" name="RSR 应在下一个 GCD 前多久使用 Swiftcast 进行复活" section="Healing Usage and Control">
+            如果你施放了一个 GCD 且冷却为 2.5 秒，当冷却开始时有队友死亡，Swiftcast 动作会在你的冷却结束前等待指定的时间
+            才施放 Swiftcast。这是为了防止过早使用 Swiftcast 而浪费，避免你的搭档治疗在你的全局冷却期间内成功复活你的目标。
             </markdown>
         </member>
         <member name="P:RotationSolver.Basic.Configuration.Configs.RaiseDelay2">
-            <markdown file="Auto" name="Random delay range for resurrecting players" section="Healing Usage and Control">
-            In order to not make is so obvious that you use RSR, casting a raise action will be delayed by a random amount of seconds
-            between the two values.
+            <markdown file="Auto" name="复活玩家的随机延迟范围" section="Healing Usage and Control">
+            为了不让别人明显看出你在使用 RSR，施放复活动作会延迟两个值之间的随机秒数。
             </markdown>
         </member>
         <member name="P:RotationSolver.Basic.Configuration.Configs.HealthDifference">
-            <markdown file="Extra" name="HP standard deviation for using AoE heal">
-            Controls how much party members' HP must differ before using AoE healing instead
-            of single-target heals. Lower values require party members to have more similar HP
-            for AoE healing to trigger (more selective). Higher values allow AoE healing even
-            when HP differences are larger (less selective). Adjust only if you want to fine-tune
-            AoE heal behavior.
+            <markdown file="Extra" name="使用 AoE 治疗的 HP 标准差">
+            控制队伍成员的 HP 必须相差多少才会使用 AoE 治疗而非单体治疗。
+            较低的值要求队伍成员的 HP 更接近才会触发 AoE 治疗（更挑剔）。
+            较高的值允许即使 HP 差异较大也使用 AoE 治疗（不那么挑剔）。
+            仅在你想要细调 AoE 治疗行为时调整。
             </markdown>
         </member>
         <member name="P:RotationSolver.Basic.Configuration.Configs.SpecialDuration">
-            <markdown file="Basic" name="The duration of special windows opened by /rotation commands by default">
-            The duration of special windows opened by /rotation commands by default.
-            (Found in Main => Macros)
+            <markdown file="Basic" name="/rotation 命令打开的特殊窗口默认持续时间">
+            默认情况下通过 /rotation 命令打开的特殊窗口的持续时间。
+            （位于 主菜单 => 宏）
             </markdown>
         </member>
         <member name="P:RotationSolver.Basic.Configuration.Configs.ClickingDelay">
-            <markdown file="Basic" name="Clicking actions random delay range">
-            Delay between showing the clicking/pressing effect on the actions
-            in your hotbars.
+            <markdown file="Basic" name="点击技能的随机延迟范围">
+            在热键栏上显示点击/按键效果之间的延迟。
             </markdown>
         </member>
         <member name="P:RotationSolver.Basic.Configuration.Configs.CountDownAhead">
-            <markdown file="Basic" name="How soon before countdown is finished to start casting or attacking">
-            How soon before countdown is finished to start casting or attacking.
+            <markdown file="Basic" name="倒计时结束前多久开始读条或攻击">
+            倒计时结束前多久开始读条或攻击。
             </markdown>
         </member>
         <member name="F:RotationSolver.Basic.Configuration.Configs._action6head">
-             <markdown file="Basic" name="Action Ahead">
-             Percent of your GCD time remaining on a GCD cycle before RSR will try to queue the next GCD.
+             <markdown file="Basic" name="提前量">
+             在 GCD 周期中剩余的 GCD 时间百分比，达到此值时 RSR 会尝试排队下一个 GCD。
             
-             This setting controls how many oGCDs RSR will try to fit in a single GCD window.
-             Lower numbers mean more oGCDs, but potentially more GCD clipping.
+             此设置控制 RSR 会尝试在单个 GCD 窗口中插入多少个 oGCD。
+             数值越小，oGCD 越多，但可能导致更多 GCD 卡顿。
              </markdown>
         </member>
         <member name="F:RotationSolver.Basic.Configuration.Configs._removeAnimationLockDelay">
@@ -2076,64 +2067,64 @@
             </summary>
         </member>
         <member name="F:RotationSolver.Basic.Configuration.Configs._healthAreaAbilityHot">
-             <markdown file="Auto" name="HP threshold for AoE healing oGCDs (Heal-over-time)" section="Healing Usage and Control" subsection="RotationSolver.Basic.Configuration.Configs._autoHeal">
-             Relates to **oGCD** AoE healing abilities **when they have a heal-over-time already applied to them, by you or a teammate**.
+             <markdown file="Auto" name="AoE 治疗 oGCD 的 HP 阈值（持续回复）" section="Healing Usage and Control" subsection="RotationSolver.Basic.Configuration.Configs._autoHeal">
+             与 **oGCD** AoE 治疗技能相关，**当目标已由你或队友施加了持续回复效果时**。
              
-             This is calculated with the <see cref="P:RotationSolver.Basic.Configuration.Configs.HealthDifference">standard AoE healing deviation</see>.
+             此值与<see cref="P:RotationSolver.Basic.Configuration.Configs.HealthDifference">标准 AoE 治疗偏差</see>共同计算。
             
-             Use the button this setting to calculate your preferred values.
+             使用此设置旁的按钮计算你偏好的值。
              </markdown>
         </member>
         <member name="F:RotationSolver.Basic.Configuration.Configs._healthAreaSpellHot">
-             <markdown file="Auto" name="HP threshold for AoE healing GCDs (Heal-over-time)" section="Healing Usage and Control" subsection="RotationSolver.Basic.Configuration.Configs._autoHeal">
-             Relates to **GCD** AoE healing abilities **when they have a heal-over-time already applied to them, by you or a teammate**.
+             <markdown file="Auto" name="AoE 治疗 GCD 的 HP 阈值（持续回复）" section="Healing Usage and Control" subsection="RotationSolver.Basic.Configuration.Configs._autoHeal">
+             与 **GCD** AoE 治疗技能相关，**当目标已由你或队友施加了持续回复效果时**。
              
-             This is calculated with the <see cref="P:RotationSolver.Basic.Configuration.Configs.HealthDifference">standard AoE healing deviation</see>.
+             此值与<see cref="P:RotationSolver.Basic.Configuration.Configs.HealthDifference">标准 AoE 治疗偏差</see>共同计算。
             
-             Use the button this setting to calculate your preferred values.
+             使用此设置旁的按钮计算你偏好的值。
              </markdown>
         </member>
         <member name="F:RotationSolver.Basic.Configuration.Configs._healthAreaAbility">
-             <markdown file="Auto" name="HP threshold for AoE healing GCDs (No heal-over-time)" section="Healing Usage and Control" subsection="RotationSolver.Basic.Configuration.Configs._autoHeal">
-             Relates to **oGCD** AoE healing abilities.
+             <markdown file="Auto" name="AoE 治疗 GCD 的 HP 阈值（无持续回复）" section="Healing Usage and Control" subsection="RotationSolver.Basic.Configuration.Configs._autoHeal">
+             与 **oGCD** AoE 治疗技能相关。
              
-             This is calculated with the <see cref="P:RotationSolver.Basic.Configuration.Configs.HealthDifference">standard AoE healing deviation</see>.
+             此值与<see cref="P:RotationSolver.Basic.Configuration.Configs.HealthDifference">标准 AoE 治疗偏差</see>共同计算。
             
-             Use the button this setting to calculate your preferred values.
+             使用此设置旁的按钮计算你偏好的值。
              </markdown> 
         </member>
         <member name="F:RotationSolver.Basic.Configuration.Configs._healthAreaSpell">
-             <markdown file="Auto" name="HP threshold for AoE healing GCDs (No heal-over-time)" section="Healing Usage and Control" subsection="RotationSolver.Basic.Configuration.Configs._autoHeal">
-             Relates to **GCD** AoE healing abilities.
+             <markdown file="Auto" name="AoE 治疗 GCD 的 HP 阈值（无持续回复）" section="Healing Usage and Control" subsection="RotationSolver.Basic.Configuration.Configs._autoHeal">
+             与 **GCD** AoE 治疗技能相关。
              
-             This is calculated with the <see cref="P:RotationSolver.Basic.Configuration.Configs.HealthDifference">standard AoE healing deviation</see>.
+             此值与<see cref="P:RotationSolver.Basic.Configuration.Configs.HealthDifference">标准 AoE 治疗偏差</see>共同计算。
             
-             Use the button this setting to calculate your preferred values.
+             使用此设置旁的按钮计算你偏好的值。
              </markdown> 
         </member>
         <member name="F:RotationSolver.Basic.Configuration.Configs._healthSingleAbilityHot">
-            <markdown file="Auto" name="HP threshold for single-target healing oGCDs (Heal-over-time)" section="Healing Usage and Control" subsection="RotationSolver.Basic.Configuration.Configs._autoHeal">
-            Relates to **oGCD** single-target healing abilities **when they have a heal-over-time already applied to them, by you or a teammate**.
+            <markdown file="Auto" name="单体治疗 oGCD 的 HP 阈值（持续回复）" section="Healing Usage and Control" subsection="RotationSolver.Basic.Configuration.Configs._autoHeal">
+            与 **oGCD** 单体治疗技能相关，**当目标已由你或队友施加了持续回复效果时**。
             </markdown>
         </member>
         <member name="F:RotationSolver.Basic.Configuration.Configs._healthSingleSpellHot">
-            <markdown file="Auto" name="HP threshold for single-target healing GCDs (Heal-over-time)" section="Healing Usage and Control" subsection="RotationSolver.Basic.Configuration.Configs._autoHeal">
-            Relates to **GCD** single-target healing abilities **when they have a heal-over-time already applied to them, by you or a teammate**.
+            <markdown file="Auto" name="单体治疗 GCD 的 HP 阈值（持续回复）" section="Healing Usage and Control" subsection="RotationSolver.Basic.Configuration.Configs._autoHeal">
+            与 **GCD** 单体治疗技能相关，**当目标已由你或队友施加了持续回复效果时**。
             </markdown>
         </member>
         <member name="F:RotationSolver.Basic.Configuration.Configs._healthSingleAbility">
-            <markdown file="Auto" name="HP threshold for single-target healing oGCDs (No Heal-over-time)" section="Healing Usage and Control" subsection="RotationSolver.Basic.Configuration.Configs._autoHeal">
-            Relates to **oGCD** AoE healing abilities.
+            <markdown file="Auto" name="单体治疗 oGCD 的 HP 阈值（无持续回复）" section="Healing Usage and Control" subsection="RotationSolver.Basic.Configuration.Configs._autoHeal">
+            与 **oGCD** AoE 治疗技能相关。
             </markdown>
         </member>
         <member name="F:RotationSolver.Basic.Configuration.Configs._healthSingleSpell">
-            <markdown file="Auto" name="HP threshold for single-target healing GCDs (No Heal-over-time)" section="Healing Usage and Control" subsection="RotationSolver.Basic.Configuration.Configs._autoHeal">
-            Relates to **GCD** single-target healing abilities.
+            <markdown file="Auto" name="单体治疗 GCD 的 HP 阈值（无持续回复）" section="Healing Usage and Control" subsection="RotationSolver.Basic.Configuration.Configs._autoHeal">
+            与 **GCD** 单体治疗技能相关。
             </markdown>
         </member>
         <member name="F:RotationSolver.Basic.Configuration.Configs._healthForDyingTanks">
-            <markdown file="Auto" name="The HP% for tank to use invulnerability" section="Action Usage and Control">
-            The threshold to automatically use your tank invulnerability action when falling below the HP percentage set.
+            <markdown file="Auto" name="坦克使用无敌技能的 HP%" section="Action Usage and Control">
+            当 HP 低于所设百分比时，自动使用坦克无敌技能的阈值。
             </markdown>
         </member>
         <member name="T:RotationSolver.Basic.Configuration.ConfigTypes">
@@ -2162,76 +2153,72 @@
             </summary>
         </member>
         <member name="F:RotationSolver.Basic.Configuration.OtherConfiguration.HostileCastingArea">
-            <markdown file="List" name="AoE" section="Actions">
-            **`It is recommended to click on the reset button after every patch.`**
+             <markdown file="List" name="AoE" section="Actions">
+             **`建议每个补丁后点击重置按钮。`**
             
-            RSR will use group mitigation if any enemy in the enmity list is casting
-            one of the listed actions. Usually those actions are raid-wides.
-            </markdown>
+             若仇恨列表中任意敌人正在施放列表中的技能,RSR 将使用群体减伤。
+             这些技能通常是范围攻击。
+             </markdown>
         </member>
         <member name="F:RotationSolver.Basic.Configuration.OtherConfiguration.HostileCastingTank">
-            <markdown file="List" name="Tank Buster" section="Actions">
-            **`It is recommended to click on the reset button after every patch.`**
+             <markdown file="List" name="Tank Buster" section="Actions">
+             **`建议每个补丁后点击重置按钮。`**
             
-            RSR will use mitigation on target (heal) or self (tank) if the target is currently
-            being targeted by one of the listed actions.
-            </markdown>
+             若目标正在被列表中的技能锁定,RSR 将对目标(治疗)或自身(坦克)使用减伤。
+             </markdown>
         </member>
         <member name="F:RotationSolver.Basic.Configuration.OtherConfiguration.HostileCastingKnockback">
              <markdown file="List" name="Knockback" section="Actions">
-             **`It is recommended to click on the reset button after every patch.`**
+             **`建议每个补丁后点击重置按钮。`**
             
-             **Click on "Record knockback actions" at your own peril. Some duties expect you take the
-             knockback in order to reach a proper safe-spot, like in Sil'dihn Subterrane (Savage).**
-             
-             RSR will use anti-knockback actions when you would be hit by one of the listed actions.
+             **点击"记录击退技能"需自行承担风险。某些副本需要你利用击退到达正确安全点,
+             例如西尔狄赫水道(零式)。**
+            
+             当你将被列表中的技能击退时,RSR 会使用防击退技能。
              </markdown>
         </member>
         <member name="F:RotationSolver.Basic.Configuration.OtherConfiguration.HostileCastingStop">
-            <markdown file="List" name="Gaze/Stop" section="Actions">
-            **`It is recommended to click on the reset button after every patch.`**
+             <markdown file="List" name="Gaze/Stop" section="Actions">
+             **`建议每个补丁后点击重置按钮。`**
             
-            If the target is casting one of the listed actions, RSR will stop casting
-            in the seconds before the action is resolved
-            <see cref="F:RotationSolver.Basic.Configuration.Configs._castingStop">here</see>.
-            </markdown>
+             若目标正在施放列表中的技能,RSR 将在技能判定前数秒停止读条
+             <see cref="F:RotationSolver.Basic.Configuration.Configs._castingStop">此处</see>。
+             </markdown>
         </member>
         <member name="F:RotationSolver.Basic.Configuration.OtherConfiguration.BeneficialPositions">
              <markdown file="List" name="Beneficial Positions" section="Map-Specific Settings">
-             Adds a preferred location used for ground **healing** AoE abilities (example: Earthly Star).
+             添加一个偏好位置,用于地面**治疗** AoE 技能(例如:地星)。
             
-             You can add multiple locations, in case a boss fight moves you to another platform, like M4S - Wicked Thunder.
+             你可以添加多个位置,以防 Boss 战将你转移到另一个平台,例如 M4S - 邪恶之雷。
              </markdown>
         </member>
         <member name="F:RotationSolver.Basic.Configuration.OtherConfiguration.DangerousStatus">
-            <markdown file="List" name="Dispellable Debuffs" section="Statuses">
-            **`It is recommended to click on the reset button after every patch.`**
+             <markdown file="List" name="Dispellable Debuffs" section="Statuses">
+             **`建议每个补丁后点击重置按钮。`**
             
-            Listed statuses will be dispelled (Esuna) first before any
-            other dispellable statuses.
-            </markdown>
+             列表中的状态将优先于其他可驱散状态被驱散(康复)。
+             </markdown>
         </member>
         <member name="F:RotationSolver.Basic.Configuration.OtherConfiguration.PriorityStatus">
-            <markdown file="List" name="Priority" section="Statuses">
-            **`It is recommended to click on the reset button after every patch.`**
+             <markdown file="List" name="Priority" section="Statuses">
+             **`建议每个补丁后点击重置按钮。`**
             
-            If running in auto mode, if any enemy in your enmity list has this status,
-            it will target them as priority.
-            </markdown>
+             在自动模式下,若仇恨列表中任意敌人带有此状态,将优先将其作为目标。
+             </markdown>
         </member>
         <member name="F:RotationSolver.Basic.Configuration.OtherConfiguration.InvincibleStatus">
-            <markdown file="List" name="Invulnerability" section="Statuses">
-            **`It is recommended to click on the reset button after every patch.`**
+             <markdown file="List" name="Invulnerability" section="Statuses">
+             **`建议每个补丁后点击重置按钮。`**
             
-            Ignores target if they have one of the statuses listed.
-            </markdown>
+             若目标带有列表中的状态,将被视为无敌并忽略。
+             </markdown>
         </member>
         <member name="F:RotationSolver.Basic.Configuration.OtherConfiguration.NoCastingStatus">
-            <markdown file="List" name="No-Casting Debuffs" section="Statuses">
-            **`It is recommended to click on the reset button after every patch.`**
+             <markdown file="List" name="No-Casting Debuffs" section="Statuses">
+             **`建议每个补丁后点击重置按钮。`**
             
-            If you have any of the statuses listed, RSR will stop taking any actions.
-            </markdown>
+             若你带有列表中的任意状态,RSR 将停止所有行动。
+             </markdown>
         </member>
         <member name="T:RotationSolver.Basic.Configuration.RotationConfig.IRotationConfig">
             <summary>

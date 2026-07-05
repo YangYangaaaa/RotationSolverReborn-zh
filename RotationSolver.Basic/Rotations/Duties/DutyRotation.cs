@@ -483,37 +483,37 @@ public partial class DutyRotation : IDisposable
 	/// <summary>
 	/// Does player have swift cast, dual cast or triple cast.
 	/// </summary>
-	[Description("Has Swift")]
+	[Description("有瞬发")]
 	public static bool HasSwift => Player?.HasStatus(true, StatusHelper.SwiftcastStatus) ?? false;
 
 	/// <summary>
 	/// 
 	/// </summary>
-	[Description("Has tank stance")]
+	[Description("有坦克姿态")]
 	public static bool HasTankStance => Player?.HasStatus(true, StatusHelper.TankStanceStatus) ?? false;
 
 	/// <summary>
 	/// 
 	/// </summary>
-	[Description("Has tank stance")]
+	[Description("有坦克无敌")]
 	public static bool HasTankInvuln => Player?.HasStatus(true, StatusHelper.NoNeedHealingStatus) ?? false;
 
 	/// <summary>
 	/// In the burst status.
 	/// </summary>
-	[Description("Is burst")]
+	[Description("爆发期")]
 	public static bool IsBurst => MergedStatus.HasFlag(AutoStatus.Burst);
 
 	/// <summary>
 	/// Is RSR enabled.
 	/// </summary>
-	[Description("The state of auto. True for on.")]
+	[Description("自动状态(开)")]
 	public static bool AutoState => DataCenter.State;
 
 	/// <summary>
 	/// Is RSR in manual mode.
 	/// </summary>
-	[Description("The state of manual. True for manual.")]
+	[Description("手动状态")]
 	public static bool IsManual => DataCenter.IsManual;
 
 	/// <summary>
@@ -534,37 +534,37 @@ public partial class DutyRotation : IDisposable
 	/// <summary>
 	/// Is there any hostile target in range? 25 for ranged jobs and healer, 3 for melee and tank.
 	/// </summary>
-	[Description("Has hostiles in Range")]
+	[Description("范围内有敌人")]
 	public static bool HasHostilesInRange => DataCenter.HasHostilesInRange;
 
 	/// <summary>
 	/// Is there any hostile target in 25 yalms?
 	/// </summary>
-	[Description("Has hostiles in 25 yalms")]
+	[Description("25 米内有敌人")]
 	public static bool HasHostilesInMaxRange => DataCenter.HasHostilesInMaxRange;
 
 	/// <summary>
 	/// How many hostile targets in range? 25 for ranged jobs and healer, 3 for melee and tank.
 	/// </summary>
-	[Description("The number of hostiles in Range")]
+	[Description("范围内敌人数")]
 	public static int NumberOfHostilesInRange => DataCenter.NumberOfHostilesInRange;
 
 	/// <summary>
 	/// How many hostile targets in max range (25 yalms) regardless of job
 	/// </summary>
-	[Description("The number of hostiles in max Range")]
+	[Description("最大范围内敌人数")]
 	public static int NumberOfHostilesInMaxRange => DataCenter.NumberOfHostilesInMaxRange;
 
 	/// <summary>
 	/// How many hostile targets in range? 25 for ranged jobs and healer, 3 for melee and tank. This is all can attack.
 	/// </summary>
-	[Description("The number of all hostiles in Range")]
+	[Description("范围内全部敌人数")]
 	public static int NumberOfAllHostilesInRange => DataCenter.NumberOfAllHostilesInRange;
 
 	/// <summary>
 	/// How many hostile targets in max range (25 yalms) regardless of job. This is all can attack.
 	/// </summary>
-	[Description("The number of all hostiles in max Range")]
+	[Description("最大范围内全部敌人数")]
 	public static int NumberOfAllHostilesInMaxRange => DataCenter.NumberOfAllHostilesInMaxRange;
 
 	#region Phantom Levels

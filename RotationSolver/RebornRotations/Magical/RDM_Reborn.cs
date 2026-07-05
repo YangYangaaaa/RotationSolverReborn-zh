@@ -1,4 +1,4 @@
-﻿namespace RotationSolver.RebornRotations.Magical;
+namespace RotationSolver.RebornRotations.Magical;
 
 [Rotation("Reborn", CombatType.PvE, GameVersion = "7.5")]
 [SourceCode(Path = "main/RebornRotations/Magical/RDM_Reborn.cs")]
@@ -6,31 +6,31 @@
 public sealed class RDM_Reborn : RedMageRotation
 {
 	#region Config Options
-	[RotationConfig(CombatType.PvE, Name = "Use GCDs to heal. (Ignored if there are no healers alive in party)")]
+	[RotationConfig(CombatType.PvE, Name = "使用 GCD 治疗。（队伍中没有存活的治疗时忽略）")]
 	public bool GCDHeal { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Attempt to pool Black and White Mana for burst (Experimental)")]
+	[RotationConfig(CombatType.PvE, Name = "尝试为爆发积攒黑白魔元（实验性）")]
 	public bool Pooling { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Prevent healing during burst combos")]
+	[RotationConfig(CombatType.PvE, Name = "爆发连击期间禁止治疗")]
 	public bool PreventHeal { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Prevent raising during burst combos")]
+	[RotationConfig(CombatType.PvE, Name = "爆发连击期间禁止复活")]
 	public bool PreventRaising { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Vercure for Dualcast when out of combat.")]
+	[RotationConfig(CombatType.PvE, Name = "战斗外使用赤治疗进行连续咏唱。")]
 	public bool UseVercure { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Cast Reprise when moving with no instacast.")]
+	[RotationConfig(CombatType.PvE, Name = "无瞬发时移动施放赤突进。")]
 	public bool RangedSwordplay { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Only use Embolden if in Melee range.")]
+	[RotationConfig(CombatType.PvE, Name = "仅在近战范围内使用鼓励。")]
 	public bool AnyonesMeleeRule { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Displacement after Engagement (use at own risk).")]
+	[RotationConfig(CombatType.PvE, Name = "赤近战后使用移转（风险自负）。")]
 	public bool SuicideByDumber { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Allow the use of Corpsacorps while moving (use at own risk).")]
+	[RotationConfig(CombatType.PvE, Name = "允许移动时使用短兵相接（风险自负）。")]
 	public bool CorpsacorpsMove { get; set; } = false;
 	#endregion
 

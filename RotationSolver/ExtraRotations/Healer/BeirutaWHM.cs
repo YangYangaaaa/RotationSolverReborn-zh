@@ -2,7 +2,7 @@ using System.ComponentModel;
 
 namespace RotationSolver.ExtraRotations.Healer;
 
-[Rotation("BeirutaWHM", CombatType.PvE, GameVersion = "7.45", Description = "Semi-Automatic Savage/Ultimate rotation, need to used with CD planner or manual inputs")]
+[Rotation("BeirutaWHM", CombatType.PvE, GameVersion = "7.45", Description = "半自动零式/绝境战循环，需配合 CD 计划器或手动输入使用")]
 [SourceCode(Path = "main/ExtraRotations/Healer/BeirutaWHM.cs")]
 [ExtraRotation]
 
@@ -11,105 +11,105 @@ public sealed class WHM_Reborn : WhiteMageRotation
 	#region Config Options
 
 	[RotationConfig(CombatType.PvE, Name =
-		"Please note that this rotation is optimised for high-end encounters.\n" +
-		"• Only the actions listed in the description will be automatically used and everything else should be used manually or through CD planner\n" +
-		"• Please set Intercept for GCD usage only\n" +
-		"• Disabling AutoBurst is sufficient if you need to delay burst timing in this rotation\n" +
-		"• Dia refresh slightly earlier during burst phases, during movement, and for 20s after Presence of Mind\n" +
-		"• Afflatus Misery will ONLY be used during burst phases, blue lily overcap is not a damage down\n" +
-		"• After 6s in combats Assize is used on cooldown in this rotation, disable it in Actions if you want to use CD planner for it\n" +
-		"• Will start dumping blue lilies if not having 3 blood lilies 15 before burst\n" +
-		"• Single-target healing usage is intentionally more conservative in this rotation\n" +
-		"• If you turn off AutoBurst, Assize will not be used automatically\n" +
-		"• For 20s after using Presence of Mind, Cure III, Medica II, Medica III, Afflatus Solace, Afflatus Rapture and Regen are locked\n" +
-		"• You can potentially use <tt> or <me> macros for Asylum and disable it in Actions\n")]
+		"请注意，本循环针对高端战斗进行优化。\n" +
+		"• 只有描述中列出的技能会被自动使用，其他所有技能都应手动使用或通过 CD 计划器使用\n" +
+		"• 请将拦截设置为仅 GCD 使用\n" +
+		"• 如果需要延迟本循环的爆发时机，禁用 AutoBurst 即可\n" +
+		"• 在爆发阶段、移动期间以及神速咏唱后的 20 秒内，灼烧会稍微提前刷新\n" +
+		"• 苦百合仅在爆发阶段使用，蓝百合溢出不会损失伤害\n" +
+		"• 进入战斗 6 秒后，本循环会冷却即用法令，如果想用 CD 计划器管理请在技能设置中禁用\n" +
+		"• 如果在爆发前 15 秒没有 3 层苦难之心，会开始倾泻蓝百合\n" +
+		"• 本循环中单体治疗的使用故意更保守\n" +
+		"• 如果关闭 AutoBurst，法令将不会被自动使用\n" +
+		"• 使用神速咏唱后的 20 秒内，愈疗、治疗二型、愈疗、安慰之心、狂喜之心和再生会被锁定\n" +
+		"• 你可以使用 <tt> 或 <me> 宏来使用庇护所，并在技能设置中禁用它\n")]
 	public bool RotationNotes { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Enable Swiftcast Restriction Logic to attempt to prevent actions other than Raise when you have swiftcast")]
+	[RotationConfig(CombatType.PvE, Name = "启用即刻咏唱限制逻辑：拥有即刻咏唱时尝试阻止除复活外的其他行为")]
 	public bool SwiftLogic { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use swiftcast for movement")]
+	[RotationConfig(CombatType.PvE, Name = "移动时使用即刻咏唱")]
 	public bool UseSwiftcastForMovement { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Divine Caress as soon as its available")]
+	[RotationConfig(CombatType.PvE, Name = "神圣抚摸可用时立即使用")]
 	public bool UseDivine { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Only use Benediction on tanks")]
+	[RotationConfig(CombatType.PvE, Name = "仅对坦克使用天赐祝福")]
 	public bool BenedictionTankOnly { get; set; } = true;
 
 	[Range(0, 20, ConfigUnitType.Seconds, 0.5f)]
-	[RotationConfig(CombatType.PvE, Name = "For this many seconds after Presence of Mind starts, only use Afflatus Misery and Glare IV while actually moving")]
+	[RotationConfig(CombatType.PvE, Name = "神速咏唱开始后这么多秒内，仅在实际移动时使用苦百合和耀眼四型")]
 	public float PoMMovementOnlyLockSeconds { get; set; } = 8f;
 
 	[Range(0, 5, ConfigUnitType.Seconds, 0.1f)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum movement time before allowing movement-based actions")]
+	[RotationConfig(CombatType.PvE, Name = "允许移动类操作前的最小移动时间")]
 	public float MovementTimeThreshold { get; set; } = 0.8f;
 
 	[Range(0, 10000, ConfigUnitType.None, 100)]
-	[RotationConfig(CombatType.PvE, Name = "Casting cost requirement for Thin Air to be used")]
+	[RotationConfig(CombatType.PvE, Name = "使用无中生有所需的施法消耗阈值")]
 	public float ThinAirNeed { get; set; } = 1000;
 
-	[RotationConfig(CombatType.PvE, Name = "How to manage the last thin air charge")]
+	[RotationConfig(CombatType.PvE, Name = "如何管理最后一个无中生有充能")]
 	public ThinAirUsageStrategy ThinAirLastChargeUsage { get; set; } = ThinAirUsageStrategy.ReserveLastChargeForRaise;
 
 	public enum ThinAirUsageStrategy : byte
 	{
-		[Description("Use all thin air charges on expensive spells")]
+		[Description("在昂贵的法术上使用所有无中生有充能")]
 		UseAllCharges,
 
-		[Description("Reserve the last charge for raise")]
+		[Description("保留最后一层充能用于复活")]
 		ReserveLastChargeForRaise,
 
-		[Description("Reserve the last charge for manual use")]
+		[Description("保留最后一层充能用于手动使用")]
 		ReserveLastCharge,
 	}
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum HP threshold party member needs to be to use Benediction")]
+	[RotationConfig(CombatType.PvE, Name = "使用天赐祝福所需的队友最低 HP 阈值")]
 	public float BenedictionHeal { get; set; } = 0.1f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum HP threshold party member needs to be to use Tetragrammaton 2nd charge")]
+	[RotationConfig(CombatType.PvE, Name = "使用神名第 2 层充能所需的队友最低 HP 阈值")]
 	public float TetragrammatonSecond { get; set; } = 0.7f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum HP threshold party member needs to be to use Tetragrammaton last charge")]
+	[RotationConfig(CombatType.PvE, Name = "使用神名最后一层充能所需的队友最低 HP 阈值")]
 	public float TetragrammatonLast { get; set; } = 0.6f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum HP threshold party member needs to be to use Afflatus Solace at 0 Blood Lily stacks")]
+	[RotationConfig(CombatType.PvE, Name = "0 层苦难之心时使用安慰之心所需的队友最低 HP 阈值")]
 	public float SolaceHeal0 { get; set; } = 0.7f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum HP threshold party member needs to be to use Afflatus Solace at 1 Blood Lily stack")]
+	[RotationConfig(CombatType.PvE, Name = "1 层苦难之心时使用安慰之心所需的队友最低 HP 阈值")]
 	public float SolaceHeal1 { get; set; } = 0.6f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum HP threshold party member needs to be to use Afflatus Solace at 2 Blood Lily stacks")]
+	[RotationConfig(CombatType.PvE, Name = "2 层苦难之心时使用安慰之心所需的队友最低 HP 阈值")]
 	public float SolaceHeal2 { get; set; } = 0.5f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum average HP threshold among party members needed to use Afflatus Rapture at 0 Blood Lily stacks")]
+	[RotationConfig(CombatType.PvE, Name = "0 层苦难之心时使用狂喜之心所需的队友平均最低 HP 阈值")]
 	public float RaptureHeal0 { get; set; } = 0.8f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum average HP threshold among party members needed to use Afflatus Rapture at 1 Blood Lily stacks")]
+	[RotationConfig(CombatType.PvE, Name = "1 层苦难之心时使用狂喜之心所需的队友平均最低 HP 阈值")]
 	public float RaptureHeal1 { get; set; } = 0.7f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum average HP threshold among party members needed to use Afflatus Rapture at 2 Blood Lily stacks")]
+	[RotationConfig(CombatType.PvE, Name = "2 层苦难之心时使用狂喜之心所需的队友平均最低 HP 阈值")]
 	public float RaptureHeal2 { get; set; } = 0.6f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum average HP threshold among party members needed to use Medica III / Medica II")]
+	[RotationConfig(CombatType.PvE, Name = "使用愈疗/治疗二型所需的队友平均最低 HP 阈值")]
 	public float MedicaHeal { get; set; } = 0.5f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum average HP threshold among party members needed to use Cure III")]
+	[RotationConfig(CombatType.PvE, Name = "使用愈疗所需的队友平均最低 HP 阈值")]
 	public float CureIIIHeal { get; set; } = 0.5f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum average HP threshold among party members needed to use Asylum")]
+	[RotationConfig(CombatType.PvE, Name = "使用庇护所所需的队友平均最低 HP 阈值")]
 	public float AsylumHeal { get; set; } = 0.6f;
 
 	#endregion

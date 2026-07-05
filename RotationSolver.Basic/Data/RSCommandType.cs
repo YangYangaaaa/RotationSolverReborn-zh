@@ -8,91 +8,91 @@ public enum SpecialCommandType : byte
 	/// <summary>
 	/// To end this special duration before the set time.
 	/// </summary>
-	[Description("To end this special duration before the set time.")]
+	[Description("在设定时间前结束特殊状态窗口。")]
 	EndSpecial,
 
 	/// <summary>
 	/// Open a window to use AoE heal.
 	/// </summary>
-	[Description("Open a window to use AoE heal.")]
+	[Description("开启群体治疗窗口。")]
 	HealArea,
 
 	/// <summary>
 	/// Open a window to use single heal.
 	/// </summary>
-	[Description("Open a window to use single heal.")]
+	[Description("开启单体治疗窗口。")]
 	HealSingle,
 
 	/// <summary>
 	/// Open a window to use AoE defense.
 	/// </summary>
-	[Description("Open a window to use AoE defense.")]
+	[Description("开启群体减伤窗口。")]
 	DefenseArea,
 
 	/// <summary>
 	/// Open a window to use single defense.
 	/// </summary>
-	[Description("Open a window to use single defense.")]
+	[Description("开启单体减伤窗口。")]
 	DefenseSingle,
 
 	/// <summary>
 	/// Open a window to use Esuna, tank stance actions or True North.
 	/// </summary>
-	[Description("Open a window to use Esuna, tank stance actions or True North.")]
+	[Description("开启医术/坦克姿态/真北窗口。")]
 	DispelStancePositional,
 
 	/// <summary>
 	/// Open a window to use Raise or Shirk.
 	/// </summary>
-	[Description("Open a window to use Raise or Shirk.")]
+	[Description("开启复活/转嫁仇恨窗口。")]
 	RaiseShirk,
 
 	/// <summary>
 	/// Open a window to move forward.
 	/// </summary>
-	[Description("Open a window to move forward.")]
+	[Description("开启前冲窗口。")]
 	MoveForward,
 
 	/// <summary>
 	/// Open a window to move back.
 	/// </summary>
-	[Description("Open a window to move back.")]
+	[Description("开启后撤窗口。")]
 	MoveBack,
 
 	/// <summary>
 	/// Open a window to use knockback immunity actions.
 	/// </summary>
-	[Description("Open a window to use knockback immunity actions.")]
+	[Description("开启防击退窗口。")]
 	AntiKnockback,
 
 	/// <summary>
 	/// Open a window to burst.
 	/// </summary>
-	[Description("Open a window to burst.")]
+	[Description("开启爆发窗口。")]
 	Burst,
 
 	/// <summary>
 	/// Open a window to speed up.
 	/// </summary>
-	[Description("Open a window to speed up.")]
+	[Description("开启加速窗口。")]
 	Speed,
 
 	/// <summary>
 	/// Open a window to use limit break.
 	/// </summary>
-	[Description("Open a window to use limit break.")]
+	[Description("开启极限技窗口。")]
 	LimitBreak,
 
 	/// <summary>
 	/// Open a window to do not use the casting action.
 	/// </summary>
-	[Description("Open a window to do not use the casting action.")]
+	[Description("开启停止读条窗口。")]
 	NoCasting,
 
 	/// <summary>
 	/// Intercepting action.
 	/// </summary>
-	[Description("Indicator for when RSR is intercepting action.")]
+	[Description("RSR 拦截技能时的指示器。")]
 	Intercepting,
 }
 
@@ -104,44 +104,44 @@ public enum StateCommandType : byte
 	/// <summary>
 	/// Stop the addon. Always remember to turn it off when it is not in use!
 	/// </summary>
-	[Description("Stop the addon. Always remember to turn it off when it is not in use!")]
+	[Description("关闭插件。不使用时请务必关闭！")]
 	Off,
 
 	/// <summary>
 	/// Start the addon in Auto mode. When out of combat or when combat starts, switches the target according to the set condition.
 	/// </summary>
-	[Description("Start the addon in Auto mode. When out of combat or when combat starts, switches the target according to the set condition. " +
-		"\r\n Optionally: You can add the target type to the end of the command you want RSR to do. For example: /rotation Auto Big")]
+	[Description("以自动模式启动插件。非战斗或战斗开始时，按设定条件切换目标。 " +
+		"\r\n 可选：可在命令末尾追加目标类型，例如：/rotation Auto Big")]
 	Auto,
 
 	/// <summary>
 	/// Start the addon in Target-Only mode. RSR will auto-select targets per normal logic but will not perform any actions.
 	/// </summary>
-	[Description("Start in Target-Only mode. RSR will auto-select targets per normal logic but will not perform any actions.")]
+	[Description("以仅目标模式启动。RSR 将按正常逻辑自动选取目标但不执行任何技能。")]
 	TargetOnly,
 
 	/// <summary>
 	/// Start the addon in Manual mode. You need to choose the target manually. This will bypass any engage settings that you have set up and will start attacking immediately once something is targeted.
 	/// </summary>
-	[Description("Start the addon in Manual mode. You need to choose the target manually. This will bypass any engage settings that you have set up and will start attacking immediately once something is targeted.")]
+	[Description("以手动模式启动插件。需手动选择目标，此模式将绕过所有交战设置，锁定目标后立即开始攻击。")]
 	Manual,
 
 	/// <summary>
 	/// 
 	/// </summary>
-	[Description("This mode is managed by the Autoduty plugin")]
+	[Description("此模式由 AutoDuty 插件管理")]
 	AutoDuty,
 
 	/// <summary>
 	/// 
 	/// </summary>
-	[Description("This mode is managed by the Henchman plugin, or any other plugin that requires RSR just do rotation and not targetting.")]
+	[Description("此模式由 Henchman 插件或其他仅需 RSR 执行循环而不需选目标的插件管理。")]
 	Henched,
 
 	/// <summary>
 	/// 
 	/// </summary>
-	[Description("Optional mode for PvP specific activities.")]
+	[Description("PvP 专用活动可选模式。")]
 	PvP,
 }
 
@@ -159,7 +159,11 @@ public static class StateCommandTypeExtensions
 		{
 			StateCommandType.Off => "关闭",
 			StateCommandType.Auto => "自动目标",
+			StateCommandType.TargetOnly => "仅目标",
 			StateCommandType.Manual => "手动目标",
+			StateCommandType.AutoDuty => "AutoDuty",
+			StateCommandType.Henched => "Henched",
+			StateCommandType.PvP => "PvP",
 			_ => stateCommandType.ToString(),
 		};
 	}
@@ -173,42 +177,42 @@ public enum OtherCommandType : byte
 	/// <summary>
 	/// Open the settings.
 	/// </summary>
-	[Description("Open the settings.")]
+	[Description("打开设置。")]
 	Settings,
 
 	/// <summary>
 	/// Open the rotations.
 	/// </summary>
-	[Description("Open the rotations.")]
+	[Description("打开循环列表。")]
 	Rotations,
 
 	/// <summary>
 	/// Open the rotations.
 	/// </summary>
-	[Description("Open the duty rotations.")]
+	[Description("打开副本循环列表。")]
 	DutyRotations,
 
 	/// <summary>
 	/// Perform the actions.
 	/// </summary>
-	[Description("Perform the actions.")]
+	[Description("执行技能。")]
 	DoActions,
 
 	/// <summary>
 	/// Toggle the actions.
 	/// </summary>
-	[Description("Toggle the actions.")]
+	[Description("切换技能开关。")]
 	ToggleActions,
 
 	/// <summary>
 	/// Do the next action.
 	/// </summary>
-	[Description("Do the next action.")]
+	[Description("执行下一技能。")]
 	NextAction,
 
 	/// <summary>
 	/// Cycles between states following settings in Target > Configuration.
 	/// </summary>
-	[Description("Cycles between states following settings in Target > Configuration.")]
+	[Description("按「目标 > 配置」中的设置在状态间循环。")]
 	Cycle,
 }

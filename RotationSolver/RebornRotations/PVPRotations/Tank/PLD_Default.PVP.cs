@@ -6,18 +6,18 @@
 public sealed class PLD_DefaultPvP : PaladinRotation
 {
 	#region Configurations
-	[RotationConfig(CombatType.PvP, Name = "Use Guardian freely")]
+	[RotationConfig(CombatType.PvP, Name = "自由使用守护")]
 	public bool GuardianFree { get; set; } = false;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvP, Name = "Guardian HP Threshold", Parent = nameof(GuardianFree))]
+	[RotationConfig(CombatType.PvP, Name = "守护 HP 阈值", Parent = nameof(GuardianFree))]
 	public float GuardianThreshold { get; set; } = 0.7f;
 
-	[RotationConfig(CombatType.PvP, Name = "Use Guardian with only Hallowed Ground")]
+	[RotationConfig(CombatType.PvP, Name = "仅在神圣大地期间使用守护")]
 	public bool HallowedGuardianFree { get; set; } = true;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvP, Name = "Hallowed Guardian HP Threshold")]
+	[RotationConfig(CombatType.PvP, Name = "神圣守护 HP 阈值")]
 	public float HallowedGuardianThreshold { get; set; } = 0.7f;
 	#endregion
 

@@ -7,7 +7,7 @@ namespace RotationSolver.RebornRotations.Duty;
 
 internal class VariantDefault : VariantRotation
 {
-	[RotationConfig(CombatType.PvE, Name = "Use Variant Rampart on cooldown")]
+	[RotationConfig(CombatType.PvE, Name = "冷却时使用变化铁壁")]
 	public static bool VariantRampartSpam { get; set; } = false;
 
 	public override bool ProvokeAbility(IAction nextGCD, out IAction? act)

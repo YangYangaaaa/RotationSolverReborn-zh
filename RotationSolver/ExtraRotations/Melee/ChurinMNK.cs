@@ -1,9 +1,9 @@
-﻿using RotationSolver.Updaters;
+using RotationSolver.Updaters;
 using System.ComponentModel;
 
 namespace RotationSolver.ExtraRotations.Melee;
 
-[Rotation("Churin MNK", CombatType.PvE, GameVersion = "7.4", Description = "An eye for an eye. A tooth for a tooth. An eye and a tooth for a loaf of bread. Eyes and teeth are the new currency.")]
+[Rotation("Churin MNK", CombatType.PvE, GameVersion = "7.4", Description = "以眼还眼。以牙还牙。用一只眼和一颗牙换一块面包。眼和牙是新的货币。")]
 [SourceCode(Path = "main/ExtraRotations/Melee/ChurinMNK.cs")]
 [ExtraRotation]
 
@@ -14,31 +14,31 @@ public sealed class ChurinMNK : MonkRotation
 	#region Enums
 	private enum OpenerType : byte
 	{
-		[Description("Double Lunar")] DoubleLunar,
-		[Description("Solar Lunar")] SolarLunar,
-		[Description("Triple Lunar")] TripleLunar
+		[Description("双重月相")] DoubleLunar,
+		[Description("日月相")] SolarLunar,
+		[Description("三重月相")] TripleLunar
 	}
 
 	private enum OpenerVariation : byte
 	{
-		[Description("Dragon Kick - 5s")] DragonKick5,
-		[Description("Dragon Kick - 7s")] DragonKick7,
-		[Description("Demolish - 7s")] Demolish7
+		[Description("双龙脚 - 5秒")] DragonKick5,
+		[Description("双龙脚 - 7秒")] DragonKick7,
+		[Description("破碎拳 - 7秒")] Demolish7
 	}
 
 	private enum Nadi : byte
 	{
-		[Description("None")] None,
-		[Description("Lunar")] Lunar,
-		[Description("Solar")] Solar,
+		[Description("无")] None,
+		[Description("月相")] Lunar,
+		[Description("日相")] Solar,
 	}
 
 	private enum Blitz : byte
 	{
-		[Description("None")] None,
-		[Description("Elixir Burst")] ElixirBurst,         // Grants Lunar
-		[Description("Rising Phoenix")] RisingPhoenix,     // Grants Solar
-		[Description("Phantom Rush")] PhantomRush,         // Consumes Both
+		[Description("无")] None,
+		[Description("苍气炮")] ElixirBurst,         // Grants Lunar
+		[Description("凤凰舞")] RisingPhoenix,     // Grants Solar
+		[Description("梦幻斗舞")] PhantomRush,         // Consumes Both
 	}
 
 	#endregion
@@ -352,10 +352,10 @@ public sealed class ChurinMNK : MonkRotation
 
 	#region Config Options
 
-	[RotationConfig(CombatType.PvE, Name = "Choose Opener.")]
+	[RotationConfig(CombatType.PvE, Name = "选择起手")]
 	private OpenerType ChosenOpener { get; set; } = OpenerType.DoubleLunar;
 
-	[RotationConfig(CombatType.PvE, Name = "Choose Opener Variation")]
+	[RotationConfig(CombatType.PvE, Name = "选择起手变体")]
 	private OpenerVariation ChosenVariation { get; set; } = OpenerVariation.DragonKick5;
 
 

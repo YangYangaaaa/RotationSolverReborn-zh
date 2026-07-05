@@ -1,4 +1,4 @@
-﻿using ECommons.DalamudServices;
+using ECommons.DalamudServices;
 using System.ComponentModel;
 
 namespace RotationSolver.UI;
@@ -28,43 +28,43 @@ internal enum RotationConfigWindowTab : byte
 	[TabSkip] About,
 	[TabSkip] Rotation,
 
-	[Description("Useful information and macro list.")]
+	[Description("实用信息与宏列表。")]
 	[TabIcon(Icon = 4)] Main,
 
-	[Description("Rotation specific configs.")]
+	[Description("循环专属配置。")]
 	[TabIcon(Icon = 4)] Job,
 
-	[Description("Configure Duty Rotation.")]
+	[Description("配置副本循环。")]
 	[TabIcon(Icon = 4)] DutyRotation,
 
-	[Description("Configure abilities and custom conditions for your current job.")]
+	[Description("配置当前职业的技能与自定义条件。")]
 	[TabIcon(Icon = 4)] Actions,
 
-	[Description("Configure reactive actions and status effect lists.")]
+	[Description("配置反应性技能与状态效果列表。")]
 	[TabIcon(Icon = 21)] List,
 
-	[Description("Configure basic settings.")]
+	[Description("配置基础设置。")]
 	[TabIcon(Icon = 14)] Basic,
 
-	[Description("Configure user interface settings.")]
+	[Description("配置用户界面设置。")]
 	[TabIcon(Icon = 42)] UI,
 
-	[Description("Configure general action usage and control settings.")]
+	[Description("配置通用技能使用与控制设置。")]
 	[TabIcon(Icon = 29)] Auto,
 
-	[Description("Configure targeting settings.")]
+	[Description("配置目标选择设置。")]
 	[TabIcon(Icon = 16)] Target,
 
-	[Description("Duty specific settings.")]
+	[Description("副本专属设置。")]
 	[TabIcon(Icon = 16)] Duty,
 
-	[Description("Configure optional helpful features.")]
+	[Description("配置可选的辅助功能。")]
 	[TabIcon(Icon = 51)] Extra,
 
-	[Description("Debug options for developers and rotation writers (disable when not in use).")]
+	[Description("开发者与循环编写者的调试选项（不使用时请禁用）。")]
 	[TabIcon(Icon = 5)] Debug,
 
-	[Description("Configure AutoDuty settings and view related information.")]
+	[Description("配置 AutoDuty 设置并查看相关信息。")]
 	[TabIcon(Icon = 4)] AutoDuty,
 }
 

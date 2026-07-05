@@ -1,4 +1,4 @@
-﻿using Dalamud.Interface.Colors;
+using Dalamud.Interface.Colors;
 using ECommons.GameFunctions;
 using System.ComponentModel;
 using CombatRole = ECommons.GameFunctions.CombatRole;
@@ -8,7 +8,7 @@ namespace RotationSolver.ExtraRotations.Ranged;
 
 [Rotation("Churin DNC", CombatType.PvE, GameVersion = "7.5",
 	Description =
-		"Candles lit, runes drawn upon the floor, sacrifice prepared. Everything is ready for the summoning. I begin the incantation: \"Shakira, Shakira!\"")]
+		"蜡烛点燃，符文绘于地面，祭品准备就绪。召唤仪式一切就绪。我开始咏唱咒文：\"夏奇拉，夏奇拉！\"")]
 [SourceCode(Path = "main/ExtraRotations/Ranged/ChurinDNC.cs")]
 [ExtraRotation]
 
@@ -23,16 +23,16 @@ public sealed class ChurinDNC : DancerRotation
 	/// </summary>
 	private enum HoldStrategy
 	{
-		[Description("Hold Step only if no targets in range")]
+		[Description("仅当范围内无目标时保留舞步")]
 		HoldStepOnly,
 
-		[Description("Hold Finish only if no targets in range")]
+		[Description("仅当范围内无目标时保留终结")]
 		HoldFinishOnly,
 
-		[Description("Hold Step and Finish if no targets in range")]
+		[Description("仅当范围内无目标时保留舞步和终结")]
 		HoldStepAndFinish,
 
-		[Description("Don't hold Step and Finish if no targets in range")]
+		[Description("即使范围内无目标也不保留舞步和终结")]
 		DontHoldStepAndFinish
 	}
 
@@ -41,8 +41,8 @@ public sealed class ChurinDNC : DancerRotation
 	///</summary>
 	public enum DancerOpener
 	{
-		[Description("Standard Opener")] Standard,
-		[Description("Tech Opener")] Tech
+		[Description("标准起手")] Standard,
+		[Description("技巧起手")] Tech
 	}
 
 	///<summary>
@@ -50,10 +50,10 @@ public sealed class ChurinDNC : DancerRotation
 	///</summary>
 	private enum PotsDuringStepStrategy
 	{
-		[Description("Use potion before dance steps, right after Tech/Standard step is used")]
+		[Description("在舞步前使用爆发药，紧接技巧/标准舞步之后")]
 		BeforeStep,
 
-		[Description("Use potion after dance steps, when the step finish is ready")]
+		[Description("在舞步后使用爆发药，当舞步结束就绪时")]
 		AfterStep
 	}
 
@@ -346,7 +346,7 @@ public sealed class ChurinDNC : DancerRotation
 
 	#region Dance Partner Configs
 
-	[RotationConfig(CombatType.PvE, Name = "Restrict Dance Partner to only DPS targets if any")]
+	[RotationConfig(CombatType.PvE, Name = "将舞伴限制为仅对 DPS 目标使用")]
 	private static bool RestrictDPTarget { get; set; } = true;
 
 	#endregion
@@ -355,52 +355,50 @@ public sealed class ChurinDNC : DancerRotation
 
 	#region Opener Step Configs
 
-	[RotationConfig(CombatType.PvE, Name = "Select an opener")]
+	[RotationConfig(CombatType.PvE, Name = "选择起手")]
 	public static DancerOpener ChosenOpener { get; set; } = DancerOpener.Standard;
 
 	#endregion
 
 	#region Tech Step Configs
 
-	[RotationConfig(CombatType.PvE, Name = "Technical Step, Technical Finish & Tillana Hold Strategy")]
+	[RotationConfig(CombatType.PvE, Name = "技巧舞步、技巧舞步结束与提拉纳保留策略")]
 	private HoldStrategy TechHoldStrategy { get; set; } = HoldStrategy.HoldStepAndFinish;
 
 	[Range(0, 16, ConfigUnitType.Seconds, 0)]
-	[RotationConfig(CombatType.PvE, Name = "How many seconds before combat starts to use Technical Step?",
+	[RotationConfig(CombatType.PvE, Name = "战斗开始前多少秒使用技巧舞步？",
 		Parent = nameof(ChosenOpener),
-		ParentValue = "Tech Opener",
-		Tooltip = "If countdown is set above 13 seconds, " +
-				  "it will start with Standard Step before initiating Tech Step, " +
-				  "please go out of range of any enemies before the countdown reaches your configured time")]
+		ParentValue = "技巧起手",
+		Tooltip = "如果倒计时设定超过 13 秒，它将在启动技巧舞步前先使用标准舞步，请在倒计时到达您设定的时间前远离任何敌人")]
 	private float OpenerTechTime { get; set; } = 7f;
 
 	[Range(0, 1, ConfigUnitType.Seconds, 0)]
-	[RotationConfig(CombatType.PvE, Name = "How many seconds before combat starts to use Technical Finish?",
+	[RotationConfig(CombatType.PvE, Name = "战斗开始前多少秒使用技巧舞步结束？",
 		Parent = nameof(ChosenOpener),
-		ParentValue = "Tech Opener")]
+		ParentValue = "技巧起手")]
 	private float OpenerTechFinishTime { get; set; } = 0.5f;
 
 	#endregion
 
 	#region Standard Step Configs
 
-	[RotationConfig(CombatType.PvE, Name = "Standard Step, Standard Finish & Finishing Move Hold Strategy")]
+	[RotationConfig(CombatType.PvE, Name = "标准舞步、标准舞步结束与结束动作保留策略")]
 	private HoldStrategy StandardHoldStrategy { get; set; } = HoldStrategy.HoldStepAndFinish;
 
 	[Range(0, 16, ConfigUnitType.Seconds, 0)]
-	[RotationConfig(CombatType.PvE, Name = "How many seconds before combat starts to use Standard Step?",
+	[RotationConfig(CombatType.PvE, Name = "战斗开始前多少秒使用标准舞步？",
 		Parent = nameof(ChosenOpener),
-		ParentValue = "Standard Opener")]
+		ParentValue = "标准起手")]
 	private float OpenerStandardStepTime { get; set; } = 15.5f;
 
 	[Range(0, 1, ConfigUnitType.Seconds, 0)]
-	[RotationConfig(CombatType.PvE, Name = "How many seconds before combat starts to use Standard Finish?",
+	[RotationConfig(CombatType.PvE, Name = "战斗开始前多少秒使用标准舞步结束？",
 		Parent = nameof(ChosenOpener),
-		ParentValue = "Standard Opener")]
+		ParentValue = "标准起手")]
 	private float OpenerStandardFinishTime { get; set; } = 0.5f;
 
 	[RotationConfig(CombatType.PvE,
-		Name = "Disable Standard Step in Burst - Ignored if not high enough level for Finishing Move")]
+		Name = "爆发期间禁用标准舞步 - 若等级不足无法使用结束动作则忽略")]
 	private bool DisableStandardInBurst { get; set; } = true;
 
 	#endregion
@@ -409,18 +407,18 @@ public sealed class ChurinDNC : DancerRotation
 
 	#region Potion Configs
 
-	[RotationConfig(CombatType.PvE, Name = "Enable Potion Usage")]
+	[RotationConfig(CombatType.PvE, Name = "启用爆发药使用")]
 	private static bool PotionUsageEnabled
 	{
 		get => ChurinPotions.Enabled;
 		set => ChurinPotions.Enabled = value;
 	}
 
-	[RotationConfig(CombatType.PvE, Name = "Define potion usage behavior for Dancer",
+	[RotationConfig(CombatType.PvE, Name = "定义舞者的爆发药使用行为",
 		Parent = nameof(PotionUsageEnabled))]
 	private static PotsDuringStepStrategy PotsDuringStep { get; set; } = PotsDuringStepStrategy.BeforeStep;
 
-	[RotationConfig(CombatType.PvE, Name = "Potion Usage Presets", Parent = nameof(PotionUsageEnabled))]
+	[RotationConfig(CombatType.PvE, Name = "爆发药使用预设", Parent = nameof(PotionUsageEnabled))]
 	private static PotionStrategy PotionUsagePresets
 	{
 		get => ChurinPotions.Strategy;
@@ -428,7 +426,7 @@ public sealed class ChurinDNC : DancerRotation
 	}
 
 	[Range(0, 20, ConfigUnitType.Seconds, 0)]
-	[RotationConfig(CombatType.PvE, Name = "Use Opener Potion at minus (value in seconds)",
+	[RotationConfig(CombatType.PvE, Name = "起手爆发药提前（秒）使用",
 		Parent = nameof(PotionUsageEnabled))]
 	private static float OpenerPotionTime
 	{
@@ -437,8 +435,8 @@ public sealed class ChurinDNC : DancerRotation
 	}
 
 	[Range(0, 1200, ConfigUnitType.Seconds, 0)]
-	[RotationConfig(CombatType.PvE, Name = "Use 1st Potion at (value in seconds - leave at 0 if using in opener)",
-		Parent = nameof(PotionUsagePresets), ParentValue = "Use custom potion timings")]
+	[RotationConfig(CombatType.PvE, Name = "第一次爆发药使用时间（秒 - 若起手使用则填 0）",
+		Parent = nameof(PotionUsagePresets), ParentValue = "自定义爆发药时机")]
 	private float FirstPotionTiming
 	{
 		get;
@@ -451,8 +449,8 @@ public sealed class ChurinDNC : DancerRotation
 
 	[Range(0, 1200, ConfigUnitType.Seconds, 0)]
 	[RotationConfig(CombatType.PvE,
-		Name = "Use 2nd Potion at (value in seconds)", Parent = nameof(PotionUsagePresets),
-		ParentValue = "Use custom potion timings")]
+		Name = "第二次爆发药使用时间（秒）", Parent = nameof(PotionUsagePresets),
+		ParentValue = "自定义爆发药时机")]
 	private float SecondPotionTiming
 	{
 		get;
@@ -464,8 +462,8 @@ public sealed class ChurinDNC : DancerRotation
 	}
 
 	[Range(0, 1200, ConfigUnitType.Seconds, 0)]
-	[RotationConfig(CombatType.PvE, Name = "Use 3rd Potion at (value in seconds)", Parent = nameof(PotionUsagePresets),
-		ParentValue = "Use custom potion timings")]
+	[RotationConfig(CombatType.PvE, Name = "第三次爆发药使用时间（秒）", Parent = nameof(PotionUsagePresets),
+		ParentValue = "自定义爆发药时机")]
 	private float ThirdPotionTiming
 	{
 		get;

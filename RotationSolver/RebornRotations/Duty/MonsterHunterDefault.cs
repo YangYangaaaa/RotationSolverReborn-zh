@@ -1,4 +1,4 @@
-﻿using RotationSolver.Basic.Rotations.Duties;
+using RotationSolver.Basic.Rotations.Duties;
 
 namespace RotationSolver.RebornRotations.Duty;
 
@@ -6,18 +6,18 @@ namespace RotationSolver.RebornRotations.Duty;
 
 internal class MonsterHunterDefault : MonsterHunterRotation
 {
-	[RotationConfig(CombatType.PvE, Name = "Use Rathalos MegaPotion")]
+	[RotationConfig(CombatType.PvE, Name = "使用火龙大回复药")]
 	public static bool RathalosMegaPotionBool { get; set; } = false;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Player HP percent needed to use Rathalos MegaPotion", Parent = nameof(RathalosMegaPotionBool))]
+	[RotationConfig(CombatType.PvE, Name = "使用火龙大回复药所需玩家 HP 百分比", Parent = nameof(RathalosMegaPotionBool))]
 	public float RathalosMegaPotion { get; set; } = 0.66f;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Arkveld MegaPotion")]
+	[RotationConfig(CombatType.PvE, Name = "使用护龙大回复药")]
 	public static bool ArkveldMegaPotionBool { get; set; } = false;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Player HP percent needed to use Arkveld MegaPotion", Parent = nameof(ArkveldMegaPotionBool))]
+	[RotationConfig(CombatType.PvE, Name = "使用护龙大回复药所需玩家 HP 百分比", Parent = nameof(ArkveldMegaPotionBool))]
 	public float ArkveldMegaPotion { get; set; } = 0.66f;
 
 	public override bool GeneralAbility(IAction nextGCD, out IAction? act)

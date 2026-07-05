@@ -17,44 +17,44 @@ public sealed class BeirutaPCT : PictomancerRotation
 	}
 
 	[RotationConfig(CombatType.PvE, Name =
-		"Please note that this rotation is optimised for combats that start with a countdown Rainbow Drip cast.\n" +
-		"• Recommended gcd is 2.48/2.49/2.50 depends on your ping\n" +
-		"• 2.48gcd will have higher chance of fitting rainbowdrip inside starry muse\n" +
-		"• Ideally do not intercept defence ability during first 5s of the fights or burst\n" +
-		"• Enable Spell Intercept to manually use Rainbow Drip before the boss becomes untargetable.\n" +
-		"• This rotation is designed to align Madeen within burst windows.\n" +
-		"• Hyperphantasia is prioritised early in burst to allow earlier movement flexibility.\n" +
-		"• Intercept Rainbow Drip automatically uses Swiftcast when Rainbow Drip is queued (May fail if pressed too late or casting sub inks/motifs).\n" +
-		"• Manual Swiftcast input will be spent on Motif (creature -> weapon -> landscape)."
+		"请注意：该循环针对以倒计时彩虹滴起手的战斗进行优化。\n" +
+		"• 推荐 GCD 为 2.48/2.49/2.50，根据网络延迟选择\n" +
+		"• 2.48 GCD 更容易将彩虹滴塞进星空灵感内\n" +
+		"• 理想情况下，战斗开始前 5 秒或爆发期间不要拦截防御技能\n" +
+		"• 启用法术拦截可在 Boss 变为不可选中前手动使用彩虹滴。\n" +
+		"• 该循环设计为将玛迪恩对齐到爆发窗口内。\n" +
+		"• 绘灵幻景在爆发早期优先使用，以更早提供移动灵活性。\n" +
+		"• 拦截彩虹滴时若彩虹滴已排队将自动使用即刻咏唱（按得太晚或正在咏唱减色墨水/彩绘时可能失败）。\n" +
+		"• 手动即刻咏唱输入会消耗在彩绘上（生物 -> 武器 -> 风景）。"
 	)]
 	public bool Info_DoNotChange { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use HolyInWhite or CometInBlack while moving")]
+	[RotationConfig(CombatType.PvE, Name = "移动时使用神圣之白或彗星之黑")]
 	public bool HolyCometMoving { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Paint overcap protection.")]
+	[RotationConfig(CombatType.PvE, Name = "颜料溢出保护。")]
 	public bool UseCapCometHoly { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use the paint overcap protection (will still use comet while moving if the setup is on)")]
+	[RotationConfig(CombatType.PvE, Name = "启用颜料溢出保护（若设置开启，移动时仍会使用彗星之黑）")]
 	public bool UseCapCometOnly { get; set; } = false;
 
 	[Range(1, 5, ConfigUnitType.None, 1)]
-	[RotationConfig(CombatType.PvE, Name = "Paint overcap protection limit. How many paint you need to be at for it to use Holy out of burst (Setting is ignored when you have Hyperphantasia)")]
+	[RotationConfig(CombatType.PvE, Name = "颜料溢出保护阈值。非爆发时达到多少颜料才使用神圣之白（拥有绘灵幻景时忽略此设置）")]
 	public int HolyCometMax { get; set; } = 5;
 
-	[RotationConfig(CombatType.PvE, Name = "Use swiftcast on Intercepted Rainbow Drip before Boss Untargetable")]
+	[RotationConfig(CombatType.PvE, Name = "Boss 不可选中前对拦截的彩虹滴使用即刻咏唱")]
 	public bool RainbowDripSwift { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use swiftcast on Motif")]
+	[RotationConfig(CombatType.PvE, Name = "对彩绘使用即刻咏唱")]
 	public bool MotifSwiftCastSwift { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Which Motif to use swiftcast on")]
+	[RotationConfig(CombatType.PvE, Name = "对哪个彩绘使用即刻咏唱")]
 	public CanvasFlags MotifSwiftCast { get; set; } = CanvasFlags.Claw;
 
-	[RotationConfig(CombatType.PvE, Name = "Prevent the use of defense abilties during bursts")]
+	[RotationConfig(CombatType.PvE, Name = "爆发期间阻止使用防御技能")]
 	private bool BurstDefense { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Hold hammer chain for movement time (0/5/10/15s).")]
+	[RotationConfig(CombatType.PvE, Name = "为移动保留锤子连击的时间（0/5/10/15 秒）。")]
 	public HammerEarlyHoldSeconds HammerEarlyHold { get; set; } = HammerEarlyHoldSeconds.Sec10;
 
 	#endregion

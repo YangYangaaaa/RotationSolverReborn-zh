@@ -2,7 +2,7 @@ using System.ComponentModel;
 
 namespace RotationSolver.ExtraRotations.Healer;
 
-[Rotation("BeirutaAST", CombatType.PvE, GameVersion = "7.45", Description = "Semi-Automatic Savage/Ultimate rotation, need to used with CD planner or manual inputs")]
+[Rotation("BeirutaAST", CombatType.PvE, GameVersion = "7.45", Description = "半自动零式/绝境战循环，需配合 CD 计划器或手动输入使用")]
 [SourceCode(Path = "main/ExtraRotations/Healer/BeirutaAST.cs")]
 [ExtraRotation]
 
@@ -11,120 +11,120 @@ public sealed class BeirutaAST : AstrologianRotation
 	#region Config Options
 
 	[RotationConfig(CombatType.PvE, Name =
-		"Please note that this rotation is optimised for high-end encounters (Only for countdown 8 people fights).\n" +
-		"• Only the actions lsited in the description will be automatically used and everything else should be used manually or through CD planner\n" +
-		"• Please set Intercept for GCD usage only\n" +
-		"• Disabling AutoBurst is sufficient if you need to delay burst timing in this rotation\n" +
-		"• DoT effects may refresh slightly earlier during burst phases or while moving\n" +
-		"• Lightspeed is managed automatically by the rotation and should not be used manually\n" +
-		"• Earthly Star is used on cooldown in this rotation, disable it in Actions if you want to use CD planner for it\n" +
-		"• This rotation will immediatly follow a Helios Conjunction if Horoscope or Neutral Sect being used \n" +
-		"• Macrocosmos from CD planner (or All GCD actions) is not reliable, please intercept mannually \n" +
-		"• Single-target healing usage is intentionally more conservative in this rotation\n")]
+		"请注意，本循环针对高端战斗进行优化（仅适用于 8 人倒计时战斗）。\n" +
+		"• 只有描述中列出的技能会被自动使用，其他所有技能都应手动使用或通过 CD 计划器使用\n" +
+		"• 请将拦截设置为仅 GCD 使用\n" +
+		"• 如果需要延迟本循环的爆发时机，禁用 AutoBurst 即可\n" +
+		"• DoT 效果在爆发阶段或移动期间可能会稍微提前刷新\n" +
+		"• 光速由循环自动管理，不应手动使用\n" +
+		"• 本循环中地星按冷却使用，如果想用 CD 计划器管理请在技能设置中禁用\n" +
+		"• 如果使用了地宫占卜或中间学派，本循环会立即跟随使用太阳星座\n" +
+		"• 来自 CD 计划器（或所有 GCD 操作）的大宇宙不可靠，请手动拦截\n" +
+		"• 本循环中单体治疗的使用故意更保守\n")]
 	public bool RotationNotes { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Opener/Burst open window (GCDs)")]
+	[RotationConfig(CombatType.PvE, Name = "开场/爆发开启窗口（GCD 数）")]
 	[Range(0, 2, ConfigUnitType.None, 1)]
 	public OpenWindowGcd OpenWindow { get; set; } = OpenWindowGcd.ThreeGcd;
 
 	public enum OpenWindowGcd : byte
 	{
-		[Description("0 GCD (0.0s)")] ZeroGcd,
-		[Description("1 GCD (2.2s)")] OneGcd,
-		[Description("2 GCD (5.0s)")] TwoGcd,
-		[Description("Balance")] ThreeGcd,
+		[Description("0 GCD（0.0s）")] ZeroGcd,
+		[Description("1 GCD（2.2s）")] OneGcd,
+		[Description("2 GCD（5.0s）")] TwoGcd,
+		[Description("平衡")] ThreeGcd,
 	}
 
-	[RotationConfig(CombatType.PvE, Name = "Automatically upgrade Horoscope with Helios/Aspected Helios")]
+	[RotationConfig(CombatType.PvE, Name = "用日耀/方面日耀自动升级地宫占卜")]
 	public bool AutoUpgradeHoroscope { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Enable Swiftcast Restriction Logic to attempt to prevent actions other than Raise when you have swiftcast")]
+	[RotationConfig(CombatType.PvE, Name = "启用即刻咏唱限制逻辑：拥有即刻咏唱时尝试阻止除复活外的其他行为")]
 	public bool SwiftLogic { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Lightspeed for movement (Still reserve for burst)")]
+	[RotationConfig(CombatType.PvE, Name = "移动时使用光速（仍为爆发保留）")]
 	public bool UseLightspeedForMovement { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Swiftcast for movement")]
+	[RotationConfig(CombatType.PvE, Name = "移动时使用即刻咏唱")]
 	public bool UseSwiftcastForMovement { get; set; } = true;
 
 	[Range(0, 5, ConfigUnitType.Seconds, 0.1f)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum movement time before allowing movement-based actions")]
+	[RotationConfig(CombatType.PvE, Name = "允许移动类操作前的最小移动时间")]
 	public float MovementTimeThreshold { get; set; } = 0.9f;
 
-	[RotationConfig(CombatType.PvE, Name = "Use GCDs to heal. (Ignored if you are the only healer in party)")]
+	[RotationConfig(CombatType.PvE, Name = "使用 GCD 治疗。（如果你是队伍中唯一的治疗则忽略）")]
 	public bool GCDHeal { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Prioritize Microcosmos over all other healing when available")]
+	[RotationConfig(CombatType.PvE, Name = "可用时优先使用小宇宙而非所有其他治疗")]
 	public bool MicroPrio { get; set; } = false;
 
 	[Range(4, 20, ConfigUnitType.Seconds)]
-	[RotationConfig(CombatType.PvE, Name = "Use Earthly Star during countdown timer.")]
+	[RotationConfig(CombatType.PvE, Name = "倒计时期间使用地星。")]
 	public float UseEarthlyStarTime { get; set; } = 4;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum HP threshold party member needs to be to use Aspected Benefic")]
+	[RotationConfig(CombatType.PvE, Name = "使用方面占卜所需的队友最低 HP 阈值")]
 	public float AspectedBeneficHeal { get; set; } = 0.5f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum HP threshold party member needs to be to use Synastry")]
+	[RotationConfig(CombatType.PvE, Name = "使用星位合图所需的队友最低 HP 阈值")]
 	public float SynastryHeal { get; set; } = 0.5f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum HP threshold among party member needed to pop Horoscope)")]
+	[RotationConfig(CombatType.PvE, Name = "触发地宫占卜所需的队友最低 HP 阈值")]
 	public float HoroscopeHeal { get; set; } = 0.6f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum HP threshold among party member needed to pop Microcosmos")]
+	[RotationConfig(CombatType.PvE, Name = "触发小宇宙所需的队友最低 HP 阈值")]
 	public float MicrocosmosHeal { get; set; } = 0.5f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum average HP threshold among party members needed to detonate Earthly Star (when Giant Dominance)")]
+	[RotationConfig(CombatType.PvE, Name = "引爆地星所需的队友最低平均 HP 阈值（处于巨星支配时）")]
 	public float StellarDetonationHeal { get; set; } = 0.7f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum average HP threshold among party members needed to use Celestial Opposition (only when NOT holding Giant Dominance)")]
+	[RotationConfig(CombatType.PvE, Name = "使用天星冲日所需的队友最低平均 HP 阈值（仅在未持有巨星支配时）")]
 	public float CelestialOppositionHeal { get; set; } = 0.7f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum average HP threshold among party members needed to use Lady Of Crowns")]
+	[RotationConfig(CombatType.PvE, Name = "使用王冠之贵妇所需的队友最低平均 HP 阈值")]
 	public float LadyOfHeals { get; set; } = 0.8f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum HP threshold party member needs to be to use Essential Dignity 3rd charge")]
+	[RotationConfig(CombatType.PvE, Name = "使用先天禀赋第 3 层充能所需的队友最低 HP 阈值")]
 	public float EssentialDignityThird { get; set; } = 0.7f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum HP threshold party member needs to be to use Essential Dignity 2nd charge")]
+	[RotationConfig(CombatType.PvE, Name = "使用先天禀赋第 2 层充能所需的队友最低 HP 阈值")]
 	public float EssentialDignitySecond { get; set; } = 0.5f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum HP threshold party member needs to be to use Essential Dignity last charge")]
+	[RotationConfig(CombatType.PvE, Name = "使用先天禀赋最后一层充能所需的队友最低 HP 阈值")]
 	public float EssentialDignityLast { get; set; } = 0.3f;
 
-	[RotationConfig(CombatType.PvE, Name = "Prioritize Essential Dignity over single target GCD heals when available")]
+	[RotationConfig(CombatType.PvE, Name = "可用时优先使用先天禀赋而非单体 GCD 治疗")]
 	public EssentialPrioStrategy EssentialPrio2 { get; set; } = EssentialPrioStrategy.AnyCharges;
 
 	public enum EssentialPrioStrategy : byte
 	{
-		[Description("Ignore setting")]
+		[Description("忽略设置")]
 		UseGCDs,
 
-		[Description("When capped")]
+		[Description("满层时")]
 		CappedCharges,
 
-		[Description("Any charges")]
+		[Description("任意层数")]
 		AnyCharges,
 	}
 
-	[RotationConfig(CombatType.PvE, Name = "Early moving Combust refresh")]
+	[RotationConfig(CombatType.PvE, Name = "提前移动刷新燃烧")]
 	public MovingCombustRefreshOption MovingCombustRefresh { get; set; } = MovingCombustRefreshOption.Disable;
 
 	public enum MovingCombustRefreshOption : byte
 	{
-		[Description("Disable")] Disable,
-		[Description("6 remaining")] Six,
-		[Description("9 remaining")] Nine,
-		[Description("12 remaining")] Twelve,
+		[Description("禁用")] Disable,
+		[Description("剩余 6 秒")] Six,
+		[Description("剩余 9 秒")] Nine,
+		[Description("剩余 12 秒")] Twelve,
 	}
 
 	#endregion

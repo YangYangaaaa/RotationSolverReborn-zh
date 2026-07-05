@@ -93,7 +93,7 @@ public static partial class RSCommands
 		var strs = str.Split(' ', 3);
 		if (strs.Length < 2)
 		{
-			Svc.Chat.PrintError("Invalid setting command format.");
+			Svc.Chat.PrintError("无效的设置命令格式。");
 			return;
 		}
 
@@ -109,7 +109,7 @@ public static partial class RSCommands
 
 		if (string.IsNullOrEmpty(settingName))
 		{
-			Svc.Chat.PrintError("Invalid setting command format.");
+			Svc.Chat.PrintError("无效的设置命令格式。");
 			return;
 		}
 
@@ -149,7 +149,7 @@ public static partial class RSCommands
 				}
 				else
 				{
-					Svc.Chat.PrintError("Failed to parse the value.");
+					Svc.Chat.PrintError("解析值失败。");
 					return;
 				}
 			}
@@ -164,7 +164,7 @@ public static partial class RSCommands
 				}
 				else
 				{
-					Svc.Chat.PrintError("Failed to parse the value as boolean.");
+					Svc.Chat.PrintError("无法将值解析为布尔类型。");
 					return;
 				}
 			}
@@ -174,13 +174,13 @@ public static partial class RSCommands
 
 			if (Service.Config.ShowToggledSettingInChat)
 			{
-				Svc.Chat.Print($"Changed setting {property.Name} to {command}");
+				Svc.Chat.Print($"已将设置 {property.Name} 改为 {command}");
 			}
 
 			return;
 		}
 
-		Svc.Chat.PrintError("Failed to find the config in this rotation, please check it.");
+		Svc.Chat.PrintError("在此循环中找不到配置，请检查。");
 	}
 
 	private static bool TryConvertValue(Type type, string? command, out object? convertedValue)
@@ -206,14 +206,14 @@ public static partial class RSCommands
 	{
 		if (string.IsNullOrEmpty(command))
 		{
-			Svc.Chat.PrintError("Invalid command for TargetingTypes.");
+			Svc.Chat.PrintError("TargetingTypes 的命令无效。");
 			return;
 		}
 
 		var commandParts = command.Split(' ', 2);
 		if (commandParts.Length < 1)
 		{
-			Svc.Chat.PrintError("Invalid command format for TargetingTypes.");
+			Svc.Chat.PrintError("TargetingTypes 的命令格式无效。");
 			return;
 		}
 
@@ -234,16 +234,16 @@ public static partial class RSCommands
 				Service.Config.TargetingTypes.Clear();
 				if (DataCenter.IsActivated())
 				{
-					Svc.Chat.Print("Removed all TargetingTypes and reset to default list.");
+					Svc.Chat.Print("已移除所有 TargetingTypes 并重置为默认列表。");
 				}
 				else
 				{
-					Svc.Chat.Print("Removed all TargetingTypes.");
+					Svc.Chat.Print("已移除所有 TargetingTypes。");
 				}
 				break;
 
 			default:
-				Svc.Chat.PrintError("Invalid action for TargetingTypes.");
+				Svc.Chat.PrintError("TargetingTypes 的操作无效。");
 				break;
 		}
 
@@ -254,7 +254,7 @@ public static partial class RSCommands
 	{
 		if (string.IsNullOrEmpty(value) || !Enum.TryParse(typeof(TargetingType), value, true, out var parsedEnumAdd))
 		{
-			Svc.Chat.PrintError("Invalid TargetingType value.");
+			Svc.Chat.PrintError("无效的 TargetingType 值。");
 			return;
 		}
 
@@ -262,11 +262,11 @@ public static partial class RSCommands
 		if (!Service.Config.TargetingTypes.Contains(targetingTypeAdd))
 		{
 			Service.Config.TargetingTypes.Add(targetingTypeAdd);
-			Svc.Chat.Print($"Added {targetingTypeAdd} to TargetingTypes.");
+			Svc.Chat.Print($"已将 {targetingTypeAdd} 添加到 TargetingTypes。");
 		}
 		else
 		{
-			Svc.Chat.Print($"{targetingTypeAdd} is already in TargetingTypes.");
+			Svc.Chat.Print($"{targetingTypeAdd} 已在 TargetingTypes 中。");
 		}
 	}
 
@@ -274,7 +274,7 @@ public static partial class RSCommands
 	{
 		if (string.IsNullOrEmpty(value) || !Enum.TryParse(typeof(TargetingType), value, true, out var parsedEnumRemove))
 		{
-			Svc.Chat.PrintError("Invalid TargetingType value.");
+			Svc.Chat.PrintError("无效的 TargetingType 值。");
 			return;
 		}
 
@@ -282,11 +282,11 @@ public static partial class RSCommands
 		if (Service.Config.TargetingTypes.Contains(targetingTypeRemove))
 		{
 			_ = Service.Config.TargetingTypes.Remove(targetingTypeRemove);
-			Svc.Chat.Print($"Removed {targetingTypeRemove} from TargetingTypes.");
+			Svc.Chat.Print($"已从 TargetingTypes 中移除 {targetingTypeRemove}。");
 		}
 		else
 		{
-			Svc.Chat.Print($"{targetingTypeRemove} is not in TargetingTypes.");
+			Svc.Chat.Print($"{targetingTypeRemove} 不在 TargetingTypes 中。");
 		}
 	}
 
@@ -352,7 +352,7 @@ public static partial class RSCommands
 				act.IsEnabled = !act.IsEnabled;
 				if (Service.Config.ShowToggledSettingInChat)
 				{
-					Svc.Chat.Print($"Toggled {act.Name} : {act.IsEnabled}");
+					Svc.Chat.Print($"已切换 {act.Name} : {act.IsEnabled}");
 				}
 				return;
 			}
@@ -362,7 +362,7 @@ public static partial class RSCommands
 				act.IsEnabled = bool.TryParse(flag, out var parse) ? parse : !act.IsEnabled;
 				if (Service.Config.ShowToggledSettingInChat)
 				{
-					Svc.Chat.Print($"Toggled {act.Name} : {act.IsEnabled}");
+					Svc.Chat.Print($"已切换 {act.Name} : {act.IsEnabled}");
 				}
 				return;
 			}
@@ -439,7 +439,7 @@ public static partial class RSCommands
 			{
 				if (Service.Config.ShowToggledSettingInChat)
 				{
-					Svc.Chat.Print($"Changed setting {config.DisplayName} to {config.Value}");
+					Svc.Chat.Print($"已将设置 {config.DisplayName} 改为 {config.Value}");
 				}
 				return;
 			}
@@ -458,7 +458,7 @@ public static partial class RSCommands
 			{
 				if (Service.Config.ShowToggledSettingInChat)
 				{
-					Svc.Chat.Print($"Changed setting {config.DisplayName} to {config.Value}");
+					Svc.Chat.Print($"已将设置 {config.DisplayName} 改为 {config.Value}");
 				}
 				return;
 			}

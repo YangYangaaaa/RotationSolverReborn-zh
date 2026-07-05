@@ -3,7 +3,7 @@ using System.ComponentModel;
 namespace RotationSolver.ExtraRotations.Ranged;
 
 [Rotation("Churin BRD", CombatType.PvE, GameVersion = "7.5",
-	Description = "I sing the body electric. I gasp the body organic. I miss the body remembered.")]
+	Description = "我歌唱带电的躯体。我渴望有机的躯体。我怀念记忆中的躯体。")]
 [SourceCode(Path = "main/ExtraRotations/Ranged/ChurinBRD.cs")]
 [ExtraRotation]
 
@@ -15,20 +15,20 @@ public sealed class ChurinBRD : BardRotation
 
 	private enum SongTiming
 	{
-		[Description("Standard 3-3-12 Cycle")] Standard,
+		[Description("标准 3-3-12 循环")] Standard,
 
-		[Description("Adjusted Standard Cycle - 2.48 GCD ideal")]
+		[Description("调整的标准循环 - 2.48 GCD 理想")]
 		AdjustedStandard,
 
-		[Description("3-6-9 Cycle - 2.49 or 2.5 GCD ideal")]
+		[Description("3-6-9 循环 - 2.49 或 2.5 GCD 理想")]
 		Cycle369,
-		[Description("Custom")] Custom
+		[Description("自定义")] Custom
 	}
 
 	private enum WandererWeave
 	{
-		[Description("Early")] Early,
-		[Description("Late")] Late
+		[Description("早")] Early,
+		[Description("晚")] Late
 	}
 
 	#endregion
@@ -193,44 +193,44 @@ public sealed class ChurinBRD : BardRotation
 
 	#region Config Options
 
-	[RotationConfig(CombatType.PvE, Name = "Only use DOTs on targets with Boss Icon")]
+	[RotationConfig(CombatType.PvE, Name = "仅对有 Boss 图标的目标使用 DoT")]
 	private bool DoTsBoss { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Choose Bard Song Timing Preset")]
+	[RotationConfig(CombatType.PvE, Name = "选择吟游诗人之歌时机预设")]
 	private static SongTiming SongTimings { get; set; }
 
 	[Range(1, 45, ConfigUnitType.Seconds, 1)]
-	[RotationConfig(CombatType.PvE, Name = "Custom Wanderer's Minuet Uptime", Parent = nameof(SongTimings),
-		ParentValue = SongTiming.Custom)]
+	[RotationConfig(CombatType.PvE, Name = "自定义旅神小步舞曲持续时间", Parent = nameof(SongTimings),
+		ParentValue = "自定义")]
 	private float CustomWandTime { get; set; } = 45f;
 
 	[Range(1, 45, ConfigUnitType.Seconds, 1)]
-	[RotationConfig(CombatType.PvE, Name = "Custom Mage's Ballad Uptime", Parent = nameof(SongTimings),
-		ParentValue = SongTiming.Custom)]
+	[RotationConfig(CombatType.PvE, Name = "自定义魔人歌持续时间", Parent = nameof(SongTimings),
+		ParentValue = "自定义")]
 	private float CustomMageTime { get; set; } = 45f;
 
 	[Range(1, 45, ConfigUnitType.Seconds, 1)]
-	[RotationConfig(CombatType.PvE, Name = "Custom Army's Paeon Uptime", Parent = nameof(SongTimings),
-		ParentValue = SongTiming.Custom)]
+	[RotationConfig(CombatType.PvE, Name = "自定义军神赞歌持续时间", Parent = nameof(SongTimings),
+		ParentValue = "自定义")]
 	private float CustomArmyTime { get; set; } = 45f;
 
-	[RotationConfig(CombatType.PvE, Name = "Custom Wanderer's Weave Slot Timing", Parent = nameof(SongTimings),
-		ParentValue = SongTiming.Custom)]
+	[RotationConfig(CombatType.PvE, Name = "自定义旅神插入时机", Parent = nameof(SongTimings),
+		ParentValue = "自定义")]
 	private WandererWeave WanderersWeave { get; set; } = WandererWeave.Early;
 
-	[RotationConfig(CombatType.PvE, Name = "Enable PrepullHeartbreak Shot? - Use with BMR Auto Attack Manager")]
+	[RotationConfig(CombatType.PvE, Name = "启用战前心碎击？ - 与 BMR 自动攻击管理器配合使用")]
 	private bool EnablePrepullHeartbreakShot { get; set; } = true;
 
 	private static readonly ChurinBRDPotions ChurinPotions = new();
 
-	[RotationConfig(CombatType.PvE, Name = "Enable Potion Usage")]
+	[RotationConfig(CombatType.PvE, Name = "启用爆发药使用")]
 	private static bool PotionUsageEnabled
 	{
 		get => ChurinPotions.Enabled;
 		set => ChurinPotions.Enabled = value;
 	}
 
-	[RotationConfig(CombatType.PvE, Name = "Potion Usage Presets", Parent = nameof(PotionUsageEnabled))]
+	[RotationConfig(CombatType.PvE, Name = "爆发药使用预设", Parent = nameof(PotionUsageEnabled))]
 	private static PotionStrategy PotionUsagePresets
 	{
 		get => ChurinPotions.Strategy;
@@ -239,7 +239,7 @@ public sealed class ChurinBRD : BardRotation
 
 	[Range(0, 20, ConfigUnitType.Seconds, 0)]
 	[RotationConfig(CombatType.PvE,
-		Name = "Use Opener Potion at minus time in seconds - only use if potting early in the opener",
+		Name = "开局爆发药使用时间（负秒）- 仅在开局提前使用爆发药时启用",
 		Parent = nameof(PotionUsageEnabled))]
 	private static float OpenerPotionTime
 	{
@@ -248,8 +248,8 @@ public sealed class ChurinBRD : BardRotation
 	}
 
 	[Range(0, 1200, ConfigUnitType.Seconds, 0)]
-	[RotationConfig(CombatType.PvE, Name = "Use 1st Potion at (value in seconds - leave at 0 if using in opener)",
-		Parent = nameof(PotionUsagePresets), ParentValue = "Use custom potion timings")]
+	[RotationConfig(CombatType.PvE, Name = "第 1 次爆发药使用时间（秒，起手使用则填 0）",
+		Parent = nameof(PotionUsagePresets), ParentValue = "自定义爆发药时机")]
 	private float FirstPotionTiming
 	{
 		get;
@@ -261,8 +261,8 @@ public sealed class ChurinBRD : BardRotation
 	}
 
 	[Range(0, 1200, ConfigUnitType.Seconds, 0)]
-	[RotationConfig(CombatType.PvE, Name = "Use 2nd Potion at (value in seconds)", Parent = nameof(PotionUsagePresets),
-		ParentValue = "Use custom potion timings")]
+	[RotationConfig(CombatType.PvE, Name = "第 2 次爆发药使用时间（秒）", Parent = nameof(PotionUsagePresets),
+		ParentValue = "自定义爆发药时机")]
 	private float SecondPotionTiming
 	{
 		get;
@@ -274,8 +274,8 @@ public sealed class ChurinBRD : BardRotation
 	}
 
 	[Range(0, 1200, ConfigUnitType.Seconds, 0)]
-	[RotationConfig(CombatType.PvE, Name = "Use 3rd Potion at (value in seconds)", Parent = nameof(PotionUsagePresets),
-		ParentValue = "Use custom potion timings")]
+	[RotationConfig(CombatType.PvE, Name = "第 3 次爆发药使用时间（秒）", Parent = nameof(PotionUsagePresets),
+		ParentValue = "自定义爆发药时机")]
 	private float ThirdPotionTiming
 	{
 		get;
@@ -294,7 +294,7 @@ public sealed class ChurinBRD : BardRotation
 		};
 	}
 
-	[RotationConfig(CombatType.PvE, Name = "Enable Sandbag Mode?")]
+	[RotationConfig(CombatType.PvE, Name = "启用沙包模式？")]
 	private static bool EnableSandbagMode { get; set; } = false;
 
 	#endregion

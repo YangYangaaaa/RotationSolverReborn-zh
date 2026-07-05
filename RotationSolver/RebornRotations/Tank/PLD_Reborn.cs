@@ -1,4 +1,4 @@
-﻿namespace RotationSolver.RebornRotations.Tank;
+namespace RotationSolver.RebornRotations.Tank;
 
 [Rotation("Reborn", CombatType.PvE, GameVersion = "7.5")]
 [SourceCode(Path = "main/RebornRotations/Tank/PLD_Reborn.cs")]
@@ -7,55 +7,55 @@ public sealed class PLD_Reborn : PaladinRotation
 {
 	#region Config Options
 
-	[RotationConfig(CombatType.PvE, Name = "Use GCDs to heal. (Ignored if there are no healers alive in party)")]
+	[RotationConfig(CombatType.PvE, Name = "使用GCD治疗。（队伍中无存活治疗时忽略）")]
 	public bool GCDHeal { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Divine Veil during countdown")]
+	[RotationConfig(CombatType.PvE, Name = "倒计时期间使用圣光幕帘")]
 	public bool DivineVeilCountdown { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Only use Fight or Flight while in melee range of an enemy")]
+	[RotationConfig(CombatType.PvE, Name = "仅在敌人近战范围内使用战逃反应")]
 	public bool MeleeFoF { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Hallowed Ground with Cover")]
+	[RotationConfig(CombatType.PvE, Name = "使用掩护时配合神圣领域")]
 	private bool HallowedWithCover { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use up both stacks of Intervene during burst window")]
+	[RotationConfig(CombatType.PvE, Name = "在爆发窗口期间用尽两层干预")]
 	private bool UseInterveneFight { get; set; } = true;
 
 	[Range(0, 100, ConfigUnitType.Pixels)]
-	[RotationConfig(CombatType.PvE, Name = "Use Sheltron at minimum X Oath to prevent over cap (Set to 0 to disable)")]
+	[RotationConfig(CombatType.PvE, Name = "在最小X信仰时使用盾阵防止溢出（设为0禁用）")]
 	private int WhenToSheltron { get; set; } = 100;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Health threshold for Intervention (Set to 0 to disable)")]
+	[RotationConfig(CombatType.PvE, Name = "干预的生命值阈值（设为0禁用）")]
 	private float InterventionRatio { get; set; } = 0.6f;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Intervention on CoTank during tankbusters")]
+	[RotationConfig(CombatType.PvE, Name = "死刑时对副坦克使用干预")]
 	private bool InterventionTank { get; set; } = false;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Health threshold for using Intervention to attempt to save someone")]
+	[RotationConfig(CombatType.PvE, Name = "尝试救人时使用干预的生命值阈值")]
 	private float InterventionClutch { get; set; } = 0.6f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Health threshold for Cover (Set to 0 to disable)")]
+	[RotationConfig(CombatType.PvE, Name = "掩护的生命值阈值（设为0禁用）")]
 	private float CoverRatio { get; set; } = 0.3f;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Holy Spirit when out of melee range")]
+	[RotationConfig(CombatType.PvE, Name = "脱离近战范围时使用圣灵")]
 	private bool UseHolyWhenAway { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Clemency with Requiescat")]
+	[RotationConfig(CombatType.PvE, Name = "配合安魂祈祷使用慈悲")]
 	private bool RequiescatHealBot { get; set; } = true;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum HP threshold party member needs to be to use Clemency with Requiescat")]
-	public float ClemencyRequi { get; set; } = 0.2f;
+	[RotationConfig(CombatType.PvE, Name = "配合安魂祈祷使用慈悲时队友所需的最低HP阈值")]
+		public float ClemencyRequi { get; set; } = 0.2f;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Clemency without Requiescat")]
+	[RotationConfig(CombatType.PvE, Name = "不配合安魂祈祷使用慈悲")]
 	private bool HealBot { get; set; } = true;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum HP threshold party member needs to be to use Clemency without Requiescat")]
+	[RotationConfig(CombatType.PvE, Name = "不配合安魂祈祷使用慈悲时队友所需的最低HP阈值")]
 	public float ClemencyNoRequi { get; set; } = 0.4f;
 	#endregion
 

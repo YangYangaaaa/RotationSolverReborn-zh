@@ -1,4 +1,4 @@
-﻿using Lumina.Excel.Sheets;
+using Lumina.Excel.Sheets;
 using Lumina.Excel.Sheets.Experimental;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -12,67 +12,67 @@ namespace RotationSolver.ExtraRotations.Magical;
 public sealed class Rabbs_BLM : BlackMageRotation
 {
 	#region Config Options
-	[RotationConfig(CombatType.PvE, Name = "Use Countdown Ability (Fire 3)")]
+	[RotationConfig(CombatType.PvE, Name = "倒计时使用技能（火炎三连）")]
 	public bool Usecountdown { get; set; } = true;
-	[RotationConfig(CombatType.PvE, Name = "Use Triple Cast for Blizzard 3 instant casts after transpose (false to save for movement only)")]
+	[RotationConfig(CombatType.PvE, Name = "魔泉后用三连咏唱瞬发冰冻三连（关闭则仅用于移动）")]
 	public bool TCB3 { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "When to use Opener")]
+	[RotationConfig(CombatType.PvE, Name = "何时使用起手")]
 	[Range(1, 4, ConfigUnitType.None, 1)]
 	public OpenWhen When2Open { get; set; } = OpenWhen.Never;
 
-	[RotationConfig(CombatType.PvE, Name = "Which Opener to use")]
+	[RotationConfig(CombatType.PvE, Name = "使用哪种起手")]
 	[Range(1, 2, ConfigUnitType.None, 1)]
 	public Openchoice Openerchoice { get; set; } = Openchoice.Standard;
 
-	[RotationConfig(CombatType.PvE, Name = "When to use Burst")]
+	[RotationConfig(CombatType.PvE, Name = "何时使用爆发")]
 	[Range(1, 5, ConfigUnitType.None, 1)]
 	public BurstWhen When2Burst { get; set; } = BurstWhen.Never;
 
-	[RotationConfig(CombatType.PvE, Name = "Which Abilities for burst to manage")]
+	[RotationConfig(CombatType.PvE, Name = "爆发时管理哪些技能")]
 	[Range(1, 3, ConfigUnitType.None, 1)]
 	public Burstchoice ChoiceBurst { get; set; } = Burstchoice.Leylines;
 
-	[RotationConfig(CombatType.PvE, Name = "How to use pots")]
+	[RotationConfig(CombatType.PvE, Name = "如何使用爆发药")]
 	[Range(1, 3, ConfigUnitType.None, 1)]
 	public Potchoice Poterchoice { get; set; } = Potchoice.Never;
 
 	public enum Openchoice : byte
 	{
-		[Description("Standard 5+7 Opener")] Standard,
-		[Description("Alternative Flare Opener")] AltFlare
+		[Description("标准 5+7 起手")] Standard,
+		[Description("替代耀斑起手")] AltFlare
 	}
 
 	public enum OpenWhen : byte
 	{
-		[Description("Never")] Never,
-		[Description("When boss is Range")] BossInRoom,
-		[Description("When boss is Targeted")] BossIsTarget,
-		[Description("All day everyday")] Allday,
+		[Description("从不")] Never,
+		[Description("Boss 在范围内时")] BossInRoom,
+		[Description("Boss 被选中时")] BossIsTarget,
+		[Description("始终使用")] Allday,
 	}
 
 	public enum BurstWhen : byte
 	{
-		[Description("Never (Self Managed)")] Never,
-		[Description("Only to prevent Cap")] PreventCap,
-		[Description("With others (checks if other people have party buffs")] WithOthers,
-		[Description("Every Two Minutes (uses combat time so expect some error)")] Q2M,
-		[Description("All day everyday")] Allday,
+		[Description("从不（自行管理）")] Never,
+		[Description("仅防止溢出")] PreventCap,
+		[Description("随队友爆发（检测队友是否有团辅）")] WithOthers,
+		[Description("每两分钟（基于战斗时间，可能有误差）")] Q2M,
+		[Description("始终使用")] Allday,
 	}
 
 	public enum Burstchoice : byte
 	{
-		[Description("Leylines")] Leylines,
-		[Description("Xenoglossy")] XenoOnly,
-		[Description("Both Leylines and Xenoglossy")] Both,
+		[Description("黑魔纹")] Leylines,
+		[Description("异言")] XenoOnly,
+		[Description("黑魔纹与异言")] Both,
 	}
 
 	public enum Potchoice : byte
 	{
-		[Description("Never")] Never,
-		[Description("With others (checks if other people have medicated status")] WithOthers,
-		[Description("Every Two Minutes (uses combat time so expect some error)")] Q2M,
-		[Description("All day everyday")] Allday,
+		[Description("从不")] Never,
+		[Description("随队友使用（检测队友是否处于药品状态）")] WithOthers,
+		[Description("每两分钟（基于战斗时间，可能有误差）")] Q2M,
+		[Description("始终使用")] Allday,
 	}
 	#endregion
 

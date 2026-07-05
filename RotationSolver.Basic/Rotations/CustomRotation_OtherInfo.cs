@@ -19,7 +19,7 @@ public partial class CustomRotation
 	/// <summary>
 	/// 
 	/// </summary>
-	[Description("IsCasting")]
+	[Description("正在读条")]
 	public static bool IsCasting => Player?.IsCasting ?? false;
 
 	/// <summary>
@@ -45,25 +45,25 @@ public partial class CustomRotation
 	/// <summary>
 	/// 
 	/// </summary>
-	[Description("Is RSR active")]
+	[Description("RSR 已激活")]
 	public static bool StateEnabled => DataCenter.State;
 
 	/// <summary>
 	/// Does player have swift cast, dual cast or triple cast. State
 	/// </summary>
-	[Description("Has Swift")]
+	[Description("有瞬发")]
 	public static bool HasSwift => StatusHelper.PlayerHasStatus(true, StatusHelper.SwiftcastStatus);
 
 	/// <summary>
 	/// 
 	/// </summary>
-	[Description("Has tank stance")]
+	[Description("有坦克姿态")]
 	public static bool HasTankStance => StatusHelper.PlayerHasStatus(true, StatusHelper.TankStanceStatus);
 
 	/// <summary>
 	/// 
 	/// </summary>
-	[Description("Has tank stance")]
+	[Description("有坦克无敌")]
 	public static bool HasTankInvuln => StatusHelper.PlayerHasStatus(true, StatusHelper.NoNeedHealingStatus);
 
 	/// <summary>
@@ -79,31 +79,31 @@ public partial class CustomRotation
 	/// <summary>
 	/// Check the player is moving, such as running, walking or jumping.
 	/// </summary>
-	[Description("Is Moving or Jumping")]
+	[Description("正在移动或跳跃")]
 	public static bool IsMoving => DataCenter.IsMoving;
 
 	/// <summary>
 	/// Check if the player is dead.
 	/// </summary>
-	[Description("Is Dead, or inversely, is Alive")]
+	[Description("已死亡")]
 	public static bool IsDead => Player?.IsDead ?? false;
 
 	/// <summary>
 	/// Is in combat.
 	/// </summary>
-	[Description("In Combat")]
+	[Description("战斗中")]
 	public static bool InCombat => DataCenter.InCombat;
 
 	/// <summary>
 	/// Is out of combat.
 	/// </summary>
-	[Description("Not In Combat Delay")]
+	[Description("非战斗延迟")]
 	public static bool NotInCombatDelay => DataCenter.NotInCombatDelay;
 
 	/// <summary>
 	/// Player's MP.
 	/// </summary>
-	[Description("Player's MP")]
+	[Description("玩家 MP")]
 	public static uint CurrentMp => DataCenter.CurrentMp;
 
 	/// <summary>
@@ -419,13 +419,13 @@ public partial class CustomRotation
 	/// <summary>
 	/// Has the comapnion now.
 	/// </summary>
-	[Description("Has companion")]
+	[Description("有随行宠")]
 	public static bool HasCompanion => DataCenter.HasCompanion;
 
 	/// <summary>
 	/// True if the player has their chocobo companion out.
 	/// </summary>
-	[Description("Has Chocobo")]
+	[Description("有陆行鸟")]
 	public static bool HasChocobo => Svc.Buddies.CompanionBuddy != null;
 
 	/// <summary>
@@ -441,7 +441,7 @@ public partial class CustomRotation
 	/// <summary>
 	/// Whether the number of party members is 8.
 	/// </summary>
-	[Description("Is Full Party")]
+	[Description("满编小队")]
 	public static bool IsFullParty
 	{
 		get
@@ -471,13 +471,13 @@ public partial class CustomRotation
 	/// <summary>
 	/// Min HP in party members.
 	/// </summary>
-	[Description("Min HP in party members.")]
+	[Description("小队成员最低 HP")]
 	public static float PartyMembersMinHP => DataCenter.PartyMembersMinHP;
 
 	/// <summary>
 	/// Average HP in party members.
 	/// </summary>
-	[Description("Average HP in party members.")]
+	[Description("小队成员平均 HP")]
 	public static float PartyMembersAverHP => DataCenter.PartyMembersAverHP;
 
 	/// <summary>
@@ -735,19 +735,19 @@ public partial class CustomRotation
 	/// <summary>
 	///
 	/// </summary>
-	[Description("Is an enemy casting magic AOE")]
+	[Description("敌人正在施放魔法 AoE")]
 	public static bool IsMagicalDamageIncoming => DataCenter.IsMagicalDamageIncoming();
 
 	/// <summary>
 	///
 	/// </summary>
-	[Description("Is an enemy casting physical AOE")]
+	[Description("敌人正在施放物理 AoE")]
 	public static bool IsPhysicalDamageIncoming => DataCenter.IsPhysicalDamageIncoming();
 
 	/// <summary>
 	///
 	/// </summary>
-	[Description("Is an enemy casting a multihit AOE party stack")]
+	[Description("敌人正在施放多段 AoE 分摊")]
 	public static bool IsCastingMultiHit => DataCenter.IsCastingMultiHit();
 
 	#endregion
@@ -797,7 +797,7 @@ public partial class CustomRotation
 	/// </summary>
 	/// <param name="range">The range to check (in yalms).</param>
 	/// <returns>The number of hostile targets within the given range.</returns>
-	[Description("The number of hostiles in specified range")]
+	[Description("指定范围内敌人数")]
 	public static int NumberOfHostilesInRangeOf(float range)
 	{
 		return DataCenter.NumberOfHostilesInRangeOf(range);
@@ -806,37 +806,37 @@ public partial class CustomRotation
 	/// <summary>
 	/// Is there any hostile target in range? 25 for ranged jobs and healer, 3 for melee and tank.
 	/// </summary>
-	[Description("Has hostiles in Range")]
+	[Description("范围内有敌人")]
 	public static bool HasHostilesInRange => DataCenter.HasHostilesInRange;
 
 	/// <summary>
 	/// Is there any hostile target in 25 yalms?
 	/// </summary>
-	[Description("Has hostiles in 25 yalms")]
+	[Description("25 米内有敌人")]
 	public static bool HasHostilesInMaxRange => DataCenter.HasHostilesInMaxRange;
 
 	/// <summary>
 	/// How many hostile targets in range? 25 for ranged jobs and healer, 3 for melee and tank.
 	/// </summary>
-	[Description("The number of hostiles in Range")]
+	[Description("范围内敌人数")]
 	public static int NumberOfHostilesInRange => DataCenter.NumberOfHostilesInRange;
 
 	/// <summary>
 	/// How many hostile targets in max range (25 yalms) regardless of job
 	/// </summary>
-	[Description("The number of hostiles in max Range")]
+	[Description("最大范围内敌人数")]
 	public static int NumberOfHostilesInMaxRange => DataCenter.NumberOfHostilesInMaxRange;
 
 	/// <summary>
 	/// How many hostile targets in range? 25 for ranged jobs and healer, 3 for melee and tank. This is all can attack.
 	/// </summary>
-	[Description("The number of all hostiles in Range")]
+	[Description("范围内全部敌人数")]
 	public static int NumberOfAllHostilesInRange => DataCenter.NumberOfAllHostilesInRange;
 
 	/// <summary>
 	/// How many hostile targets in max range (25 yalms) regardless of job. This is all can attack.
 	/// </summary>
-	[Description("The number of all hostiles in max Range")]
+	[Description("最大范围内全部敌人数")]
 	public static int NumberOfAllHostilesInMaxRange => DataCenter.NumberOfAllHostilesInMaxRange;
 
 	/// <summary>
@@ -852,13 +852,13 @@ public partial class CustomRotation
 	/// <summary>
 	/// Average time to kill for all targets.
 	/// </summary>
-	[Description("Average time to kill")]
+	[Description("平均击杀时间")]
 	public static float AverageTTK => DataCenter.AverageTTK;
 
 	/// <summary>
 	/// The level of the LB.
 	/// </summary>
-	[Description("Limit Break Level")]
+	[Description("极限技等级")]
 	public static unsafe byte LimitBreakLevel
 	{
 		get
@@ -883,7 +883,7 @@ public partial class CustomRotation
 	/// <summary>
 	/// How long each mob has been in combat.
 	/// </summary>
-	[Description("Mobs Time")]
+	[Description("小怪时间")]
 	public static bool MobsTime => DataCenter.MobsTime;
 	#endregion
 
@@ -896,22 +896,22 @@ public partial class CustomRotation
 		/// <summary>
 		/// 
 		/// </summary>
-		[Description("Use potions in the opener and at 6 minutes")] ZeroSix,
+		[Description("开局和 6 分钟时使用爆发药")] ZeroSix,
 
 		/// <summary>
 		/// 
 		/// </summary>
-		[Description("Use potions at 2 and 8 minutes")] TwoEight,
+		[Description("2 分钟和 8 分钟时使用爆发药")] TwoEight,
 
 		/// <summary>
 		/// 
 		/// </summary>
-		[Description("Use potions in the opener, at 5 minutes and at 10 minutes")] ZeroFiveTen,
+		[Description("开局、5 分钟和 10 分钟时使用爆发药")] ZeroFiveTen,
 
 		/// <summary>
 		/// 
 		/// </summary>
-		[Description("Use custom potion timings")] Custom
+		[Description("自定义爆发药时机")] Custom
 	}
 
 	/// <summary>
@@ -1165,28 +1165,28 @@ public partial class CustomRotation
 	/// <summary>
 	/// Whether BossModReborn has an active boss module loaded for the current encounter.
 	/// </summary>
-	[Description("BMR has active module")]
+	[Description("BMR 模块已激活")]
 	public static bool BMRActive => DataCenter.BMRHasActiveModule;
 
 	/// <summary>
 	/// Seconds until the next raidwide damage event according to BMR's timeline.
 	/// Returns float.MaxValue if no raidwide is predicted.
 	/// </summary>
-	[Description("Seconds until next raidwide")]
+	[Description("距下次范围攻击秒数")]
 	public static float BMRRaidwideIn => DataCenter.BMRNextRaidwideIn;
 
 	/// <summary>
 	/// Seconds until the next tankbuster event according to BMR's timeline.
 	/// Returns float.MaxValue if no tankbuster is predicted.
 	/// </summary>
-	[Description("Seconds until next tankbuster")]
+	[Description("距下次坦克死刑秒数")]
 	public static float BMRTankbusterIn => DataCenter.BMRNextTankbusterIn;
 
 	/// <summary>
 	/// Seconds until the next knockback event according to BMR's timeline.
 	/// Returns float.MaxValue if no knockback is predicted.
 	/// </summary>
-	[Description("Seconds until next knockback")]
+	[Description("距下次击退秒数")]
 	public static float BMRKnockbackIn => DataCenter.BMRNextKnockbackIn;
 
 	/// <summary>
@@ -1194,41 +1194,41 @@ public partial class CustomRotation
 	/// This is more precise than timeline data but has a shorter lookahead window.
 	/// Returns float.MaxValue if no damage is predicted.
 	/// </summary>
-	[Description("Seconds until next predicted damage")]
+	[Description("距下次预测伤害秒数")]
 	public static float BMRDamageIn => DataCenter.BMRNextDamageIn;
 
 	/// <summary>
 	/// The type of the next predicted damage event (0=None, 1=Tankbuster, 2=Raidwide, 3=Shared).
 	/// </summary>
-	[Description("Next predicted damage type")]
+	[Description("下次预测伤害类型")]
 	public static PredictedDamageType BMRDamageType => DataCenter.BMRNextDamageType;
 
 	/// <summary>
 	/// Seconds until the boss becomes untargetable (downtime starts).
 	/// Returns float.MaxValue if no downtime is predicted.
 	/// </summary>
-	[Description("Seconds until next downtime")]
+	[Description("距下次无法攻击秒数")]
 	public static float BMRDowntimeIn => DataCenter.BMRNextDowntimeIn;
 
 	/// <summary>
 	/// Seconds until the boss becomes targetable again (downtime ends).
 	/// Returns float.MaxValue if no downtime end is predicted.
 	/// </summary>
-	[Description("Seconds until downtime ends")]
+	[Description("距无法攻击结束秒数")]
 	public static float BMRDowntimeEndIn => DataCenter.BMRNextDowntimeEndIn;
 
 	/// <summary>
 	/// Seconds until the boss becomes vulnerable (takes extra damage).
 	/// Returns float.MaxValue if no vulnerability window is predicted.
 	/// </summary>
-	[Description("Seconds until vulnerability window")]
+	[Description("距易伤窗口秒数")]
 	public static float BMRVulnerableIn => DataCenter.BMRNextVulnerableIn;
 
 	/// <summary>
 	/// Seconds until the vulnerability window ends.
 	/// Returns float.MaxValue if no vulnerability end is predicted.
 	/// </summary>
-	[Description("Seconds until vulnerability ends")]
+	[Description("距易伤结束秒数")]
 	public static float BMRVulnerableEndIn => DataCenter.BMRNextVulnerableEndIn;
 
 	/// <summary>
@@ -1324,25 +1324,25 @@ public partial class CustomRotation
 	/// <summary>
 	/// Whether or not the player can use AOE heal oGCDs.
 	/// </summary>
-	[Description("Can heal area ability")]
+	[Description("可群体能力治疗")]
 	public virtual bool CanHealAreaAbility => true;
 
 	/// <summary>
 	/// Whether or not the player can use AOE heal GCDs.
 	/// </summary>
-	[Description("Can heal area spell")]
+	[Description("可群体魔法治疗")]
 	public virtual bool CanHealAreaSpell => true;
 
 	/// <summary>
 	/// Whether or not the player can use ST heal oGCDs.
 	/// </summary>
-	[Description("Can heal single ability")]
+	[Description("可单体能力治疗")]
 	public virtual bool CanHealSingleAbility => true;
 
 	/// <summary>
 	/// Whether or not the player can use ST heal GCDs.
 	/// </summary>
-	[Description("Can heal single spell")]
+	[Description("可单体魔法治疗")]
 	public virtual bool CanHealSingleSpell => true;
 
 	/// <summary>
@@ -1353,19 +1353,19 @@ public partial class CustomRotation
 	/// <summary>
 	/// Is RSR enabled.
 	/// </summary>
-	[Description("The state of auto. True for on.")]
+	[Description("自动状态(开)")]
 	public static bool AutoState => DataCenter.State;
 
 	/// <summary>
 	/// Is RSR in manual mode.
 	/// </summary>
-	[Description("The state of manual. True for manual.")]
+	[Description("手动状态")]
 	public static bool IsManual => DataCenter.IsManual;
 
 	/// <summary>
 	/// In the burst status.
 	/// </summary>
-	[Description("Is burst")]
+	[Description("爆发期")]
 	public static bool IsBurst => MergedStatus.HasFlag(AutoStatus.Burst);
 
 	/// <summary>
@@ -1427,7 +1427,7 @@ public partial class CustomRotation
 	/// <summary>
 	/// Time from next ability to next GCD
 	/// </summary>
-	[Description("Time from next ability to next GCD")]
+	[Description("距下个能力技到下个 GCD 的时间")]
 	public static float NextAbilityToNextGCD => DataCenter.NextAbilityToNextGCD;
 
 	/// <summary>
@@ -1466,67 +1466,67 @@ public partial class CustomRotation
 	/// <summary>
 	/// Is player in high-end duty, savage, extrene or ultimate.
 	/// </summary>
-	[Description("Is in the high-end duty")]
+	[Description("在高难副本中")]
 	public static bool IsInHighEndDuty => DataCenter.Territory?.IsHighEndDuty ?? false;
 
 	/// <summary>
 	/// Is player in a normal or chaotic Alliance Raid.
 	/// </summary>
-	[Description("Is in an Alliance Raid (including Chaotic)")]
+	[Description("在联盟突袭中(含混沌)")]
 	public static bool IsInAllianceRaid => DataCenter.IsInAllianceRaid;
 
 	/// <summary>
 	/// Is player in UCoB duty.
 	/// </summary>
-	[Description("Is in UCoB duty")]
+	[Description("在巴哈姆特绝境战中")]
 	public static bool IsInUCoB => DataCenter.IsInUCoB;
 
 	/// <summary>
 	/// Is player in UwU duty.
 	/// </summary>
-	[Description("Is in UwU duty")]
+	[Description("在究极神兵绝境战中")]
 	public static bool IsInUwU => DataCenter.IsInUwU;
 
 	/// <summary>
 	/// Is player in TEA duty.
 	/// </summary>
-	[Description("Is in TEA duty")]
+	[Description("在亚历山大绝境战中")]
 	public static bool IsInTEA => DataCenter.IsInTEA;
 
 	/// <summary>
 	/// Is player in DSR duty.
 	/// </summary>
-	[Description("Is in DSR duty")]
+	[Description("在龙诗绝境战中")]
 	public static bool IsInDSR => DataCenter.IsInDSR;
 
 	/// <summary>
 	/// Is player in TOP duty.
 	/// </summary>
-	[Description("Is in TOP duty")]
+	[Description("在欧米茄绝境战中")]
 	public static bool IsInTOP => DataCenter.IsInTOP;
 
 	///<summary>
 	/// Is player in FRU duty.
 	///</summary>
-	[Description("Is in FRU duty")]
+	[Description("在未来重现绝境战中")]
 	public static bool IsInFRU => DataCenter.IsInFRU;
 
 	///<summary>
 	/// Is player in DMU duty.
 	///</summary>
-	[Description("Is in DMU duty")]
+	[Description("在狂飙舞绝境战中")]
 	public static bool IsInDMU => DataCenter.IsInDMU;
 
 	///<summary>
 	/// Is player in COD duty.
 	///</summary>
-	[Description("Is in COD duty")]
+	[Description("在暗黑之云中")]
 	public static bool IsInCOD => DataCenter.IsInCOD;
 
 	/// <summary>
 	/// Is player in any instanced duty.
 	/// </summary>
-	[Description("Is player in duty")]
+	[Description("玩家在副本中")]
 	public static bool IsInDuty => DataCenter.IsInDuty;
 
 	/// <summary>
@@ -1534,7 +1534,7 @@ public partial class CustomRotation
 	/// </summary>
 	/// <param name="territoryId">The ID of the territory to check.</param>
 	/// <returns>True if the player is in the specified territory; otherwise, false.</returns>
-	[Description("Is in specified territory")]
+	[Description("在指定区域中")]
 	public static bool IsInTerritory(ushort territoryId) => DataCenter.IsInTerritory(territoryId);
 
 	#endregion
@@ -1597,7 +1597,7 @@ public partial class CustomRotation
 	/// <param name="isAdjust">Check for adjust id not raw id.</param>
 	/// <param name="actions">True if any of this is matched.</param>
 	/// <returns></returns>
-	[Description("Just used GCD")]
+	[Description("刚使用 GCD")]
 	public static bool IsLastGCD(bool isAdjust, params IAction[] actions)
 	{
 		CountingOfLastUsing++;
@@ -1623,7 +1623,7 @@ public partial class CustomRotation
 	/// <param name="isAdjust">Check for adjust id not raw id.</param>
 	/// <param name="actions">True if any of this is matched.</param>
 	/// <returns></returns>
-	[Description("Just used Ability")]
+	[Description("刚使用能力技")]
 	public static bool IsLastAbility(bool isAdjust, params IAction[] actions)
 	{
 		CountingOfLastUsing++;
@@ -1649,7 +1649,7 @@ public partial class CustomRotation
 	/// <param name="isAdjust">Check for adjust id not raw id.</param>
 	/// <param name="actions">True if any of this is matched.</param>
 	/// <returns></returns>
-	[Description("Just used Action")]
+	[Description("刚使用技能")]
 	public static bool IsLastAction(bool isAdjust, params IAction[] actions)
 	{
 		CountingOfLastUsing++;
@@ -1687,7 +1687,7 @@ public partial class CustomRotation
 	/// <param name="isAdjust">Check for adjust id not raw id.</param>
 	/// <param name="actions">True if any of this is matched.</param>
 	/// <returns></returns>
-	[Description("Just used Combo Action")]
+	[Description("刚使用连击技能")]
 	public static bool IsLastComboAction(bool isAdjust, params IAction[] actions)
 	{
 		CountingOfLastUsing++;
@@ -1751,7 +1751,7 @@ public partial class CustomRotation
 	/// How long combat has been going.
 	/// <br>WARNING: Do Not make this method the main of your rotation.</br>
 	/// </summary>
-	[Description("Combat time")]
+	[Description("战斗时间")]
 	public static float CombatTime
 	{
 		get
@@ -1765,7 +1765,7 @@ public partial class CustomRotation
 	/// How long is remaining on the Combo Timer.
 	/// <br>WARNING: Do not make this method the main logic of your rotation.</br>
 	/// </summary>
-	[Description("Combo time")]
+	[Description("连击时间")]
 	public static float LiveComboTime
 	{
 		get
@@ -1805,27 +1805,27 @@ public partial class CustomRotation
 	/// How long the player has been standing still.
 	/// <br>WARNING: Do Not make this method the main of your rotation.</br>
 	/// </summary>
-	[Description("Stop moving time")]
+	[Description("停止移动时间")]
 	public static float StopMovingTime => IsMoving ? 0 : DataCenter.StopMovingRaw + DataCenter.DefaultGCDRemain;
 
 	/// <summary>
 	/// How long the player has been moving.
 	/// <br>WARNING: Do Not make this method the main of your rotation.</br>
 	/// </summary>
-	[Description("Moving time")]
+	[Description("移动时间")]
 	public static float MovingTime => IsMoving ? DataCenter.MovingRaw + DataCenter.DefaultGCDRemain : 0;
 	/// <summary>
 	/// How long the player has been alive.
 	/// <br>WARNING: Do Not make this method the main of your rotation.</br>
 	/// </summary>
-	[Description("How long the player has been alive.")]
+	[Description("玩家存活时长")]
 	public static float AliveTime => ObjectHelper.PlayerIsAlive() ? DataCenter.AliveTimeRaw + DataCenter.DefaultGCDRemain : 0;
 
 	/// <summary>
 	/// How long the player has been dead.
 	/// <br>WARNING: Do Not make this method the main of your rotation.</br>
 	/// </summary>
-	[Description("How long the player has been dead.")]
+	[Description("玩家死亡时长")]
 	public static float DeadTime => ObjectHelper.PlayerIsAlive() ? 0 : DataCenter.DeadTimeRaw + DataCenter.DefaultGCDRemain;
 
 	/// <summary>
@@ -1844,67 +1844,67 @@ public partial class CustomRotation
 	/// <summary>
 	/// The count down ahead.
 	/// </summary>
-	[Description("Count Down ahead")]
+	[Description("倒计时")]
 	public static float CountDownAhead => Service.Config.CountDownAhead;
 
 	/// <summary>
 	/// 
 	/// </summary>
-	[Description("Health of Area Ability")]
+	[Description("群体能力治疗 HP 阈值")]
 	public static float HealthAreaAbility => Service.Config.HealthAreaAbility;
 
 	/// <summary>
 	/// 
 	/// </summary>
-	[Description("Health of Area spell")]
+	[Description("群体魔法治疗 HP 阈值")]
 	public static float HealthAreaSpell => Service.Config.HealthAreaSpell;
 
 	/// <summary>
 	/// 
 	/// </summary>
-	[Description("Health of Area Ability Hot")]
+	[Description("群体能力治疗 HP 阈值(已有 HoT)")]
 	public static float HealthAreaAbilityHot => Service.Config.HealthAreaAbilityHot;
 
 	/// <summary>
 	/// 
 	/// </summary>
-	[Description("Health of Area spell Hot")]
+	[Description("群体魔法治疗 HP 阈值(已有 HoT)")]
 	public static float HealthAreaSpellHot => Service.Config.HealthAreaSpellHot;
 
 	/// <summary>
 	/// 
 	/// </summary>
-	[Description("Health of single ability")]
+	[Description("单体能力治疗 HP 阈值")]
 	public static float HealthSingleAbility => Service.Config.HealthSingleAbility;
 
 	/// <summary>
 	/// 
 	/// </summary>
-	[Description("Health of single spell")]
+	[Description("单体魔法治疗 HP 阈值")]
 	public static float HealthSingleSpell => Service.Config.HealthSingleSpell;
 
 	/// <summary>
 	/// 
 	/// </summary>
-	[Description("Health of single ability Hot")]
+	[Description("单体能力治疗 HP 阈值(已有 HoT)")]
 	public static float HealthSingleAbilityHot => Service.Config.HealthSingleAbilityHot;
 
 	/// <summary>
 	/// 
 	/// </summary>
-	[Description("Health of single spell Hot")]
+	[Description("单体魔法治疗 HP 阈值(已有 HoT)")]
 	public static float HealthSingleSpellHot => Service.Config.HealthSingleSpellHot;
 
 	/// <summary>
 	/// 
 	/// </summary>
-	[Description("Health of dying tank")]
+	[Description("坦克濒死 HP 阈值")]
 	public static float HealthForDyingTanks => Service.Config.HealthForDyingTanks;
 
 	/// <summary>
 	/// 
 	/// </summary>
-	[Description("Whether or not Invincibility should be ignored for a PvP action.")]
+	[Description("PvP 技能是否忽略无敌状态")]
 	public static bool IgnorePvPInvincibility => Service.Config.IgnorePvPInvincibility;
 	#endregion
 }

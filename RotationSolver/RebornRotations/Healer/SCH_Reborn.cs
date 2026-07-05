@@ -8,93 +8,93 @@ namespace RotationSolver.RebornRotations.Healer;
 public sealed class SCH_Reborn : ScholarRotation
 {
 	#region Config Options
-	[RotationConfig(CombatType.PvE, Name = "Limit Seraphism to multihit party stacks")]
+	[RotationConfig(CombatType.PvE, Name = "限制炽天附体仅在多段伤害集合时使用")]
 	public bool MultiHitRestrict { get; set; } = false;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Remove Aetherpact if the linked party member's HP is above this percentage")]
+	[RotationConfig(CombatType.PvE, Name = "若链接队友 HP 高于此百分比，则移除以太契约")]
 	public float AetherpactRemove { get; set; } = 0.9f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Do not start Aetherpact if the target's HP is above this percentage (prevents toggling)")]
+	[RotationConfig(CombatType.PvE, Name = "若目标 HP 高于此百分比，则不开始以太契约（防止切换）")]
 	public float AetherpactMinimum { get; set; } = 0.8f;
 
 	[Range(0, 0.5f, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum HP percent to use Excogitation as a heal instead of a defensive buff")]
+	[RotationConfig(CombatType.PvE, Name = "将深谋远虑之策作为治疗而非减伤buff使用的最低 HP 百分比")]
 	public float ExcogHeal { get; set; } = 0.5f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Party HP percent threshold to use Emergency Tactics with Succor")]
+	[RotationConfig(CombatType.PvE, Name = "使用应急战术配合鼓舞激励之策的队伍 HP 百分比阈值")]
 	public float EmergencyTacticsHeal { get; set; } = 0.4f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Average party HP percent to use Recitation with Indomitability (must be below AoE heal threshold)")]
+	[RotationConfig(CombatType.PvE, Name = "使用秘策配合不屈不挠之策所需的队伍平均 HP 百分比（必须低于 AoE 治疗阈值）")]
 	public float ReciteIndomitability { get; set; } = 0.5f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Average party HP percent to prioritize Indomitability and instant heals over heal-over-time effects")]
+	[RotationConfig(CombatType.PvE, Name = "优先使用不屈不挠之策和瞬发治疗而非 HoT 效果的队伍平均 HP 百分比")]
 	public float EmergencyHealPercent { get; set; } = 0.1f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Estimated percent of HP dealt as DPS for ballpark calculations")]
+	[RotationConfig(CombatType.PvE, Name = "估算作为 DPS 输出的 HP 百分比，用于粗略计算")]
 	public float BallparkPercent { get; set; } = 0.08f;
 
 	[Range(0, 10, ConfigUnitType.Seconds)]
-	[RotationConfig(CombatType.PvE, Name = "Seconds you must be stationary before Sacred Soil can be used")]
+	[RotationConfig(CombatType.PvE, Name = "使用野战治疗阵前必须静止的秒数")]
 	public float SacredSoilTimeStill { get; set; } = 3f;
 
 	[Range(0, 5, ConfigUnitType.Seconds)]
-	[RotationConfig(CombatType.PvE, Name = "Seconds you must be moving before Ruin II will be used")]
+	[RotationConfig(CombatType.PvE, Name = "使用毁坏 II 前必须移动的秒数")]
 	public float RuinTime { get; set; } = 0f;
 
 	[Range(0, 10000, ConfigUnitType.None)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum MP before prioritizing emergency healing and rezzing (willing to use Seraphism sooner)")]
+	[RotationConfig(CombatType.PvE, Name = "优先使用应急治疗和复活前的最低 MP（更愿意提前使用炽天附体）")]
 	public int EmergencyHealingMPThreshold { get; set; } = 2000;
 
 	[Range(0, 2, ConfigUnitType.None)]
-	[RotationConfig(CombatType.PvE, Name = "Number of fewer mobs required to favor AoW spam over Bio (0 = use Bio if break-even below 30s)")]
+	[RotationConfig(CombatType.PvE, Name = "偏向使用 AoW 刷怪而非毒菌所需的更少怪物数（0 = 若在30秒内能达到收支平衡则使用毒菌）")]
 	public int DotOffsetMobs { get; set; } = 1;
 
 	[Range(0, 100, ConfigUnitType.None)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum Fairy Gauge required before prioritizing Fey Union (link)")]
+	[RotationConfig(CombatType.PvE, Name = "优先使用仙女契约（链接）所需的最低仙女以太量")]
 	public int LinkFairyGauge { get; set; } = 70;
 
-	[RotationConfig(CombatType.PvE, Name = "Enable Swiftcast restriction: only allow Raise while Swiftcast is active")]
+	[RotationConfig(CombatType.PvE, Name = "启用瞬发限制：神速咏唱激活时仅允许复活")]
 	public bool SwiftLogic { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use GCDs to heal. (Ignored if you are the only healer in party)")]
+	[RotationConfig(CombatType.PvE, Name = "使用 GCD 进行治疗。（若你是小队中唯一治疗则忽略）")]
 	public bool GCDHeal { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Recitation during the countdown opener")]
+	[RotationConfig(CombatType.PvE, Name = "在倒计时起手中使用秘策")]
 	public bool UseRecitationInOpener { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Adloquium during the countdown opener")]
+	[RotationConfig(CombatType.PvE, Name = "在倒计时起手中使用鼓舞激励之策")]
 	public bool AdloquiumDuringCountdown { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Recitation with Succor, Concitation, or Accession")]
+	[RotationConfig(CombatType.PvE, Name = "使用秘策配合鼓舞激励之策、鼓动 或应允")]
 	public bool ReciteSuccor { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Dissipation during burst phases")]
+	[RotationConfig(CombatType.PvE, Name = "在爆发阶段使用异化")]
 	public bool ShouldDissipate { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Sacred Soil's regeneration as a healing effect")]
+	[RotationConfig(CombatType.PvE, Name = "将野战治疗阵的再生作为治疗效果使用")]
 	public bool SacredSoilHeal { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Allow Sacred Soil while moving if fighting a boss")]
+	[RotationConfig(CombatType.PvE, Name = "若正在与 BOSS 战斗，则允许移动中使用野战治疗阵")]
 	public bool SacredSoilBossExemption { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Enable ballpark DoT time-to-kill estimator (in addition to normal TTK configs)")]
+	[RotationConfig(CombatType.PvE, Name = "启用粗略 DoT 击杀时间估算器（除正常 TTK 配置外）")]
 	public bool UseBallparkTTK { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "How to use Deployment Tactics")]
+	[RotationConfig(CombatType.PvE, Name = "如何使用扩散战术")]
 	public DeploymentTacticsUsageStrategy DeploymentTacticsUsage { get; set; } = DeploymentTacticsUsageStrategy.CatalyzeOnly;
 
 	public enum DeploymentTacticsUsageStrategy : byte
 	{
-		[Description("Use when a party member has Catalyze status")]
+		[Description("当队友拥有激流状态时使用")]
 		CatalyzeOnly,
 
-		[Description("Use when a party member has Catalyze or Galvanize status")]
+		[Description("当队友拥有激流或激昂状态时使用")]
 		CatalyzeOrGalvanize,
 	}
 	#endregion

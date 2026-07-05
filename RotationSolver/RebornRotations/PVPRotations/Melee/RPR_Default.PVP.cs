@@ -7,18 +7,18 @@ public sealed class RPR_DefaultPvP : ReaperRotation
 {
 	#region Configurations
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvP, Name = "Player health threshold needed for Bloodbath use")]
+	[RotationConfig(CombatType.PvP, Name = "使用鲜血浴所需玩家 HP 阈值")]
 	public float BloodBathPvPPercent { get; set; } = 0.75f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvP, Name = "Enemy health threshold needed for Smite use")]
+	[RotationConfig(CombatType.PvP, Name = "使用惩击所需敌方 HP 阈值")]
 	public float SmitePvPPercent { get; set; } = 0.25f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvP, Name = "Enemy health threshold needed for Perfectio use")]
+	[RotationConfig(CombatType.PvP, Name = "使用完遂所需敌方 HP 阈值")]
 	public float PerfectioPvPPercent { get; set; } = 0.25f;
 
-	[RotationConfig(CombatType.PvP, Name = "Use Communio immediately after Enshroud (For frontline)")]
+	[RotationConfig(CombatType.PvP, Name = "附体后立即使用合一（用于前线）")]
 	public bool UseCommunioImmediately { get; set; } = false;
 	#endregion
 

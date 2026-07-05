@@ -8,19 +8,19 @@ public sealed class NIN_Reborn : NinjaRotation
 	#region Config Options
 	// Configuration properties for rotation behavior.
 
-	[RotationConfig(CombatType.PvE, Name = "Use Hide")]
+	[RotationConfig(CombatType.PvE, Name = "使用隐遁")]
 	public bool UseHide { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Unhide")]
+	[RotationConfig(CombatType.PvE, Name = "解除隐遁")]
 	public bool AutoUnhide { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Mudras outside of combat when enemies are near")]
+	[RotationConfig(CombatType.PvE, Name = "敌人靠近时在战斗外使用忍术")]
 	public bool CombatMudra { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use both stacks of Mudras")]
+	[RotationConfig(CombatType.PvE, Name = "使用两层忍术")]
 	public bool BurnMudraStacks { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Forked Raiju instead of Fleeting Raiju if you are outside of range (Dangerous)")]
+	[RotationConfig(CombatType.PvE, Name = "超出范围时使用月影雷兽爪替代月影雷兽牙（危险）")]
 	public bool ForkedUse { get; set; } = false;
 	#endregion
 

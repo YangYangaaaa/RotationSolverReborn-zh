@@ -8,68 +8,68 @@ namespace RotationSolver.RebornRotations.Healer;
 public sealed class WHM_Reborn : WhiteMageRotation
 {
 	#region Config Options
-	[RotationConfig(CombatType.PvE, Name = "Use the balance Opener in High-End Duties")]
+	[RotationConfig(CombatType.PvE, Name = "在高难度副本中使用 the balance 起手")]
 	public bool UseOpenerHighEnd { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Limit Liturgy Of The Bell to multihit party stacks")]
+	[RotationConfig(CombatType.PvE, Name = "限制礼仪之铃仅在多段伤害集合时使用")]
 	public bool MultiHitRestrict { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Tincture/Gemdraught when about to use Presence of Mind")]
+	[RotationConfig(CombatType.PvE, Name = "在即将使用神速时使用幻药/宝石药剂")]
 	public bool UseMedicine { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Enable Swiftcast Restriction Logic to attempt to prevent actions other than Raise when you have swiftcast")]
+	[RotationConfig(CombatType.PvE, Name = "启用瞬发限制逻辑：拥有神速咏唱时尝试阻止除复活外的其他行为")]
 	public bool SwiftLogic { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use GCDs to heal. (Ignored if you are the only healer in party)")]
+	[RotationConfig(CombatType.PvE, Name = "使用 GCD 进行治疗。（若你是小队中唯一治疗则忽略）")]
 	public bool GCDHeal { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use DOT while moving even if it does not need refresh (disabling is a damage down)")]
+	[RotationConfig(CombatType.PvE, Name = "移动时即使不需要刷新也使用 DoT（关闭会导致输出下降）")]
 	public bool DOTUpkeep { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Lily at max stacks/about to overcap.")]
+	[RotationConfig(CombatType.PvE, Name = "在满层/即将溢出时使用百合。")]
 	public bool UseLilyWhenFull { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Lily if about to overcap and no valid target nearby.")]
+	[RotationConfig(CombatType.PvE, Name = "即将溢出且附近无有效目标时使用百合。")]
 	public bool UseLilyDowntime { get; set; } = true;
 
 	[Range(1, 13, ConfigUnitType.None, 1)]
-	[RotationConfig(CombatType.PvE, Name = "Number of GCDs before you cap on blue lillies that overcap protection will consider 'near full'.")]
+	[RotationConfig(CombatType.PvE, Name = "百合溢出保护视为'接近满层'前的 GCD 数量。")]
 	public int LilyOvercapTime { get; set; } = 3;
 
-	[RotationConfig(CombatType.PvE, Name = "Regen on Tank at 5 seconds remaining on Prepull Countdown.")]
+	[RotationConfig(CombatType.PvE, Name = "开怪倒计时剩余 5 秒时对坦克使用再生。")]
 	public bool UsePreRegen { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Divine Caress as soon as its available")]
+	[RotationConfig(CombatType.PvE, Name = "神圣操控可用时立即使用")]
 	public bool UseDivine { get; set; } = false;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Asylum as soon as a single player heal (i.e. tankbusters) while moving, in addition to normal logic")]
+	[RotationConfig(CombatType.PvE, Name = "移动时进行单体治疗（如坦克死刑）时立即使用庇护所，并附加到正常逻辑中")]
 	public bool AsylumSingle { get; set; } = false;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum health threshold party member needs to be to use Benediction")]
+	[RotationConfig(CombatType.PvE, Name = "使用天赐祝福所需的队友最低生命值阈值")]
 	public float BenedictionHeal { get; set; } = 0.3f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "If a party member's health drops below this percentage, the Regen healing ability will not be used on them")]
+	[RotationConfig(CombatType.PvE, Name = "若队友生命值低于此百分比，则不对其使用再生")]
 	public float RegenHeal { get; set; } = 0.3f;
 
 	[Range(0, 10000, ConfigUnitType.None, 100)]
-	[RotationConfig(CombatType.PvE, Name = "Casting cost requirement for Thin Air to be used")]
+	[RotationConfig(CombatType.PvE, Name = "使用无中生有所需的施法消耗阈值")]
 
 	public float ThinAirNeed { get; set; } = 1000;
 
-	[RotationConfig(CombatType.PvE, Name = "How to manage the last thin air charge")]
+	[RotationConfig(CombatType.PvE, Name = "如何管理最后一个无中生有充能")]
 	public ThinAirUsageStrategy ThinAirLastChargeUsage { get; set; } = ThinAirUsageStrategy.ReserveLastChargeForRaise;
 
 	public enum ThinAirUsageStrategy : byte
 	{
-		[Description("Use all thin air charges on expensive spells")]
+		[Description("在昂贵的法术上使用所有无中生有充能")]
 		UseAllCharges,
 
-		[Description("Reserve the last charge for raise")]
+		[Description("保留最后一层充能用于复活")]
 		ReserveLastChargeForRaise,
 
-		[Description("Reserve the last charge for manual use")]
+		[Description("保留最后一层充能用于手动使用")]
 		ReserveLastCharge,
 	}
 	#endregion

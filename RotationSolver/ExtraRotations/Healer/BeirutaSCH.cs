@@ -2,7 +2,7 @@ using System.ComponentModel;
 
 namespace RotationSolver.ExtraRotations.Healer;
 
-[Rotation("BeirutaSCH", CombatType.PvE, GameVersion = "7.45", Description = "Semi-Automatic Savage/Ultimate rotation, need to used with CD planner or manual inputs")]
+[Rotation("BeirutaSCH", CombatType.PvE, GameVersion = "7.45", Description = "半自动零式/绝境战循环，需配合 CD 计划器或手动输入使用")]
 [SourceCode(Path = "main/ExtraRotations/Healer/BeirutaSCH.cs")]
 [ExtraRotation]
 
@@ -11,123 +11,123 @@ public sealed class BeirutaSCH : ScholarRotation
 	#region Config Options
 
 	[RotationConfig(CombatType.PvE, Name =
-		"Please note that this rotation is optimised for high-end encounters.\n" +
-		"• Only the actions listed in the description will be automatically used and everything else should be used manually or through CD planner\n" +
-		"• Please set Intercept to GCD usage only, and use Concitation manually where required\n" +
-		"• Disabling AutoBurst is sufficient if you need to delay burst timing in this rotation\n" +
-		"• Applying Protraction to yourself will be treated as a signal to prepare Deployment Tactics\n" +
-		"• Dissipation is used to make Energy Drain dump window aligned with bursts\n" +
-		"• Single-target GCD healing is not used in this rotation\n" +
-		"• When using the CD planner, please note that after using Dissipation, no fairy abilities or Seraphism can be used for 30 seconds\n" +
-		"• Without burst delay, this restriction will occur during the 30-second window at 0s and 180s then every multiple of 180s thereafter\n")]
+		"请注意，本循环针对高端战斗进行优化。\n" +
+		"• 只有描述中列出的技能会被自动使用，其他所有技能都应手动使用或通过 CD 计划器使用\n" +
+		"• 请将拦截设置为仅 GCD 使用，并在需要时手动使用意气轩昂之策\n" +
+		"• 如果需要延迟本循环的爆发时机，禁用 AutoBurst 即可\n" +
+		"• 将延伸施加给自己会被视为准备展开战术的信号\n" +
+		"• 转化用于使能量吸收倾泻窗口与爆发对齐\n" +
+		"• 本循环中不使用单体 GCD 治疗\n" +
+		"• 使用 CD 计划器时，请注意使用转化后 30 秒内无法使用任何小仙女能力或炽天附体\n" +
+		"• 在无爆发延迟的情况下，此限制会出现在 0 秒和 180 秒的 30 秒窗口内，之后每 180 秒重复一次\n")]
 	public bool RotationNotes { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use all Energy Drain During Burst")]
+	[RotationConfig(CombatType.PvE, Name = "爆发期间使用所有能量吸收")]
 	public bool EnableEnergyDrainGatlingMode { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use first stack of Consolation ASAP when Seraph is out")]
+	[RotationConfig(CombatType.PvE, Name = "炽天使出场时尽快使用第一层慰藉")]
 	public bool UseFirstConsolationAsapWhenSeraphIsOut { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Swiftcast for movement")]
+	[RotationConfig(CombatType.PvE, Name = "移动时使用即刻咏唱")]
 	public bool UseSwiftcastForMovement { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Use Swiftcast on Adloquium")]
+	[RotationConfig(CombatType.PvE, Name = "对鼓舞激励之策使用即刻咏唱")]
 	public bool UseSwiftcastOnAdloquium { get; set; } = true;
 
 	[Range(0, 5, ConfigUnitType.Seconds, 0.1f)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum movement time before allowing movement-based actions")]
+	[RotationConfig(CombatType.PvE, Name = "允许移动类操作前的最小移动时间")]
 	public float MovementTimeThreshold { get; set; } = 0.9f;
 
-	[RotationConfig(CombatType.PvE, Name = "Lock healing actions while Macrocosmos is active")]
+	[RotationConfig(CombatType.PvE, Name = "宏观宇宙生效时锁定治疗行为")]
 	public bool LockHealingActionsDuringMacrocosmos { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Prioritise Aetherflow before Dissipation")]
+	[RotationConfig(CombatType.PvE, Name = "优先于转化使用以太超流")]
 	public bool PrioritizeAetherflowOverDissipation { get; set; } = false;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Party HP percent threshold to use Emergency Tactics with Succor")]
+	[RotationConfig(CombatType.PvE, Name = "对鼓舞士气使用应急战术所需的队伍 HP 百分比阈值")]
 	public float EmergencyTacticsHeal { get; set; } = 0.4f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Average party HP percent to use Consolation")]
+	[RotationConfig(CombatType.PvE, Name = "使用慰藉所需的队伍平均 HP 百分比")]
 	public float ConsolationHeal { get; set; } = 0.8f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Average party HP percent to prioritize Indomitability and instant heals over heal-over-time effects")]
+	[RotationConfig(CombatType.PvE, Name = "优先使用不屈不挠之策和即时治疗而非持续恢复效果的队伍平均 HP 百分比")]
 	public float EmergencyHealPercent { get; set; } = 0.1f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Average party HP percent to use Whispering Dawn or Angel's Whisper")]
+	[RotationConfig(CombatType.PvE, Name = "使用仙光的低语或天使仙光的低语所需的队伍平均 HP 百分比")]
 	public float WhisperingDawnHeal { get; set; } = 0.6f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Average party HP percent to use Fey Blessing when Whispering Dawn or Angel's Whisper is missing")]
+	[RotationConfig(CombatType.PvE, Name = "缺少仙光的低语或天使仙光的低语时使用异想的祥光所需的队伍平均 HP 百分比")]
 	public float FeyBlessingHeal { get; set; } = 0.7f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Average party HP percent to use Indomitability")]
+	[RotationConfig(CombatType.PvE, Name = "使用不屈不挠之策所需的队伍平均 HP 百分比")]
 	public float IndomitabilityHeal { get; set; } = 0.3f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum average party HP required before using single-target oGCDs on non-tanks")]
+	[RotationConfig(CombatType.PvE, Name = "对非坦克使用单体 oGCD 前所需的最低队伍平均 HP")]
 	public float SingleAbilityNonTankPartyAverageGate { get; set; } = 0.8f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Average party HP percent to use Emergency Tactics Succor in HealAreaGCD")]
+	[RotationConfig(CombatType.PvE, Name = "在群体治疗 GCD 中使用应急战术鼓舞士气所需的队伍平均 HP 百分比")]
 	public float HealAreaGcdEmergencyTacticsHeal { get; set; } = 0.3f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Average party HP percent to use Accession in HealAreaGCD")]
+	[RotationConfig(CombatType.PvE, Name = "在群体治疗 GCD 中使用降临之章所需的队伍平均 HP 百分比")]
 	public float HealAreaGcdAccessionHeal { get; set; } = 0.6f;
 
 	[Range(0, 1, ConfigUnitType.Percent)]
-	[RotationConfig(CombatType.PvE, Name = "Average party HP percent to use Accession in HealAreaGCD while moving and not under Emergency Tactics")]
+	[RotationConfig(CombatType.PvE, Name = "移动中且未处于应急战术时，在群体治疗 GCD 中使用降临之章所需的队伍平均 HP 百分比")]
 	public float HealAreaGcdMovingAccessionHeal { get; set; } = 0.8f;
 
 	[Range(0, 10000, ConfigUnitType.None)]
-	[RotationConfig(CombatType.PvE, Name = "Minimum MP before prioritizing emergency healing and rezzing (willing to use Seraphism sooner)")]
+	[RotationConfig(CombatType.PvE, Name = "优先紧急治疗和复活前的最低 MP（愿意更早使用炽天附体）")]
 	public int EmergencyHealingMPThreshold { get; set; } = 2000;
 
-	[RotationConfig(CombatType.PvE, Name = "Enable Swiftcast restriction: only allow Raise while Swiftcast is active")]
+	[RotationConfig(CombatType.PvE, Name = "启用即刻咏唱限制：即刻咏唱生效时仅允许复活")]
 	public bool SwiftLogic { get; set; } = true;
 
-	[RotationConfig(CombatType.PvE, Name = "Countdown opener configuration")]
+	[RotationConfig(CombatType.PvE, Name = "倒计时开场配置")]
 	public CountdownOpenerStrategy CountdownOpener { get; set; } =
 	CountdownOpenerStrategy.RecitationAdloquiumDeploymentTactics;
 
 	public enum CountdownOpenerStrategy : byte
 	{
-		[Description("Recitation - Adloquium - Deployment Tactics")]
+		[Description("秘策 - 鼓舞激励之策 - 展开战术")]
 		RecitationAdloquiumDeploymentTactics = 0,
 
-		[Description("Adloquium - Deployment Tactics")]
+		[Description("鼓舞激励之策 - 展开战术")]
 		AdloquiumDeploymentTactics = 1,
 
-		[Description("Concitation/Succor")]
+		[Description("意气轩昂之策/鼓舞士气")]
 		ConcitationOrSuccor = 2,
 
-		[Description("Recitation - Concitation/Succor")]
+		[Description("秘策 - 意气轩昂之策/鼓舞士气")]
 		RecitationConcitationOrSuccor = 3,
 
-		[Description("None (no defensive countdown actions)")]
+		[Description("无（不进行减伤倒计时操作）")]
 		None = 4,
 	}
 
-	[RotationConfig(CombatType.PvE, Name = "How to control Deployment Tactics usage")]
+	[RotationConfig(CombatType.PvE, Name = "如何控制展开战术的使用")]
 	public DeploymentTacticsUsageStrategy DeploymentTacticsUsage { get; set; } = DeploymentTacticsUsageStrategy.ProtractionControl;
 
-	[RotationConfig(CombatType.PvE, Name = "Only use Deployment Tactics on Critical Shields?")]
+	[RotationConfig(CombatType.PvE, Name = "仅在暴击护盾上使用展开战术？")]
 	public bool OnlyUseDeploymentTacticsOnCriticalShields { get; set; } = true;
 
 	public enum DeploymentTacticsUsageStrategy : byte
 	{
-		[Description("Controlled by having Protraction on self (configured by below option)")]
+		[Description("由自身处于延伸状态控制（由下方选项配置）")]
 		ProtractionControl,
 
-		[Description("Controlled by having Recitation (always crit)")]
+		[Description("由秘策控制（必定暴击）")]
 		RecitationControl,
 
-		[Description("Controlled by both (allow non-crit)")]
+		[Description("由两者共同控制（允许非暴击）")]
 		BothControl,
 	}
 
