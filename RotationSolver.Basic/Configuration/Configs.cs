@@ -1,4 +1,4 @@
-﻿using Dalamud.Configuration;
+using Dalamud.Configuration;
 using ECommons.DalamudServices;
 using ECommons.ExcelServices;
 using ECommons.Logging;
@@ -206,7 +206,7 @@ internal partial class Configs : IPluginConfiguration
 		Filter = DutySpecificAlliance)]
 	private static readonly bool _superiorFlightUnitImmune = true;
 
-	[ConditionBool, UI("希望之炮台："塔" - 汉泽尔与格莱特逻辑。",
+	[ConditionBool, UI("希望之炮台：「塔」- 汉泽尔与格莱特逻辑。",
 		Description = "当你所处的角度会因护盾机制受到反弹伤害时，将汉泽尔/格莱特视为免疫。",
 		Filter = DutySpecificAlliance)]
 	private static readonly bool _hanselorGretelShieldedImmune = true;
@@ -1019,7 +1019,7 @@ internal partial class Configs : IPluginConfiguration
 	[Range(0, 10, ConfigUnitType.Percent, 0.02f)]
 	public float ControlWindowNextSizeRatio { get; set; } = 1.5f;
 
-	[UI="GCD 图标大小", Parent = nameof(ShowControlWindow))]
+	[UI("GCD 图标大小", Parent = nameof(ShowControlWindow))]
 	[Range(0, 80, ConfigUnitType.Pixels, 0.2f)]
 	public float ControlWindowGCDSize { get; set; } = 40;
 
