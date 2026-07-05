@@ -127,11 +127,20 @@ jobs:
           prerelease: false
           make_latest: true
 
+      - name: Stage gh-pages content
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Path .\pages-staging -Force | Out-Null
+          Copy-Item pluginmaster.json .\pages-staging\
+          New-Item -ItemType File -Path .\pages-staging\.nojekyll -Force
+          Write-Host "=== Staged files ==="
+          Get-ChildItem .\pages-staging | Select-Object Name
+
       - name: Deploy pluginmaster to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .
+          publish_dir: ./pages-staging
           publish_branch: gh-pages
           keep_files: false
           full_commit_message: Deploy pluginmaster.json for ${{ steps.version.outputs.tag }}
