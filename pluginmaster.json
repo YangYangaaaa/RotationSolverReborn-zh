@@ -1,5 +1,23 @@
 [
   {
+    "Author": "The Combat Reborn Team",
+    "DalamudApiLevel": 15,
+    "Punchline": "Analyses combat information every frame and finds the best action.",
+    "TestingDalamudApiLevel": 15,
+    "CategoryTags": [
+      "jobs"
+    ],
+    "TestingAssemblyVersion": "2026.7.5.0417",
+    "LoadPriority": 0,
+    "Description": "Analyses combat information every frame and finds the best action.\n\nThis means almost all the information available in one frame in combat, including the status of all players in the party, the status of any hostile targets, skill cooldowns, the MP and HP of characters, the location of characters, casting status of the hostile target, combo, combat duration, player level, etc.\nThen, it will highlight the best action on the hot bar, or help you to click on it.\nIt is designed for `general combat`, not for savage or ultimate. Use it carefully.",
+    "IsTestingExclusive": false,
+    "DownloadLinkTesting": "https://github.com/YangYangaaaa/RotationSolverReborn-zh/releases/download/2026.7.5.0417/latest.zip",
+    "DownloadLinkInstall": "https://github.com/YangYangaaaa/RotationSolverReborn-zh/releases/download/2026.7.5.0417/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/YangYangaaaa/RotationSolverReborn-zh/releases/download/2026.7.5.0417/latest.zip",
+    "RepoUrl": "https://github.com/YangYangaaaa/RotationSolverReborn-zh",
+    "IsHide": false,
+    "LoadRequiredState": 0,
+    "Name": "Rotation Solver Reborn",
     "Tags": [
       "combat",
       "rotation",
@@ -8,31 +26,13 @@
       "pve",
       "pvp"
     ],
-    "IsTestingExclusive": false,
+    "IconUrl": "https://raw.githubusercontent.com/FFXIV-CombatReborn/RebornAssets/main/IconAssets/RSR_Icon.png",
     "CanUnloadAsync": false,
-    "TestingDalamudApiLevel": 15,
-    "Name": "Rotation Solver Reborn",
-    "DownloadLinkInstall": "https://github.com/YangYangaaaa/RotationSolverReborn-zh/releases/download/2026.7.5.0409/latest.zip",
     "InternalName": "RotationSolver",
-    "RepoUrl": "https://github.com/YangYangaaaa/RotationSolverReborn-zh",
-    "DalamudApiLevel": 15,
-    "LoadPriority": 0,
-    "DownloadLinkUpdate": "https://github.com/YangYangaaaa/RotationSolverReborn-zh/releases/download/2026.7.5.0409/latest.zip",
     "AcceptsFeedback": true,
-    "DownloadLinkTesting": "https://github.com/YangYangaaaa/RotationSolverReborn-zh/releases/download/2026.7.5.0409/latest.zip",
-    "CategoryTags": [
-      "jobs"
-    ],
-    "Punchline": "Analyses combat information every frame and finds the best action.",
     "Changelog": "zh-CN localization",
     "ApplicableVersion": "any",
-    "AssemblyVersion": "2026.7.5.0409",
-    "LoadSync": false,
-    "TestingAssemblyVersion": "2026.7.5.0409",
-    "Description": "Analyses combat information every frame and finds the best action.\n\nThis means almost all the information available in one frame in combat, including the status of all players in the party, the status of any hostile targets, skill cooldowns, the MP and HP of characters, the location of characters, casting status of the hostile target, combo, combat duration, player level, etc.\nThen, it will highlight the best action on the hot bar, or help you to click on it.\nIt is designed for `general combat`, not for savage or ultimate. Use it carefully.",
-    "IconUrl": "https://raw.githubusercontent.com/FFXIV-CombatReborn/RebornAssets/main/IconAssets/RSR_Icon.png",
-    "Author": "The Combat Reborn Team",
-    "LoadRequiredState": 0,
-    "IsHide": false
+    "AssemblyVersion": "2026.7.5.0417",
+    "LoadSync": false
   }
 ]
