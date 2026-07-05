@@ -1,4 +1,4 @@
-﻿using Dalamud.Interface.Colors;
+using Dalamud.Interface.Colors;
 using Dalamud.Interface.Windowing;
 using ECommons.DalamudServices;
 
@@ -24,7 +24,7 @@ internal sealed class FirstStartTutorialWindow : Window
 			Bullets:
 			[
 				"使用 /rotation 或插件 UI 按钮打开配置窗口。",
-				"使用"下一步/上一步"在各部分之间切换，并随时应用更改。",
+				"使用「下一步/上一步」在各部分之间切换，并随时应用更改。",
 				"大多数设置在登录游戏中更改是安全的，但在战斗中调整前请先熟悉。",
 				"右键点击任意设置或技能标签可复制其宏命令。"
 			]),
@@ -52,8 +52,8 @@ internal sealed class FirstStartTutorialWindow : Window
 			RotationConfigWindowTab.Actions,
 			[
 				"点击分类中的技能图标可查看设置、启用/禁用或更改使用规则。",
-				"如果你希望 RSR 触发你手动排队的技能，请启用"拦截"。",
-				"切换"在冷却窗口显示"以让覆盖层只显示你想要的技能。"
+				"如果你希望 RSR 触发你手动排队的技能，请启用「拦截」。",
+				"切换「在冷却窗口显示」以让覆盖层只显示你想要的技能。"
 			]),
 		new(
 			"Auto",
@@ -96,7 +96,7 @@ internal sealed class FirstStartTutorialWindow : Window
 			"List 管理精选状态列表：驱散、优先目标、击退等。",
 			RotationConfigWindowTab.List,
 			[
-				"需要时使用"重置并更新"恢复精选列表。",
+				"需要时使用「重置并更新」恢复精选列表。",
 				"使用 + 按钮按 ID 或名称添加或移除状态。",
 				"这些列表驱动所有职业的智能反应。"
 			]),
